@@ -1,0 +1,17 @@
+add_temporal_features: true
+clip_sigma: 10.0
+consecutive_k: 2
+dataset_root: data/v0.5_small/v05_small_dataset
+experiment_id: exp_lof
+feature_set: full
+hyperparameters:
+  n_neighbors: 15
+impute_strategy: median
+master_seed: 42
+model_type: lof
+output_dir: experiments
+rolling_window_length: 3
+scaler: standard
+target_fpr: 0.01
+train_val_split_ratio: 0.7
+version: 0.6.0

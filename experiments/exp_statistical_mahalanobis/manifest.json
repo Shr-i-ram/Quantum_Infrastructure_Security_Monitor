@@ -1,0 +1,14 @@
+{
+  "experiment_id": "exp_statistical_mahalanobis",
+  "version": "0.6.0",
+  "model_type": "mahalanobis",
+  "feature_set": "full",
+  "scaler": "standard",
+  "target_fpr": 0.01,
+  "calibrated_threshold": 1209.446204086519,
+  "start_time": "2026-09-06T20:54:18.392312+00:00",
+  "end_time": "2026-09-06T20:54:20.339373+00:00",
+  "wall_time_s": 1.947061,
+  "master_seed": 42,
+  "status": "COMPLETED"
+}

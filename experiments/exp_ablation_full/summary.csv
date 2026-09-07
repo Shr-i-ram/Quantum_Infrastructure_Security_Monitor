@@ -1,0 +1,2 @@
+experiment_id,model_type,feature_set,threshold,iid_precision,iid_recall,iid_f1,iid_fpr,iid_auroc,iid_auprc,ood_precision,ood_recall,ood_f1,ood_fpr,ood_auroc,ood_auprc,recall_gap,fpr_gap,shuffled_auroc,random_feature_auroc
+exp_ablation_full,isolation_forest,full,0.08455746398016863,0.0,0.0,0.0,0.05555555555555555,0.4191919191919192,0.4983982440376839,0.0,0.0,0.0,0.0,0.5,0.7280049750444488,0.0,-0.05555555555555555,0.553030303030303,0.4595959595959596

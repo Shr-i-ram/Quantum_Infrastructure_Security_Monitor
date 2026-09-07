@@ -1,0 +1,72 @@
+{
+  "simulator_version": "0.2.0",
+  "n_pulses_per_run": 150000,
+  "seed": 20240101,
+  "config_hash": "5ac848e1c4a4dca331ca4b3f8b90d818b5252d3062a383a055b2a45d250f8554",
+  "figures": [
+    "reports\\figures\\01_poisson_photon_number.png",
+    "reports\\figures\\02_channel_transmittance_vs_distance.png",
+    "reports\\figures\\03_gain_vs_detector_efficiency.png",
+    "reports\\figures\\04_vacuum_gain_vs_dark_count_rate.png",
+    "reports\\figures\\05_timing_distribution.png",
+    "reports\\figures\\06_detector_imbalance_distribution.png",
+    "reports\\figures\\07_qber_vs_misalignment.png",
+    "reports\\figures\\08_signal_decoy_vacuum_gains.png"
+  ],
+  "results": {
+    "poisson_max_deviation": 0.00092810949697536,
+    "timing_empirical_std_s": 4.936090059442257e-11,
+    "timing_configured_sigma_s": 5e-11,
+    "imbalance_mean": 0.0002265895065433815,
+    "gains": {
+      "signal": 0.018208965183591077,
+      "decoy": 0.003694256311021198,
+      "vacuum": 0.0
+    }
+  },
+  "detector_validation": {
+    "figures": [
+      "reports\\figures\\09_dead_time_rate_suppression.png",
+      "reports\\figures\\10_interarrival_dead_time_cutoff.png",
+      "reports\\figures\\11_afterpulse_delay_distribution.png",
+      "reports\\figures\\12_rate_dependent_dead_time.png",
+      "reports\\figures\\13_qkd_engine_detector_dynamics.png"
+    ],
+    "dead_time_rate_max_rel_deviation": 0.004597999999999868,
+    "dead_time_observed_rates": {
+      "20000.0": 20017.0,
+      "100000.0": 99960.0,
+      "400000.0": 392251.0
+    },
+    "interarrival_mean_s": 1.0048635093294421e-05,
+    "interarrival_mean_theory_s": 1.005e-05,
+    "interarrival_std_s": 9.960628133009391e-06,
+    "interarrival_std_theory_s": 1e-05,
+    "interarrival_min_s": 5.0015978858564125e-08,
+    "interarrival_min_above_tau": true,
+    "afterpulse_n": 6023,
+    "afterpulse_mean_delay_s": 1.0094430895845871e-07,
+    "afterpulse_tau_s": 1e-07,
+    "afterpulse_mean_delay_rel_dev": 0.009443089584587193,
+    "rate_dependent_tau_eff_max_rel_deviation": 0.005659606639280244,
+    "rate_dependent_tau_eff_inferred": {
+      "100000.0": 5.485416036214256e-08,
+      "300000.0": 6.157295140418739e-08,
+      "1000000.0": 7.50225040609583e-08,
+      "3000000.0": 8.749910374028502e-08
+    },
+    "rate_dependent_tau_eff_theory": {
+      "100000.0": 5.4545454545454545e-08,
+      "300000.0": 6.153846153846154e-08,
+      "1000000.0": 7.5e-08,
+      "3000000.0": 8.75e-08
+    },
+    "qkd_dead_time_loss_rate_mean": 3.3500837520938026e-05,
+    "qkd_effective_dead_time_mean_s": 5.224963520107801e-08,
+    "qkd_busy_fraction_mean": 0.0004043520709117136,
+    "qkd_fano_factor_mean": 0.9769209724331317,
+    "qkd_autocorr_lag1_mean": 0.0013947136718002935,
+    "qkd_d0_interarrival_min_s": 9.998970470492807e-07,
+    "qkd_d0_interarrival_mean_s": 0.00012920896166169305
+  }
+}

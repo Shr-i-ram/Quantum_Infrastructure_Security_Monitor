@@ -1,0 +1,31 @@
+# QISM V0.5 template — advanced implementation attacks.
+# NOT LOADABLE IN V0.1. This file documents the configuration shape that
+# Version 0.5 will add on top of configs/default.yaml.
+#
+# V0.5 attacks (planned):
+#   * detector blinding/control       P(click) = (1-u_BL) P_SPAD + u_BL P_control
+#   * recovery-induced erasure (RIE)  strong pre-pulse -> DEAD -> erasure
+#   * Trojan-horse injection          back-reflection / optical power anomalies
+#   * wavelength attack               eta_d = eta_d(lambda)
+#   * after-gate attack               t_attack > t_gate + W_gate/2
+#   * attack temporal profiles, strengths, combinations
+#
+# V0.5 will add (illustrative, not yet valid):
+#   attack:
+#     type: blinding
+#     strength: 0.7              # u_BL
+#     params:
+#       control_power_mw: 1.0
+#   attack:
+#     type: trojan_horse
+#     params:
+#       rho: 1.0e-6              # back-coupling
+#   attack:
+#     type: after_gate
+#     params:
+#       delta_t_s: 1.5e-9
+#
+# The detector state machine (READY/DEAD, qism/detector/detector.py) and the
+# gate/timing logic (qism/detector/timing.py) are the extension points; they
+# were isolated in V0.1 exactly so these attacks can be added without
+# rewriting receiver or detector code.

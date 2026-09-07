@@ -1,0 +1,150 @@
+# QISM V0.5 Medium Dataset Configuration
+# Suitable for statistical validation, coverage diagnostics, and KS goodness-of-fit testing.
+
+dataset_id: "v05_medium_dataset"
+version: "0.5.0"
+master_seed: 20260503
+sampling_strategy: "latin_hypercube"
+worker_count: 4
+batch_size: 10
+shard_size: 10
+max_retries: 2
+output_root: "data/v0.5_medium"
+checkpoint_root: "checkpoints/v0.5_medium"
+
+base: "v0.4_smoke.yaml"
+
+splits:
+  calibration:
+    n_scenarios: 8
+    runs_per_scenario: 1
+    pulses_per_run: 15000
+    edge_case_fraction: 0.0
+    attack_fraction: 0.0
+
+  normal:
+    n_scenarios: 16
+    runs_per_scenario: 2
+    pulses_per_run: 15000
+    edge_case_fraction: 0.15
+    attack_fraction: 0.0
+
+  attack:
+    n_scenarios: 16
+    runs_per_scenario: 2
+    pulses_per_run: 15000
+    edge_case_fraction: 0.15
+    attack_fraction: 1.0
+    attack_types:
+      - "intercept_resend"
+      - "channel_loss"
+      - "source_manipulation"
+      - "detector_manipulation"
+      - "timing"
+      - "pns"
+
+  generalization:
+    n_scenarios: 8
+    runs_per_scenario: 1
+    pulses_per_run: 15000
+    edge_case_fraction: 0.25
+    attack_fraction: 0.5
+    attack_types:
+      - "timing"
+      - "pns"
+    held_out_dimensions:
+      channel.distance_km:
+        min: 45.0
+        max: 65.0
+      detectors.efficiency:
+        min: 0.28
+        max: 0.38
+
+population:
+  source:
+    mu_signal:
+      distribution: "truncated_normal"
+      mean: 0.50
+      std: 0.04
+      min_val: 0.30
+      max_val: 0.65
+      unit: "photons/pulse"
+      description: "Mean photon number per signal pulse across population"
+    mu_decoy:
+      distribution: "truncated_normal"
+      mean: 0.10
+      std: 0.015
+      min_val: 0.04
+      max_val: 0.18
+      unit: "photons/pulse"
+      description: "Mean photon number for decoy pulses"
+
+  channel:
+    distance_km:
+      distribution: "uniform"
+      a: 10.0
+      b: 38.0
+      min_val: 5.0
+      max_val: 50.0
+      unit: "km"
+      description: "Fiber link distance across deployment sites"
+    attenuation_db_per_km:
+      distribution: "normal"
+      mean: 0.20
+      std: 0.02
+      min_val: 0.15
+      max_val: 0.26
+      unit: "dB/km"
+      description: "Standard single-mode fiber attenuation coefficient"
+    insertion_loss_db:
+      distribution: "uniform"
+      a: 0.5
+      b: 2.2
+      min_val: 0.2
+      max_val: 3.5
+      unit: "dB"
+      description: "Coupling and connector loss at link endpoints"
+
+  detectors:
+    efficiency:
+      distribution: "truncated_normal"
+      mean: 0.16
+      std: 0.025
+      min_val: 0.08
+      max_val: 0.25
+      unit: "dimensionless"
+      description: "Single-photon detector baseline quantum efficiency"
+    dark_count_rate_hz:
+      distribution: "log_normal"
+      mean: 6.9
+      std: 0.4
+      min_val: 100.0
+      max_val: 4000.0
+      unit: "Hz"
+      description: "Detector dark count rate across fabrication batches"
+    timing_jitter_s:
+      distribution: "uniform"
+      a: 35.0e-12
+      b: 75.0e-12
+      min_val: 20.0e-12
+      max_val: 120.0e-12
+      unit: "s"
+      description: "Detector timing resolution standard deviation"
+
+  environment:
+    temperature.baseline:
+      distribution: "normal"
+      mean: 21.0
+      std: 2.0
+      min_val: 15.0
+      max_val: 28.0
+      unit: "deg_C"
+      description: "Laboratory ambient baseline operating temperature"
+    humidity.baseline:
+      distribution: "uniform"
+      a: 40.0
+      b: 65.0
+      min_val: 20.0
+      max_val: 80.0
+      unit: "%"
+      description: "Ambient relative humidity"

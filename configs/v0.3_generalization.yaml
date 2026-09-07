@@ -1,0 +1,157 @@
+# QISM V0.3 Generalization Dataset Configuration
+# Evaluates detection transfer on held-out attack types and held-out severity levels.
+
+protocol:
+  name: decoy_bb84
+  n_pulses: 50000
+  repetition_rate_hz: 1000000.0
+
+source:
+  bit_probability_zero: 0.5
+  basis_z_probability: 0.5
+  signal_probability: 0.80
+  decoy_probability: 0.15
+  vacuum_probability: 0.05
+  mu_signal: 0.50
+  mu_decoy: 0.10
+  mu_vacuum: 0.00
+  max_photon_number: 10
+
+channel:
+  distance_km: 25.0
+  attenuation_db_per_km: 0.20
+  insertion_loss_db: 1.0
+  misalignment_deg: 1.0
+  n_eff: 1.468
+  speed_of_light_m_per_s: 299792458.0
+
+background:
+  enabled: true
+  rate_hz: 1000.0
+
+receiver:
+  basis_z_probability: 0.5
+  gate_width_s: 1.0e-9
+  detection_interval_s: null
+  double_click_policy: exclude
+
+detectors:
+  detector_0:
+    label: D0
+    efficiency: 0.15
+    dark_count_rate_hz: 1000.0
+    timing_jitter_s: 50.0e-12
+  detector_1:
+    label: D1
+    efficiency: 0.15
+    dark_count_rate_hz: 1000.0
+    timing_jitter_s: 50.0e-12
+  dead_time:
+    enabled: true
+    model: rate_dependent
+    tau_dead_s: 50.0e-9
+    recovery_model: hard_dead_time
+    tau_0_s: 50.0e-9
+    delta_tau_s: 50.0e-9
+    lambda_c_hz: 1.0e6
+    rate_estimation_window_pulses: 10000
+  afterpulse:
+    enabled: true
+    probability: 0.01
+    decay_model: exponential
+    tau_afterpulse_s: 100.0e-9
+  state:
+    initial_state: ready
+
+timing:
+  histogram_bins: 20
+
+environment:
+  type: stable
+  enabled: false
+
+attack:
+  enabled: true
+  type: none
+  strength: 0.0
+  start_pulse: 0
+  end_pulse: null
+  params: {}
+  scenarios:
+    # 1. Held-out subtle severity (0.15) for Intercept-Resend
+    - scenario_id: gen_ir_subtle_015
+      type: intercept_resend
+      severity: 0.15
+      start_pulse: 10000
+      end_pulse: 40000
+      onset_pulses: 2000
+      termination_pulses: 2000
+      onset_profile: smoothstep
+      recovery_profile: smoothstep
+      params:
+        fraction: 1.0
+      description: "Held-out low severity intercept-resend (s=0.15)"
+
+    # 2. Held-out extreme severity (0.85) for Channel Loss
+    - scenario_id: gen_loss_severe_085
+      type: channel_loss
+      severity: 0.85
+      start_pulse: 10000
+      end_pulse: 40000
+      onset_pulses: 2000
+      termination_pulses: 2000
+      onset_profile: smoothstep
+      recovery_profile: smoothstep
+      params:
+        delta_L_max_db: 6.0
+      description: "Held-out high severity channel loss (s=0.85, +5.1 dB)"
+
+    # 3. Held-out attack type: Novel timing shift
+    - scenario_id: gen_timing_novel_075
+      type: timing
+      severity: 0.75
+      start_pulse: 10000
+      end_pulse: 40000
+      onset_pulses: 2000
+      termination_pulses: 2000
+      onset_profile: smoothstep
+      recovery_profile: smoothstep
+      params:
+        delta_t_max_s: 250.0e-12
+      description: "Held-out timing shift attack (s=0.75, +187.5 ps)"
+
+    # 4. Held-out attack type: Novel PNS attack
+    - scenario_id: gen_pns_novel_08
+      type: pns
+      severity: 0.8
+      start_pulse: 10000
+      end_pulse: 40000
+      onset_pulses: 2000
+      termination_pulses: 2000
+      onset_profile: smoothstep
+      recovery_profile: smoothstep
+      params:
+        single_photon_suppression: 0.7
+      description: "Held-out PNS split/suppress attack (s=0.8)"
+
+telemetry:
+  window_size: 10000
+  timing_histogram_bins: 20
+  include_event_level: true
+  interarrival_histogram_bins: 30
+  interarrival_histogram_scale: linear
+  fano_sub_bins: 64
+
+simulation:
+  master_seed: 20240101
+  chunk_size: 10000
+  checkpoint_interval: 10000
+  output_root: data/generalization
+  checkpoint_root: checkpoints/generalization
+  scenario_id: generalization_suite
+  log_level: INFO
+
+dataset:
+  format: parquet
+  family: generalization
+  version: 0.3.0

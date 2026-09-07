@@ -1,0 +1,14 @@
+{
+  "experiment_id": "exp_ablation_qkd_only",
+  "version": "0.6.0",
+  "model_type": "isolation_forest",
+  "feature_set": "qkd_only",
+  "scaler": "standard",
+  "target_fpr": 0.01,
+  "calibrated_threshold": 0.0874810166768914,
+  "start_time": "2026-09-06T20:54:39.342904+00:00",
+  "end_time": "2026-09-06T20:54:40.962973+00:00",
+  "wall_time_s": 1.620069,
+  "master_seed": 42,
+  "status": "COMPLETED"
+}

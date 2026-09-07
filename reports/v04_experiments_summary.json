@@ -1,0 +1,55 @@
+{
+  "total": 6,
+  "passed": 6,
+  "experiments": [
+    {
+      "experiment": "channel_loss_perturbation",
+      "passed": true,
+      "rate_base": 0.019373040752351096,
+      "rate_pert": 0.009184629803186505,
+      "ratio": 0.4740933506822808,
+      "expected_ratio": 0.5011872336272722
+    },
+    {
+      "experiment": "detector_efficiency_perturbation",
+      "passed": true,
+      "rate_base": 0.019936253984125994,
+      "rate_pert": 0.009360958562156765,
+      "ratio": 0.4695445076898758,
+      "expected_ratio": 0.5
+    },
+    {
+      "experiment": "background_light_perturbation",
+      "passed": true,
+      "sensor_bg_base": 20.0,
+      "sensor_bg_pert": 500.0,
+      "bg_det_base": 0,
+      "bg_det_pert": 11
+    },
+    {
+      "experiment": "temperature_perturbation",
+      "passed": true,
+      "temp_sensor_base": 20.0,
+      "temp_sensor_pert": 35.0,
+      "vac_base": 0.0,
+      "vac_pert": 0.0
+    },
+    {
+      "experiment": "source_intensity_perturbation",
+      "passed": true,
+      "gain_base": 0.014105604793409063,
+      "gain_pert": 0.02789886660854403,
+      "ratio": 1.9778568177083735,
+      "expected_ratio": 2.0
+    },
+    {
+      "experiment": "timing_and_clock_drift",
+      "passed": true,
+      "t_mean_base_ps": -1.838960859872812,
+      "t_mean_pert_ps": 484630.9070056568,
+      "delta_t_ps": 484632.74596651667,
+      "t_std_base_ps": 47.78037574538522,
+      "t_std_pert_ps": 295049.96467178536
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+# QISM V0.1 development/test dependencies (Python 3.10 only).
+-r requirements.txt
+
+# Testing
+pytest>=7.4,<9.0
+
+# Code quality
+ruff>=0.4,<1.0
+
+# Optional development (notebooks)
+jupyter>=1.0,<2.0
+ipykernel>=6.25,<7.0

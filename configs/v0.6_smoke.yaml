@@ -1,0 +1,31 @@
+# QISM V0.6 Smoke Experiment Configuration
+# Fast CPU-only end-to-end anomaly detection smoke test.
+
+experiment_id: "v06_smoke_experiment"
+version: "0.6.0"
+master_seed: 20260601
+
+dataset_root: "data/v0.5_smoke/v05_smoke_dataset"
+train_val_split_ratio: 0.70
+output_dir: "experiments"
+
+# Feature configuration
+feature_set: "full"
+add_temporal_features: true
+rolling_window_length: 2
+
+# Preprocessing
+scaler: "standard"
+impute_strategy: "median"
+clip_sigma: 10.0
+
+# Model configuration
+model_type: "isolation_forest"
+hyperparameters:
+  n_estimators: 30
+  contamination: "auto"
+  random_state: 42
+
+# Thresholding
+target_fpr: 0.05
+consecutive_k: 2

@@ -1,0 +1,107 @@
+# QISM V0.2 default reference configuration — decoy-state BB84 with
+# stateful detector dynamics (dead time, recovery, afterpulsing).
+# Every physical parameter is accessible here; the simulator contains no
+# scattered hard-coded constants.
+#
+# Units (documented per field):
+#   distances [km], times [s], rates [Hz], angles [deg], mean photon number [-]
+
+protocol:
+  name: decoy_bb84
+  n_pulses: 100000          # pulses per run
+  repetition_rate_hz: 1000000.0   # f_rep -> T_rep = 1 us
+
+source:
+  bit_probability_zero: 0.5   # P(A=0)
+  basis_z_probability: 0.5    # P(B_A=Z)
+  signal_probability: 0.80    # P(signal)
+  decoy_probability: 0.15     # P(decoy)
+  vacuum_probability: 0.05    # P(vacuum)   (sums to 1)
+  mu_signal: 0.50
+  mu_decoy: 0.10
+  mu_vacuum: 0.00
+  max_photon_number: 10       # reporting cutoff for empirical yields Y_n
+
+channel:
+  distance_km: 25.0
+  attenuation_db_per_km: 0.20
+  insertion_loss_db: 1.0      # L_sys
+  misalignment_deg: 1.0       # theta -> p_mis = sin^2(theta)
+  n_eff: 1.468
+  speed_of_light_m_per_s: 299792458.0
+
+background:
+  enabled: true
+  rate_hz: 1000.0             # lambda_bg [photons/s]
+
+receiver:
+  basis_z_probability: 0.5    # P(B_B=Z)
+  gate_width_s: 1.0e-9        # W_gate = 1 ns, centred on expected arrival
+  detection_interval_s: null  # Delta_t for dark counts; null -> gate width
+  double_click_policy: exclude   # V0.1: double clicks excluded from sifted QBER
+
+detectors:
+  detector_0:
+    label: D0
+    efficiency: 0.15
+    dark_count_rate_hz: 1000.0
+    timing_jitter_s: 50.0e-12   # sigma_t = 50 ps
+  detector_1:
+    label: D1
+    efficiency: 0.15
+    dark_count_rate_hz: 1000.0
+    timing_jitter_s: 50.0e-12
+  # --- V0.2 detector dynamics (enabled by default) ---
+  dead_time:
+    enabled: true             # READY -> DEAD -> READY state machine
+    model: rate_dependent     # 'fixed' (tau_dead_s) | 'rate_dependent'
+    tau_dead_s: 50.0e-9       # nominal dead time tau_dead (fixed model / baseline)
+    recovery_model: hard_dead_time   # completely unavailable during the dead interval
+    tau_0_s: 50.0e-9          # rate-dependent: tau_eff at low rate
+    delta_tau_s: 50.0e-9      # rate-dependent: tau_eff increase at high rate
+    lambda_c_hz: 1.0e6        # rate-dependent: characteristic rate
+    rate_estimation_window_pulses: 10000  # candidate-rate estimation window
+  afterpulse:
+    enabled: true             # P(AP | primary avalanche) = probability
+    probability: 0.01         # p_afterpulse
+    decay_model: exponential  # delay ~ Exp(tau_afterpulse_s)
+    tau_afterpulse_s: 100.0e-9  # tau_AP = 100 ns
+  state:
+    initial_state: ready
+
+timing:
+  histogram_bins: 20
+
+environment:
+  type: stable                # V0.2: stable only (drift arrives in V0.3)
+  enabled: false
+
+attack:
+  enabled: false              # V0.2: no attacks (suite arrives in V0.4/V0.5)
+  type: none
+  strength: 0.0
+  start_pulse: 0
+  end_pulse: null
+  params: {}
+
+telemetry:
+  window_size: 10000          # pulses per telemetry window
+  timing_histogram_bins: 20
+  include_event_level: true
+  interarrival_histogram_bins: 30      # V0.2: bins for inter-arrival histograms
+  interarrival_histogram_scale: linear # 'linear' | 'log'
+  fano_sub_bins: 64                    # V0.2: sub-bins for the Fano-factor estimate
+
+simulation:
+  master_seed: 20240101
+  chunk_size: 10000           # pulses simulated per chunk
+  checkpoint_interval: 10000  # pulses between checkpoints
+  output_root: data
+  checkpoint_root: checkpoints
+  scenario_id: normal
+  log_level: INFO
+
+dataset:
+  format: parquet
+  family: normal              # calibration | normal | attacks | generalization
+  version: 0.2.0

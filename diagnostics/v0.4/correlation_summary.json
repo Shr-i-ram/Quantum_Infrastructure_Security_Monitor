@@ -1,0 +1,9 @@
+{
+  "pulses": 100000,
+  "n_windows": 50,
+  "mean_temperature_c": 21.986605000000004,
+  "mean_ambient_light_lux": 202.36265999999995,
+  "mean_vibration_g": 0.030000000000000016,
+  "mean_qber": 0.0,
+  "mean_signal_gain": 0.01869942088081152
+}

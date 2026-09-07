@@ -1,0 +1,14 @@
+{
+  "experiment_id": "exp_ablation_environmental_only",
+  "version": "0.6.0",
+  "model_type": "isolation_forest",
+  "feature_set": "environmental_only",
+  "scaler": "standard",
+  "target_fpr": 0.01,
+  "calibrated_threshold": 0.06166783795897358,
+  "start_time": "2026-09-06T20:54:42.407089+00:00",
+  "end_time": "2026-09-06T20:54:43.768181+00:00",
+  "wall_time_s": 1.361092,
+  "master_seed": 42,
+  "status": "COMPLETED"
+}

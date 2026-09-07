@@ -1,0 +1,109 @@
+# QISM V0.5 Smoke Configuration
+# Fast end-to-end pipeline validation with population diversity,
+# parallel execution, checkpointing, and sharded storage.
+
+dataset_id: "v05_smoke_dataset"
+version: "0.5.0"
+master_seed: 20260501
+sampling_strategy: "latin_hypercube"
+worker_count: 2
+batch_size: 4
+shard_size: 4
+max_retries: 2
+output_root: "data/v0.5_smoke"
+checkpoint_root: "checkpoints/v0.5_smoke"
+
+base: "v0.4_smoke.yaml"
+
+splits:
+  calibration:
+    n_scenarios: 2
+    runs_per_scenario: 1
+    pulses_per_run: 5000
+    edge_case_fraction: 0.0
+    attack_fraction: 0.0
+
+  normal:
+    n_scenarios: 2
+    runs_per_scenario: 1
+    pulses_per_run: 5000
+    edge_case_fraction: 0.0
+    attack_fraction: 0.0
+
+  attack:
+    n_scenarios: 2
+    runs_per_scenario: 1
+    pulses_per_run: 5000
+    edge_case_fraction: 0.0
+    attack_fraction: 1.0
+    attack_types:
+      - "intercept_resend"
+      - "channel_loss"
+
+  generalization:
+    n_scenarios: 2
+    runs_per_scenario: 1
+    pulses_per_run: 5000
+    edge_case_fraction: 0.0
+    attack_fraction: 0.5
+    held_out_dimensions:
+      channel.distance_km:
+        min: 42.0
+        max: 55.0
+
+population:
+  source:
+    mu_signal:
+      distribution: "truncated_normal"
+      mean: 0.48
+      std: 0.04
+      min_val: 0.30
+      max_val: 0.65
+      unit: "photons/pulse"
+      description: "Mean photon number per signal pulse across population"
+
+  channel:
+    distance_km:
+      distribution: "uniform"
+      a: 15.0
+      b: 30.0
+      min_val: 10.0
+      max_val: 40.0
+      unit: "km"
+      description: "Fiber link distance across deployment population"
+    attenuation_db_per_km:
+      distribution: "normal"
+      mean: 0.20
+      std: 0.02
+      min_val: 0.16
+      max_val: 0.28
+      unit: "dB/km"
+      description: "Fiber attenuation coefficient"
+
+  detectors:
+    efficiency:
+      distribution: "truncated_normal"
+      mean: 0.18
+      std: 0.03
+      min_val: 0.10
+      max_val: 0.30
+      unit: "dimensionless"
+      description: "Baseline SPAD single-photon detection efficiency"
+    dark_count_rate_hz:
+      distribution: "log_normal"
+      mean: 6.9
+      std: 0.3
+      min_val: 200.0
+      max_val: 3000.0
+      unit: "Hz"
+      description: "Detector dark count rate across manufactured units"
+
+  environment:
+    temperature.baseline:
+      distribution: "normal"
+      mean: 21.5
+      std: 1.5
+      min_val: 16.0
+      max_val: 28.0
+      unit: "deg_C"
+      description: "Ambient baseline laboratory / node temperature"

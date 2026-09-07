@@ -1,0 +1,2 @@
+experiment_id,model_type,feature_set,threshold,iid_precision,iid_recall,iid_f1,iid_fpr,iid_auroc,iid_auprc,ood_precision,ood_recall,ood_f1,ood_fpr,ood_auroc,ood_auprc,recall_gap,fpr_gap,shuffled_auroc,random_feature_auroc
+exp_ablation_detector_only,isolation_forest,detector_only,0.09264431792802376,0.5,0.045454545454545456,0.08333333333333334,0.05555555555555555,0.3762626262626263,0.49301427300677575,0.5,0.08333333333333333,0.14285714285714285,0.125,0.5520833333333333,0.6750357213592507,-0.03787878787878787,0.06944444444444445,0.5909090909090908,0.51010101010101

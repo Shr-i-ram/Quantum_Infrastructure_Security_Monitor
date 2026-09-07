@@ -1,0 +1,59 @@
+# QISM V0.2 detector-realism configuration example.
+# This file documents the V0.2 detector configuration shape on top of
+# configs/default.yaml. To use it, load configs/default.yaml (which already
+# contains these defaults) or merge the `detectors` block below into your own
+# base configuration.
+#
+# V0.2 features covered here:
+#   * detector dead time:          READY -> DEAD -> READY state machine
+#   * nonparalyzable recovery:     hard_dead_time (unavailable during tau)
+#   * rate-dependent effective dead time:
+#         tau_eff(lambda) = tau_0 + delta_tau * lambda / (lambda + lambda_c)
+#   * afterpulsing:                P(AP | primary avalanche) = probability,
+#                                  delay ~ Exp(tau_afterpulse_s)
+#   * detector busy fraction / inter-arrival telemetry (see telemetry block)
+#
+# V0.1 compatibility: a configuration that instead carries the legacy flat
+# keys (detectors.dead_time_enabled, dead_time_s, afterpulse_enabled,
+# p_afterpulse, tau_afterpulse_s) still loads — they are migrated onto the
+# nested structure automatically with disabled semantics.
+
+detectors:
+  detector_0:
+    label: D0
+    efficiency: 0.15
+    dark_count_rate_hz: 1000.0
+    timing_jitter_s: 50.0e-12
+  detector_1:
+    label: D1
+    efficiency: 0.15
+    dark_count_rate_hz: 1000.0
+    timing_jitter_s: 50.0e-12
+  dead_time:
+    enabled: true               # -> false reproduces the V0.1 stateless model
+    model: rate_dependent       # 'fixed' uses only tau_dead_s
+    tau_dead_s: 50.0e-9         # nominal dead time [s]
+    recovery_model: hard_dead_time   # gradual recovery arrives in later versions
+    tau_0_s: 50.0e-9            # rate-dependent baseline [s]
+    delta_tau_s: 50.0e-9        # rate-dependent increment [s]
+    lambda_c_hz: 1.0e6          # characteristic rate [Hz]
+    rate_estimation_window_pulses: 10000
+  afterpulse:
+    enabled: true               # -> false disables afterpulsing
+    probability: 0.01           # P(afterpulse | primary avalanche)
+    decay_model: exponential
+    tau_afterpulse_s: 100.0e-9  # exponential time constant [s]
+  state:
+    initial_state: ready        # future states (blinded/controlled) arrive in V0.5
+
+telemetry:
+  window_size: 10000
+  timing_histogram_bins: 20
+  include_event_level: true
+  interarrival_histogram_bins: 30      # inter-arrival histogram bins
+  interarrival_histogram_scale: linear # 'linear' | 'log'
+  fano_sub_bins: 64                    # sub-bins for the window Fano factor
+
+# The Detector class (qism/detector/detector.py) exposes:
+#   detect(), offer(), is_available(), register_click(), get_state(),
+#   get_parameters(), set_candidate_rate(), runtime_state(), restore_runtime_state()

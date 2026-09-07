@@ -1,0 +1,338 @@
+# QISM V0.4 Attack Dataset Configuration
+# Multiple attack scenarios operating on dynamic physical and environmental baselines.
+# Causal attack perturbations compose on top of continuous drift.
+
+protocol:
+  name: decoy_bb84
+  n_pulses: 50000
+  repetition_rate_hz: 1000000.0
+
+source:
+  bit_probability_zero: 0.5
+  basis_z_probability: 0.5
+  signal_probability: 0.80
+  decoy_probability: 0.15
+  vacuum_probability: 0.05
+  mu_signal: 0.50
+  mu_decoy: 0.10
+  mu_vacuum: 0.00
+  max_photon_number: 10
+  intensity_jitter_std: 0.02
+
+channel:
+  distance_km: 25.0
+  attenuation_db_per_km: 0.20
+  insertion_loss_db: 1.0
+  misalignment_deg: 1.0
+  n_eff: 1.468
+  speed_of_light_m_per_s: 299792458.0
+  loss_drift_enabled: true
+
+background:
+  enabled: true
+  rate_hz: 1000.0
+  ambient_coupling_factor: 5.0
+
+receiver:
+  basis_z_probability: 0.5
+  gate_width_s: 1.0e-9
+  detection_interval_s: null
+  double_click_policy: exclude
+
+detectors:
+  detector_0:
+    label: D0
+    efficiency: 0.15
+    dark_count_rate_hz: 1000.0
+    timing_jitter_s: 50.0e-12
+    temp_coeff_dark_count: 0.03
+    temp_coeff_efficiency: -0.001
+    t_ref_c: 20.0
+  detector_1:
+    label: D1
+    efficiency: 0.15
+    dark_count_rate_hz: 1000.0
+    timing_jitter_s: 50.0e-12
+    temp_coeff_dark_count: 0.03
+    temp_coeff_efficiency: -0.001
+    t_ref_c: 20.0
+  dead_time:
+    enabled: true
+    model: rate_dependent
+    tau_dead_s: 50.0e-9
+    recovery_model: hard_dead_time
+    tau_0_s: 50.0e-9
+    delta_tau_s: 50.0e-9
+    lambda_c_hz: 1.0e6
+    rate_estimation_window_pulses: 10000
+  afterpulse:
+    enabled: true
+    probability: 0.01
+    decay_model: exponential
+    tau_afterpulse_s: 100.0e-9
+  state:
+    initial_state: ready
+
+timing:
+  histogram_bins: 20
+
+environment:
+  type: dynamic
+  enabled: true
+  temperature:
+    baseline: 21.5
+    theta: 0.5
+    sigma: 0.1
+    diurnal_amplitude: 1.5
+    diurnal_period_s: 3600.0
+    min_val: 10.0
+    max_val: 40.0
+  humidity:
+    baseline: 50.0
+    theta: 0.2
+    sigma: 0.5
+    min_val: 0.0
+    max_val: 100.0
+  vibration:
+    baseline: 0.02
+    theta: 1.0
+    sigma: 0.005
+    min_val: 0.0
+    max_val: 1.0
+  background_light:
+    baseline: 150.0
+    theta: 0.5
+    sigma: 5.0
+    min_val: 0.0
+  polarization_drift:
+    baseline: 0.0
+    theta: 0.1
+    sigma: 0.05
+    min_val: -10.0
+    max_val: 10.0
+  clock_drift:
+    baseline: 15.0
+    theta: 0.05
+    sigma: 0.5
+  channel_loss_drift:
+    baseline: 0.0
+    theta: 0.2
+    sigma: 0.02
+  source_intensity_drift:
+    baseline: 0.0
+    theta: 0.5
+    sigma: 0.005
+  detector_efficiency_drift:
+    baseline: 0.0
+    theta: 0.5
+    sigma: 0.005
+  coupling:
+    ambient_light_to_bg_rate: 5.0
+    base_background_rate_hz: 1000.0
+  sensors:
+    temperature:
+      noise_std: 0.1
+      quantization_step: 0.1
+      missing_probability: 0.01
+      sampling_interval_s: 0.001
+    humidity:
+      noise_std: 0.5
+      quantization_step: 0.5
+      missing_probability: 0.01
+      sampling_interval_s: 0.001
+    vibration:
+      noise_std: 0.002
+      quantization_step: 0.001
+      missing_probability: 0.01
+      sampling_interval_s: 0.001
+    background_light:
+      noise_std: 2.0
+      quantization_step: 1.0
+      missing_probability: 0.01
+      sampling_interval_s: 0.001
+
+attack:
+  enabled: true
+  type: intercept_resend
+  strength: 0.6
+  start_pulse: 10000
+  end_pulse: 40000
+  params:
+    fraction: 1.0
+  scenarios:
+    # 1. Intercept-Resend Attack Scenarios
+    - scenario_id: ir_sev_03
+      type: intercept_resend
+      severity: 0.3
+      start_pulse: 10000
+      end_pulse: 40000
+      onset_pulses: 2000
+      termination_pulses: 2000
+      onset_profile: smoothstep
+      recovery_profile: smoothstep
+      params:
+        fraction: 1.0
+      description: "Low-severity intercept-resend on dynamic baseline"
+
+    - scenario_id: ir_sev_06
+      type: intercept_resend
+      severity: 0.6
+      start_pulse: 10000
+      end_pulse: 40000
+      onset_pulses: 2000
+      termination_pulses: 2000
+      onset_profile: smoothstep
+      recovery_profile: smoothstep
+      params:
+        fraction: 1.0
+      description: "Medium-severity intercept-resend on dynamic baseline"
+
+    - scenario_id: ir_sev_10
+      type: intercept_resend
+      severity: 1.0
+      start_pulse: 10000
+      end_pulse: 40000
+      onset_pulses: 2000
+      termination_pulses: 2000
+      onset_profile: smoothstep
+      recovery_profile: smoothstep
+      params:
+        fraction: 1.0
+      description: "Full-severity intercept-resend on dynamic baseline"
+
+    # 2. Channel Loss scenarios
+    - scenario_id: loss_sev_05
+      type: channel_loss
+      severity: 0.5
+      start_pulse: 10000
+      end_pulse: 40000
+      onset_pulses: 2000
+      termination_pulses: 2000
+      onset_profile: linear
+      recovery_profile: linear
+      params:
+        delta_L_max_db: 6.0
+      description: "Moderate extra channel loss (+3 dB) on dynamic baseline"
+
+    - scenario_id: loss_sev_10
+      type: channel_loss
+      severity: 1.0
+      start_pulse: 10000
+      end_pulse: 40000
+      onset_pulses: 2000
+      termination_pulses: 2000
+      onset_profile: smoothstep
+      recovery_profile: smoothstep
+      params:
+        delta_L_max_db: 6.0
+      description: "High extra channel loss (+6 dB) on dynamic baseline"
+
+    # 3. Source Manipulation scenarios
+    - scenario_id: src_increase_06
+      type: source_manipulation
+      severity: 0.6
+      start_pulse: 10000
+      end_pulse: 40000
+      onset_pulses: 2000
+      termination_pulses: 2000
+      onset_profile: smoothstep
+      recovery_profile: smoothstep
+      params:
+        delta_mu: 0.3
+        direction: "increase"
+      description: "Source intensity increase (+0.18 mu) on dynamic baseline"
+
+    - scenario_id: src_decrease_06
+      type: source_manipulation
+      severity: 0.6
+      start_pulse: 10000
+      end_pulse: 40000
+      onset_pulses: 2000
+      termination_pulses: 2000
+      onset_profile: smoothstep
+      recovery_profile: smoothstep
+      params:
+        delta_mu: 0.3
+        direction: "decrease"
+      description: "Source intensity reduction (-0.18 mu) on dynamic baseline"
+
+    # 4. Detector Manipulation scenarios
+    - scenario_id: det_mismatch_07
+      type: detector_manipulation
+      severity: 0.7
+      start_pulse: 10000
+      end_pulse: 40000
+      onset_pulses: 2000
+      termination_pulses: 2000
+      onset_profile: smoothstep
+      recovery_profile: smoothstep
+      params:
+        mode: mismatch
+        delta_eta: 0.6
+        target_detector: 0
+      description: "Detector 0 efficiency mismatch on dynamic baseline"
+
+    - scenario_id: det_dark_08
+      type: detector_manipulation
+      severity: 0.8
+      start_pulse: 10000
+      end_pulse: 40000
+      onset_pulses: 2000
+      termination_pulses: 2000
+      onset_profile: smoothstep
+      recovery_profile: smoothstep
+      params:
+        mode: dark_count
+        delta_dark_hz: 10000.0
+        target_detector: -1
+      description: "Dark count elevation on both detectors on dynamic baseline"
+
+    # 5. Timing Attack scenarios
+    - scenario_id: timing_sev_06
+      type: timing
+      severity: 0.6
+      start_pulse: 10000
+      end_pulse: 40000
+      onset_pulses: 2000
+      termination_pulses: 2000
+      onset_profile: smoothstep
+      recovery_profile: smoothstep
+      params:
+        delta_t_max_s: 300.0e-12
+      description: "Arrival time delay shift (+180 ps) on dynamic baseline"
+
+    # 6. PNS Attack scenarios
+    - scenario_id: pns_sev_07
+      type: pns
+      severity: 0.7
+      start_pulse: 10000
+      end_pulse: 40000
+      onset_pulses: 2000
+      termination_pulses: 2000
+      onset_profile: smoothstep
+      recovery_profile: smoothstep
+      params:
+        single_photon_suppression: 0.6
+      description: "PNS split and single-photon suppression on dynamic baseline"
+
+telemetry:
+  window_size: 10000
+  timing_histogram_bins: 20
+  include_event_level: true
+  interarrival_histogram_bins: 30
+  interarrival_histogram_scale: linear
+  fano_sub_bins: 64
+
+simulation:
+  master_seed: 20240401
+  chunk_size: 10000
+  checkpoint_interval: 10000
+  output_root: data/v0.4
+  checkpoint_root: checkpoints/v0.4
+  scenario_id: attack_suite
+  log_level: INFO
+
+dataset:
+  format: parquet
+  family: attacks
+  version: 0.4.0

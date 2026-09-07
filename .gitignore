@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual environment
+.venv/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+.coverage
+htmlcov/
+
+# Generated simulation data and artifacts
+data/
+checkpoints/
+logs/
+reports/figures/
+reports/validation/
+
+# Keep empty directories tracked via .gitkeep
+!**/.gitkeep
+
+# OS noise
+.DS_Store
+Thumbs.db

@@ -1,0 +1,35 @@
+# QISM V0.3 template — legitimate environmental/operational variation.
+# NOT LOADABLE IN V0.1. This file documents the configuration shape that
+# Version 0.3 will add on top of configs/default.yaml.
+#
+# V0.3 features (planned):
+#   * Ornstein-Uhlenbeck drift:  dx_t = kappa (mu_x - x_t) dt + sigma_x dW_t
+#   * channel-loss drift, detector-efficiency drift, timing drift,
+#     dark-count drift, temperature, bias variation
+#   * correlated stochastic processes
+#   * legitimate maintenance/calibration events
+#
+# V0.1 already ships the Environment abstraction
+# (qism/environment/base.py): get_state(t) / update(t) with a
+# StableEnvironment implementation. V0.3 adds subclasses selected by
+# config.environment.type, e.g.:
+
+environment:
+  type: stable                  # V0.3: "ornstein_uhlenbeck"
+  enabled: false                # -> true in V0.3
+
+# V0.3 will add (illustrative, not yet valid):
+#   processes:
+#     channel_loss_db:
+#       kappa: 0.001
+#       mu: 6.0
+#       sigma: 0.1
+#     detector_efficiency:
+#       kappa: 0.0005
+#       mu: 0.15
+#       sigma: 0.005
+#   maintenance_events:
+#     - at_s: 3600.0
+#       recalibrate: true
+
+# EnvironmentState already carries temperature/bias/power fields (None in V0.1).

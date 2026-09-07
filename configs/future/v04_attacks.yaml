@@ -1,0 +1,33 @@
+# QISM V0.4 template — initial attack suite.
+# NOT LOADABLE IN V0.1. This file documents the configuration shape that
+# Version 0.4 will add on top of configs/default.yaml.
+#
+# V0.4 attacks (planned):
+#   * intercept-resend
+#   * photon-number-splitting (PNS)
+#   * time-shift
+#   * detector-efficiency mismatch
+#
+# Attacks act on the PHYSICAL/EVENT process (photon numbers, arrival times,
+# detector sampling), never on ML features. V0.1 ships only the base
+# interface (qism/attacks/base.py) with a disabled pass-through engine:
+
+attack:
+  enabled: false                # -> true in V0.4
+  type: none                    # -> e.g. "intercept_resend"
+  strength: 0.0                 # attack strength parameter
+  start_pulse: 0
+  end_pulse: null
+  params: {}
+
+# V0.4 will add (illustrative, not yet valid):
+#   attack:
+#     type: intercept_resend
+#     strength: 0.3             # p_IR = attack probability
+#     eve_basis: random
+#   attack:
+#     type: time_shift
+#     delta_t_s: 200.0e-12
+#
+# Event records already carry attack_active / attack_type / attack_strength /
+# attack_id (False/"none"/0.0/null in V0.1) so dataset schemas do not change.

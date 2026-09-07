@@ -1,0 +1,142 @@
+{
+  "exp1": {
+    "experiment": "1_fixed_configuration",
+    "passed": true,
+    "detection_counts": [
+      179,
+      179,
+      207,
+      201
+    ],
+    "mean_detections": 191.5,
+    "std_detections": 12.678722333105966,
+    "cv_detections": 0.06620742732692411,
+    "qber_values": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "exp2": {
+    "experiment": "2_population_variation",
+    "passed": true,
+    "efficiencies": [
+      0.2115032612714767,
+      0.15905908038660177,
+      0.18903827800899464,
+      0.16470783357949914
+    ],
+    "distances": [
+      38.56697169886874,
+      30.56014433146434,
+      21.601775196497748,
+      11.0286563207803
+    ],
+    "detections": [
+      101,
+      117,
+      252,
+      320
+    ],
+    "eff_range": 0.05244418088487493,
+    "det_range": 219
+  },
+  "exp3": {
+    "experiment": "3_environmental_variation",
+    "passed": true,
+    "temperatures": [
+      18.0,
+      25.0,
+      32.0
+    ],
+    "dark_counts": [
+      0,
+      0,
+      0
+    ]
+  },
+  "exp4": {
+    "experiment": "4_infrastructure_variation",
+    "passed": true,
+    "distances": [
+      10.0,
+      25.0,
+      45.0
+    ],
+    "signal_detections": [
+      312,
+      155,
+      67
+    ]
+  },
+  "exp5": {
+    "experiment": "5_attack_variation",
+    "passed": true,
+    "metrics": {
+      "none": {
+        "qber": 0.0,
+        "raw_detections": 154
+      },
+      "intercept_resend": {
+        "qber": 0.1323529411764706,
+        "raw_detections": 141
+      },
+      "channel_loss": {
+        "qber": 0.0,
+        "raw_detections": 104
+      }
+    }
+  },
+  "exp6": {
+    "experiment": "6_combined_variation",
+    "passed": true,
+    "scenarios": [
+      {
+        "scenario_id": "combined_test_0000",
+        "regime": "nominal",
+        "is_edge_case": false,
+        "attack_enabled": false,
+        "attack_type": "none",
+        "qber": 0.0,
+        "detections": 246
+      },
+      {
+        "scenario_id": "combined_test_0001",
+        "regime": "nominal",
+        "is_edge_case": false,
+        "attack_enabled": true,
+        "attack_type": "intercept_resend",
+        "qber": 0.05194805194805195,
+        "detections": 177
+      },
+      {
+        "scenario_id": "combined_test_0002",
+        "regime": "nominal",
+        "is_edge_case": false,
+        "attack_enabled": true,
+        "attack_type": "intercept_resend",
+        "qber": 0.05,
+        "detections": 109
+      },
+      {
+        "scenario_id": "combined_test_0003",
+        "regime": "nominal",
+        "is_edge_case": false,
+        "attack_enabled": true,
+        "attack_type": "channel_loss",
+        "qber": 0.0,
+        "detections": 100
+      },
+      {
+        "scenario_id": "combined_test_0004",
+        "regime": "low_signal",
+        "is_edge_case": true,
+        "attack_enabled": true,
+        "attack_type": "intercept_resend",
+        "qber": 0.09090909090909091,
+        "detections": 103
+      }
+    ]
+  }
+}
