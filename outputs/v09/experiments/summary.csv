@@ -1,0 +1,13 @@
+exp_id,name,raw_alarms,total_incidents,total_alerts,compression_ratio,alert_reduction_pct,incident_precision,incident_recall,incident_f1,mean_step_latency_ms,throughput_steps_per_s,runtime_s
+Exp 01,Stationary Normal,14,2,4,7.0,71.4,0.0,0.0,0.0,6.97,139.7,1.79
+Exp 02,Stochastic Variation,14,3,6,4.67,57.1,0.0,0.0,0.0,5.78,168.1,1.56
+Exp 03,Benign Drift,87,1,2,87.0,97.7,0.0,0.0,0.0,6.0,162.1,1.52
+Exp 04,Attack Under Stable,42,3,7,14.0,83.3,0.3333,1.0,0.5,6.33,153.8,1.53
+Exp 05,Attack After Drift,93,1,4,93.0,95.7,1.0,1.0,1.0,6.04,161.2,1.54
+Exp 06,Attack During Drift,87,1,3,87.0,96.6,1.0,1.0,1.0,5.65,171.9,1.46
+Exp 07,Multi-Signal Attack,43,3,9,14.33,79.1,0.6667,1.0,0.8,5.59,173.7,1.38
+Exp 08,Intermittent Attack,47,2,6,23.5,87.2,1.0,1.0,1.0,5.87,165.5,1.54
+Exp 09,Fixed vs Adaptive,93,1,14,93.0,84.9,1.0,1.0,1.0,5.41,179.7,2.24
+Exp 10,Alert Compression,59,1,4,59.0,93.2,1.0,1.0,1.0,5.9,165.3,1.43
+Exp 11,Checkpoint Recovery,93,1,4,93.0,95.7,1.0,1.0,1.0,6.43,151.2,1.42
+Exp 12,OOD Generalization,89,1,3,89.0,96.6,0.0,0.0,0.0,5.82,167.1,1.49

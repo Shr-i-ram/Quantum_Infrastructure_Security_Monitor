@@ -301,13 +301,298 @@ def cmd_analyze_results(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_visualize(args: argparse.Namespace) -> int:
+    """Generate presentation-quality visualizations (V0.1–V0.5 baseline)."""
+    from qism.visualization import VisualizationConfig, generate_all_visualizations
+    fmts = [f.strip().lower() for f in args.formats.split(",") if f.strip()]
+    cfg = VisualizationConfig(
+        dataset_path=pathlib.Path(args.dataset),
+        output_root=pathlib.Path(args.outdir),
+        formats=fmts,
+        dpi=args.dpi,
+    )
+    res = generate_all_visualizations(cfg)
+    print(f"\nGenerated {res['total_presentation_figures']} presentation figures in {res['presentation_dir']}")
+    return 0
+
+
+def cmd_v07_benchmark(args: argparse.Namespace) -> int:
+    """Run V0.7 temporal anomaly detection benchmark suite."""
+    from qism.temporal.experiments import TemporalBenchmarkConfig, TemporalExperimentRunner
+
+    cfg = TemporalBenchmarkConfig(
+        dataset_root=args.dataset,
+        output_dir=args.outdir,
+        master_seed=args.seed,
+        window_length=args.window_length,
+        epochs=args.epochs,
+    )
+    runner = TemporalExperimentRunner(cfg)
+    res = runner.run_benchmark()
+
+    print("\n" + "=" * 95)
+    print("QISM V0.7 Temporal & Streaming Anomaly Detection Benchmark Summary")
+    print("=" * 95)
+    print(res["summary_df"].to_string(index=False))
+    print("=" * 95)
+    print(f"Results and plots saved to: {runner.output_dir}")
+    print("=" * 95)
+    return 0
+
+
+def cmd_v07_stream(args: argparse.Namespace) -> int:
+    """Simulate causal streaming anomaly monitoring on dataset telemetry."""
+    from qism.ml.data.loader import MLDatasetLoader
+    from qism.ml.features.extractor import FeatureExtractor
+    from qism.ml.preprocessing.scalers import PreprocessorPipeline
+    from qism.temporal.alarm import AlarmConfig, TemporalAlarmStateMachine
+    from qism.temporal.models import RollingZScoreDetector
+    from qism.temporal.streaming import StreamingConfig, StreamingInferenceEngine
+
+    loader = MLDatasetLoader(args.dataset)
+    df_train = loader.load_split_dataframe("train")
+    df_test = loader.load_split_dataframe("test")
+
+    extractor = FeatureExtractor(feature_set="full")
+    X_train_df, _ = extractor.extract(df_train)
+    X_test_df, y_test_df = extractor.extract(df_test)
+
+    prep = PreprocessorPipeline(scaler="robust")
+    X_train_scaled = prep.fit_transform(X_train_df)
+    X_test_scaled = prep.transform(X_test_df)
+
+    detector = RollingZScoreDetector(window_length=args.window_length)
+    detector.fit(X_train_scaled)
+
+    val_features, _ = extractor.extract(loader.load_split_dataframe("val"))
+    val_scaled = prep.transform(val_features)
+    val_scores = detector.score(val_scaled)
+    from qism.ml.thresholding.calibration import ThresholdCalibrator
+    thresh = ThresholdCalibrator(target_fpr=0.05).calibrate(val_scores)["threshold"]
+    detector.set_threshold(thresh)
+
+    alarm_sm = TemporalAlarmStateMachine(
+        AlarmConfig(threshold=thresh, k_consecutive=2, n_window=3)
+    )
+    engine = StreamingInferenceEngine(
+        model=detector,
+        preprocessor=prep,
+        alarm_machine=alarm_sm,
+        history_window_length=args.window_length,
+    )
+
+
+    print("\n" + "=" * 80)
+    print("QISM V0.7 Causal Streaming Monitoring Active (Press Ctrl+C to halt)")
+    print("=" * 80)
+    n_steps = min(len(X_test_scaled), args.max_steps)
+    for i in range(n_steps):
+        sample = X_test_scaled[i]
+        t_s = float(i * 0.002)
+        out = engine.update(sample, timestamp_s=t_s)
+        if out.filtered_alarm == 1 or i % 10 == 0:
+            print(f"Step {i:4d} | t={t_s:6.3f}s | Score={out.score:7.3f} (tau={thresh:.3f}) | "
+                  f"State={out.operational_state.value:8s} | Latency={out.computational_latency_ms * 1000.0:5.1f}us")
+    print("=" * 80)
+    print(f"Streaming completed across {n_steps} steps.")
+
+    return 0
+
+
+def cmd_v08_benchmark(args: argparse.Namespace) -> int:
+    """Run V0.8 concept drift and safe adaptation benchmark suite."""
+    from qism.drift.experiments import DriftExperimentRunner, DriftExperimentSuiteConfig
+
+    cfg = DriftExperimentSuiteConfig(
+        output_dir=args.outdir,
+        master_seed=args.seed,
+        total_steps=args.steps,
+    )
+    runner = DriftExperimentRunner(cfg)
+    res = runner.run_all()
+
+    import pandas as pd
+    summary_df = pd.read_csv(res["summary_csv"])
+
+    print("\n" + "=" * 105)
+    print("QISM V0.8 Concept Drift, Distribution Shift & Safe Adaptation Benchmark Summary")
+    print("=" * 105)
+    cols_to_print = ["experiment_id", "scenario_type", "adaptation_policy", "f1", "recall", "fpr", "drift_detected", "adaptations_accepted", "rollbacks_executed", "mean_latency_ms"]
+    cols_available = [c for c in cols_to_print if c in summary_df.columns]
+    print(summary_df[cols_available].to_string(index=False))
+    print("=" * 105)
+    print(f"Results, manifest, and publication figures serialized to: {runner.output_dir}")
+    print("=" * 105)
+    return 0
+
+
+def cmd_v08_stream(args: argparse.Namespace) -> int:
+    """Run causal adaptive streaming inference on synthetic/physics drift stream."""
+    import numpy as np
+    import pandas as pd
+    from qism.drift.scenarios import DriftScenarioGenerator, DriftScenarioType, ScenarioSpec
+    from qism.drift.adaptation import AdaptationConfig, AdaptationPolicy, AdaptationStateMachine
+    from qism.drift.detectors import DriftDetectorConfig, StatisticalDriftDetector
+    from qism.drift.reference import ReferenceManager, ReferenceStrategy
+    from qism.drift.registry import ModelRegistry
+    from qism.drift.streaming import AdaptiveStreamingEngine
+    from qism.ml.preprocessing.scalers import PreprocessorPipeline
+    from qism.temporal.alarm import AlarmConfig, TemporalAlarmStateMachine
+    from qism.temporal.models import RollingZScoreDetector
+
+    scen_type = DriftScenarioType(args.scenario)
+    spec = ScenarioSpec(scenario_type=scen_type, total_steps=args.steps, seed=args.seed)
+    df_stream, feature_cols = DriftScenarioGenerator(spec).generate_stream()
+
+    X_baseline = df_stream[feature_cols].iloc[:40].values
+    prep = PreprocessorPipeline(scaler="robust")
+    X_base_scaled = prep.fit_transform(pd.DataFrame(X_baseline, columns=feature_cols))
+
+    det = RollingZScoreDetector(window_length=5)
+    det.fit(X_base_scaled)
+    det.set_threshold(args.alarm_threshold)
+
+    alarm_sm = TemporalAlarmStateMachine(AlarmConfig(tau_high=args.alarm_threshold, persistence_k=2, persistence_n=3))
+    drift_det = StatisticalDriftDetector(DriftDetectorConfig(threshold=args.drift_threshold, feature_names=feature_cols))
+    ref_mgr = ReferenceManager(strategy=ReferenceStrategy(args.reference_strategy), initial_data=X_base_scaled, feature_names=feature_cols)
+    reg = ModelRegistry()
+    reg.register_initial_model(det, args.alarm_threshold, ref_mgr.current_version_id)
+
+    def model_builder(cand_data: np.ndarray):
+        new_m = RollingZScoreDetector(window_length=5)
+        new_m.fit(cand_data)
+        new_m.set_threshold(args.alarm_threshold)
+        return new_m
+
+    adapt_sm = AdaptationStateMachine(
+        AdaptationConfig(policy=AdaptationPolicy(args.policy), candidate_buffer_size=20, validation_window=15),
+        reg, ref_mgr, args.alarm_threshold, model_builder=model_builder
+    )
+
+    engine = AdaptiveStreamingEngine(
+        active_model=det,
+        preprocessor=prep,
+        alarm_machine=alarm_sm,
+        drift_detector=drift_det,
+        reference_manager=ref_mgr,
+        adaptation_machine=adapt_sm,
+        registry=reg,
+        history_window_length=5,
+        drift_evaluation_window=20,
+        feature_names=feature_cols,
+    )
+
+    print("\n" + "=" * 110)
+    print(f"QISM V0.8 Adaptive Telemetry Monitoring Active | Scenario: {scen_type.value} | Policy: {args.policy}")
+    print("=" * 110)
+
+    n_steps = min(len(df_stream), args.max_steps)
+    for i in range(n_steps):
+        row = df_stream[feature_cols].iloc[i].values
+        t_s = float(df_stream["timestamp"].iloc[i])
+        out = engine.update(row, timestamp_s=t_s)
+        if out.filtered_alarm == 1 or out.is_drift or i % 10 == 0:
+            print(f"Step {i:3d} | t={t_s:5.3f}s | Anom={out.anomaly_score:6.2f} (tau={out.anomaly_threshold:.2f}) | "
+                  f"Drift={out.drift_score:5.2f} ({'YES' if out.is_drift else ' no'}) | "
+                  f"AdaptState={out.adaptation_state.value:17s} | Model={out.active_model_version:9s} | "
+                  f"Latency={out.computational_latency_ms * 1000.0:5.1f}us")
+
+    print("=" * 110)
+    print(f"Streaming replay completed across {n_steps} steps.")
+    return 0
+
+
+def cmd_v09_benchmark(args: argparse.Namespace) -> int:
+    """Run V0.9 integrated security monitoring benchmark suite across all 12 scenarios."""
+    from pathlib import Path
+    from qism.monitor.experiments import run_all_v09_experiments
+
+    outdir = Path(args.outdir)
+    manifest = run_all_v09_experiments(output_dir=outdir)
+    print(f"\nV0.9 Benchmark complete. Executed {manifest['total_experiments']} experiments.")
+    print(f"Artifacts saved to: {outdir.resolve()}")
+    return 0
+
+
+def cmd_v09_monitor(args: argparse.Namespace) -> int:
+    """Run live/replay integrated operational security monitoring with incident tracking."""
+    from qism.drift.scenarios import DriftScenarioGenerator, DriftScenarioType, ScenarioSpec
+    from qism.monitor.alerts import ConsoleNotifier
+    from qism.monitor.orchestrator import MonitorConfig, QISMMonitor
+
+    scen_type = DriftScenarioType(args.scenario)
+    spec = ScenarioSpec(scenario_type=scen_type, total_steps=args.steps, seed=args.seed)
+    df_stream, feature_cols = DriftScenarioGenerator(spec).generate_stream()
+
+    cfg = MonitorConfig(run_id=f"cli_{args.scenario}", enable_adaptation=(args.policy == "safe"))
+    notifier = ConsoleNotifier() if args.verbose else None
+    notifiers = [notifier] if notifier else []
+    monitor = QISMMonitor(cfg, feature_names=feature_cols, notifiers=notifiers)
+
+    print("\n" + "=" * 115)
+    print(f"QISM V0.9 Integrated Security Monitor | Scenario: {scen_type.value} | Steps: {min(len(df_stream), args.max_steps)}")
+    print(f"Pipeline: Telemetry -> Signal Fusion -> Alarms -> Incidents -> Severity -> Alerts")
+    print("=" * 115)
+
+    n_steps = min(len(df_stream), args.max_steps)
+    ingestor = monitor.ingestor
+    records = list(ingestor.stream_from_dataframe(df_stream.iloc[:n_steps], feature_cols=feature_cols))
+
+    for idx, rec in enumerate(records):
+        out = monitor.update(rec)
+        sev_str = out.current_severity.value.upper()
+        inc_str = out.active_incidents[0].incident_id if out.active_incidents else "None"
+        alt_str = out.new_alert.alert_id if out.new_alert else "-"
+
+        if out.is_anomaly or out.is_drift or out.evidence_score >= 0.40 or idx % 10 == 0:
+            print(
+                f"Step {idx:3d} | t={out.timestamp_s:5.3f}s | "
+                f"Anom={out.anomaly_score:5.2f} | Drift={out.drift_score:4.2f} | "
+                f"Evidence={out.evidence_score:4.2f} | Alarms={len(out.active_alarms)} | "
+                f"Inc={inc_str:8s} | Sev={sev_str:8s} | Alert={alt_str:8s} | "
+                f"Latency={out.processing_latency_ms:4.2f}ms"
+            )
+
+    all_incs = monitor.incident_manager.finalize(final_timestamp_s=records[-1].timestamp_s if records else 0.0)
+    print("=" * 115)
+    print(f"Replay complete. Total Incidents: {len(all_incs)} | Total Raw Alarms: {monitor.incident_manager.total_raw_alarms} | Compression: {monitor.incident_manager.compression_ratio:.1f}x")
+    return 0
+
+
+def cmd_v10_benchmark(args: argparse.Namespace) -> int:
+    """Run V1.0 master benchmark suite across multiple seeds and generate research release artifacts."""
+    from pathlib import Path
+    from qism.monitor.v10_benchmark import run_v10_benchmarks
+
+    outdir = Path(args.outdir)
+    seed_list = [int(s.strip()) for s in args.seeds.split(",") if s.strip()]
+    manifest = run_v10_benchmarks(output_dir=outdir, seeds=seed_list)
+    print(f"\nV1.0 Master Benchmark complete. Total scenarios: {manifest['total_scenarios']} | Seeds tested: {seed_list}")
+    print(f"Release artifacts saved to: {outdir.resolve()}")
+    return 0
+
+
+def cmd_v10_demo(args: argparse.Namespace) -> int:
+    """Run canonical single-command V1.0 end-to-end security monitoring demonstration."""
+    from qism.monitor.v10_benchmark import run_v10_demo
+
+    return run_v10_demo(
+        scenario=args.scenario,
+        output_dir=args.outdir,
+        seed=args.seed,
+        verbose=args.verbose,
+    )
+
+
+
 def main(argv: list[str] | None = None) -> int:
     verify_python_version()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)-7s [%(name)s] %(message)s")
 
-    parser = argparse.ArgumentParser(prog="qism", description="QISM Simulator V0.6 CLI")
+    parser = argparse.ArgumentParser(prog="qism", description="QISM V1.0 CLI: Quantum Infrastructure Security Monitor")
     parser.add_argument("--version", action="version", version=f"QISM {__version__}")
     subparsers = parser.add_subparsers(dest="command", required=True)
+
 
     # generate-scenarios
     p_scen = subparsers.add_parser("generate-scenarios", help="Generate and preview scenarios")
@@ -367,7 +652,80 @@ def main(argv: list[str] | None = None) -> int:
     p_ar.add_argument("experiments_dir", help="Root directory containing experiment runs")
     p_ar.set_defaults(func=cmd_analyze_results)
 
+    # visualize
+    p_vis = subparsers.add_parser("visualize", help="Generate presentation-quality visualizations")
+    p_vis.add_argument("--dataset", default="data/v0.5_small/v05_small_dataset", help="Input dataset path")
+    p_vis.add_argument("--outdir", default="outputs/visualizations", help="Output directory")
+    p_vis.add_argument("--formats", default="png,svg,pdf", help="Image formats (comma-separated)")
+    p_vis.add_argument("--dpi", type=int, default=300, help="Target DPI")
+    p_vis.set_defaults(func=cmd_visualize)
+
+    # v07-benchmark
+    p_v07b = subparsers.add_parser("v07-benchmark", help="Run V0.7 temporal anomaly detection benchmark")
+    p_v07b.add_argument("--dataset", default="data/v0.5_small/v05_small_dataset", help="Input dataset path")
+    p_v07b.add_argument("--outdir", default="outputs/v07/experiments", help="Output directory")
+    p_v07b.add_argument("--seed", type=int, default=42, help="Master random seed")
+    p_v07b.add_argument("--window-length", type=int, default=5, help="Temporal window length L")
+    p_v07b.add_argument("--epochs", type=int, default=15, help="Epochs for sequence neural models")
+    p_v07b.set_defaults(func=cmd_v07_benchmark)
+
+    # v07-stream
+    p_v07s = subparsers.add_parser("v07-stream", help="Run causal streaming monitoring on test telemetry")
+    p_v07s.add_argument("--dataset", default="data/v0.5_small/v05_small_dataset", help="Input dataset path")
+    p_v07s.add_argument("--window-length", type=int, default=5, help="Temporal window length L")
+    p_v07s.add_argument("--max-steps", type=int, default=50, help="Max streaming steps to simulate")
+    p_v07s.set_defaults(func=cmd_v07_stream)
+
+    # v08-benchmark
+    p_v08b = subparsers.add_parser("v08-benchmark", help="Run V0.8 concept drift and safe adaptation benchmark suite")
+    p_v08b.add_argument("--outdir", default="outputs/v08/experiments", help="Output directory")
+    p_v08b.add_argument("--seed", type=int, default=42, help="Master random seed")
+    p_v08b.add_argument("--steps", type=int, default=150, help="Steps per scenario trajectory")
+    p_v08b.set_defaults(func=cmd_v08_benchmark)
+
+    # v08-stream
+    p_v08s = subparsers.add_parser("v08-stream", help="Run causal adaptive streaming on drift scenario")
+    p_v08s.add_argument("--scenario", default="drift_then_attack", help="Scenario type (abrupt_benign, gradual_benign, recurring_benign, drift_then_attack, contamination_stress)")
+    p_v08s.add_argument("--policy", default="safe", help="Adaptation policy (fixed, naive, safe)")
+    p_v08s.add_argument("--reference-strategy", default="anchored", help="Reference strategy (fixed, sliding, anchored)")
+    p_v08s.add_argument("--steps", type=int, default=120, help="Total scenario trajectory steps")
+    p_v08s.add_argument("--max-steps", type=int, default=60, help="Max steps to stream")
+    p_v08s.add_argument("--seed", type=int, default=42, help="Random seed")
+    p_v08s.add_argument("--alarm-threshold", type=float, default=3.0, help="Alarm decision threshold")
+    p_v08s.add_argument("--drift-threshold", type=float, default=0.45, help="Drift decision threshold")
+    p_v08s.set_defaults(func=cmd_v08_stream)
+
+    # v09-benchmark
+    p_v09b = subparsers.add_parser("v09-benchmark", help="Run V0.9 integrated security monitoring benchmark suite")
+    p_v09b.add_argument("--outdir", default="outputs/v09/experiments", help="Output directory")
+    p_v09b.set_defaults(func=cmd_v09_benchmark)
+
+    # v09-monitor
+    p_v09m = subparsers.add_parser("v09-monitor", help="Run V0.9 integrated operational monitoring replay")
+    p_v09m.add_argument("--scenario", default="drift_then_attack", help="Scenario type (stationary, abrupt_benign, drift_then_attack, attack_during_drift, ood_generalization)")
+    p_v09m.add_argument("--policy", default="safe", help="Adaptation policy (safe, fixed)")
+    p_v09m.add_argument("--steps", type=int, default=120, help="Total scenario steps")
+    p_v09m.add_argument("--max-steps", type=int, default=120, help="Max steps to monitor")
+    p_v09m.add_argument("--seed", type=int, default=42, help="Random seed")
+    p_v09m.add_argument("--verbose", action="store_true", help="Print real-time alert notifications")
+    p_v09m.set_defaults(func=cmd_v09_monitor)
+
+    # v10-benchmark
+    p_v10b = subparsers.add_parser("v10-benchmark", help="Run V1.0 master benchmark suite across multiple seeds")
+    p_v10b.add_argument("--outdir", default="outputs/v1_0", help="Root directory for V1.0 release artifacts")
+    p_v10b.add_argument("--seeds", default="42,101,2024", help="Comma-separated random seeds (default: 42,101,2024)")
+    p_v10b.set_defaults(func=cmd_v10_benchmark)
+
+    # v10-demo
+    p_v10d = subparsers.add_parser("v10-demo", help="Run V1.0 canonical end-to-end security monitoring demonstration")
+    p_v10d.add_argument("--scenario", default="drift_then_attack", help="Scenario type (drift_then_attack, attack_during_drift, etc.)")
+    p_v10d.add_argument("--outdir", default="outputs/v1_0/demo", help="Output directory for demo artifacts")
+    p_v10d.add_argument("--seed", type=int, default=42, help="Random seed")
+    p_v10d.add_argument("--verbose", action="store_true", default=True, help="Display live step-by-step console alerts")
+    p_v10d.set_defaults(func=cmd_v10_demo)
+
     args = parser.parse_args(argv)
+
     return args.func(args)
 
 

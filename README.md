@@ -1,6 +1,6 @@
 # QISM — Quantum Infrastructure Security Monitor
 
-**Anomaly-Based ML QKD Attack Prevention — physics-informed stochastic telemetry simulator (V0.6)**
+**Anomaly-Based ML QKD Attack Prevention — Temporal, Sequential & Streaming Anomaly Detection (V0.7)**
 
 QISM is a research infrastructure project: a physics-informed, stochastic, event-level
 telemetry generator for quantum-key-distribution (QKD) implementations. Its purpose is to
@@ -36,7 +36,7 @@ dataset-generation engine for ML-based QISM anomaly detection.
   dataset streaming (`DatasetShardWriter`, `shard_manifest.json`, `dataset_manifest.json`), scenario-level
   data partition isolation preventing train/generalization leakage, automated statistical goodness-of-fit
   diagnostics (Kolmogorov–Smirnov tests), and full CLI integration.
-- **Version 0.6 (this release)** introduces **Anomaly Detection, ML Benchmarking & Security Evaluation**:
+- **Version 0.6** introduced **Anomaly Detection, ML Benchmarking & Security Evaluation**:
   formal one-class / unsupervised anomaly detection framework trained strictly on normal telemetry,
   dedicated feature extraction and causal temporal feature engineering ($x_{\le t}$), robust preprocessing
   pipelines fit strictly on training splits, standard and robust statistical baselines (Mahalanobis distance,
@@ -49,6 +49,35 @@ dataset-generation engine for ML-based QISM anomaly detection.
   feature ablation studies (QKD-only, detector-only, environmental-only, infrastructure-only, full),
   rigorous ground-truth leakage audits, automated sanity diagnostics (label shuffling, random features),
   deterministic experiment manifests, and end-to-end CLI integration.
+- **Version 0.7** introduced **Temporal, Sequential & Streaming Anomaly Detection**:
+  - Strict Trajectory Isolation & Zero-Leakage Windowing (`TemporalWindowBuilder`).
+  - Temporal Feature Engineering (`TemporalFeatureEngine` differences, rolling statistics, EWMA).
+  - Sequence Anomaly Models (`RollingZScoreDetector`, `EWMAAnomalyDetector`, PyTorch `SequenceAutoencoderDetector`).
+  - Operational Alarm State Machine (`TemporalAlarmStateMachine` with persistence, hysteresis, and cooldown).
+  - Causal Streaming Engine (`StreamingInferenceEngine` with sub-millisecond circular ring buffering).
+- **Version 0.8 (this release)** introduces **Concept Drift, Distribution Shift, Adaptive Normal Behaviour & Safe Adaptation**:
+  - **Statistical Drift Detection:** Principled multivariate distribution comparison using normalized 1-Wasserstein (Earth Mover's Distance), Kolmogorov-Smirnov (KS), and Population Stability Index (PSI) metrics (`StatisticalDriftDetector`).
+  - **Reference Distribution Management:** Configurable reference policies (`FIXED`, `SLIDING`, `ANCHORED`) equipped with strict anti-contamination safeguards blocking attack telemetry from reference updates (`ReferenceManager`).
+  - **Safe Adaptation State Machine:** Multi-condition security gate enforcing anomaly suppression ($A_t < \tau_{\text{safe}}$), $K$-of-$N$ persistence, candidate accumulation, and shadow validation (`AdaptationStateMachine`).
+  - **Shadow Validation & Rollback:** Candidate models run in shadow mode alongside the active detector; candidate is promoted only if shadow false alarms remain bounded ($\text{FPR} \le \tau_{\text{val}}$); immediate post-promotion alarms trigger atomic rollback to parent models (`ModelRegistry`).
+  - **Controlled Drift Scenarios:** Physically simulated parameter shifts (channel loss drift, SPAD thermal/dark count drift, source fluctuation) covering abrupt, gradual, recurring, multi-condition, and drift+attack stress scenarios (`DriftScenarioGenerator`).
+  - **Headline Security Benchmark (Fixed vs Naive vs Safe Adaptation):** Proves that naive adaptation suffers catastrophic attack contamination (attack recall collapses from 96.2% to 26.9%), whereas safe adaptation completely prevents reference poisoning (retaining 96.2% attack recall and 0% contamination).
+  - **Comprehensive Benchmark Suite & Streaming CLI:** 12 controlled benchmarks, automated summary CSV, experiment manifest JSON, publication figures (`outputs/v08/experiments/`), and CLI commands `v08-benchmark` and `v08-stream`.
+- **Flagship QML Extension:** **Physics-Informed Temporal Quantum Support Vector Data Description (PI-TQSVDD)** (`qml/pitqsvdd/`):
+  - **One-Class Normality Objective:** Learns exclusively from normal QKD operating behaviour without attack labels.
+  - **Causal Temporal Modeling:** Evaluates dynamic sequence trajectories via temporal prediction residual losses over quantum latent states.
+  - **Full-Feature Telemetry Preservation:** Incorporates multi-layer Data Reuploading, learned classical bottlenecks, and domain feature grouping over all 48 physical channels.
+  - **Scalable Simulator Backend:** Evaluated systematically across **2, 4, 6, and 8 qubits** using PennyLane with `lightning.qubit` and PyTorch adjoint automatic differentiation.
+  - **Resumable Atomic Training:** Crash-resistant two-stage checkpointing (`checkpoint_latest.pt`, `checkpoint_best.pt`) supporting automated resumption from any step.
+  - **Benchmarks & Documentation:** Complete technical reports (`docs/PI_TQSVDD_TECHNICAL_REPORT.md`, `docs/PI_TQSVDD_BENCHMARK_RESULTS.md`, `docs/PI_TQSVDD_VISUALIZATION_CATALOGUE.md`), 7 publication figures (`artifacts/pi_tqsvdd/figures/`), and automated test suite.
+- **Live Demonstration Web Application (`qism-live-demo/`):**
+  - **Browser-Based Security Operations Center Console:** High-contrast technical monitoring interface built with React 19, TypeScript, and FastAPI.
+  - **Flagship Default Detector:** 6-qubit PI-TQSVDD (`PITQSVDD_6Q_Angle.pt`) loaded and executing real PennyLane `lightning.qubit` online inference.
+  - **Real Simulator Connection:** Physical Monte Carlo event generation (2,000 pulses/window at 2 Hz) with dynamic causal attack injection across 6 attack families.
+  - **Recorded Scenario Replay Mode:** Direct playback of research-grade Phase X Parquet datasets with live model inference and explicit provenance labelling.
+  - **Incident Registry with SQLite Persistence:** Persistent security incident dossier logging telemetry snapshots, detection latency, and workflow status.
+  - **76-Feature Telemetry Explorer & Multi-Model Lab:** Deep feature inspection, CSV export, and side-by-side comparative model inference.
+  - **One-Command Launch:** `.venv\Scripts\python.exe -m uvicorn app.main:app --app-dir qism-live-demo/backend --host 127.0.0.1 --port 8000` (Browse: `http://127.0.0.1:8000/`).
 
 ---
 
@@ -107,6 +136,48 @@ from the underlying event simulation.
 The architecture, APIs, configuration schema, event/telemetry schemas, detector abstraction,
 attack abstraction, and module boundaries are all designed so that 0.2–0.6 slot in without
 rewrites.
+
+---
+
+## 3.1 PI-TQSVDD Flagship QML Architecture: Quickstart & Execution
+
+The QISM flagship quantum machine learning model is **PI-TQSVDD** (Physics-Informed Temporal Quantum Support Vector Data Description), located in `qml/pitqsvdd/`. It learns normal operating behavior strictly from legitimate QKD telemetry and detects physical-layer attacks via joint quantum hypersphere normality and causal temporal trajectory prediction.
+
+### Key Commands (PowerShell on Windows / Bash)
+
+1. **Run Automated Test Suite (36 tests):**
+   ```bash
+   pytest qml/pitqsvdd/tests -v
+   ```
+
+2. **Run Fast Verification Smoke Test (2 Qubits, 2 Epochs):**
+   ```powershell
+   python -m qml.pitqsvdd.train --config qml/pitqsvdd/configs/smoke.yaml --run-id smoke_test --overwrite
+   ```
+
+3. **Run Multi-Qubit & Multi-Encoding Pilot Benchmark Suite (Mode B):**
+   ```powershell
+   python qml/pitqsvdd/benchmark_runner.py
+   ```
+
+4. **Execute Definitive Final Training Run (4 Qubits, Reuploading, Mode C):**
+   ```powershell
+   python -m qml.pitqsvdd.train --config qml/pitqsvdd/configs/pitqsvdd_final.yaml --run-id pitqsvdd_final --resume auto
+   ```
+
+5. **Resume Interrupted Training:**
+   ```powershell
+   python -m qml.pitqsvdd.train --config qml/pitqsvdd/configs/pitqsvdd_final.yaml --run-id pitqsvdd_final --resume auto
+   ```
+
+### Documentation & Research Handover Deliverables
+- **Implementation Audit Report:** `docs/PI_TQSVDD_FINAL_AUDIT.md`
+- **Lead Researcher Handover Guide:** `docs/PI_TQSVDD_HANDOVER_GUIDE.md`
+- **Definitive Project File Map:** `docs/PI_TQSVDD_FILE_MAP.md`
+- **Empirical Benchmark Results:** `docs/PI_TQSVDD_BENCHMARK_RESULTS.md`
+- **Publication Visualization Catalogue:** `docs/PI_TQSVDD_VISUALIZATION_CATALOGUE.md`
+- **Reproducibility Protocols:** `docs/PI_TQSVDD_REPRODUCIBILITY.md`
+- **Academic Research Paper Text:** `docs/PI_TQSVDD_TECHNICAL_REPORT.md`
 
 ---
 
@@ -1304,4 +1375,258 @@ python -m qism analyze-results experiments
 
 ---
 
-*QISM V0.6 — simulator version 0.6.0. Copyright (c) 2026 QISM contributors. MIT License.*
+## 31. Simulator Visualizations (V0.1–V0.5 Baseline Methodology)
+
+A presentation-quality visualization subsystem is provided to explain the underlying physics-informed simulation engine, quantum channel modeling, SPAD detector kinetics, attack injection mechanics, and dataset construction methodology from Version 0.1 through Version 0.5.
+
+### 31.1 Quickstart: Generate All Presentation Figures
+Generate the complete set of 15 publication-grade figures (300 DPI PNG, vector SVG, and PDF), provenance metadata, and the technical markdown presentation report:
+
+```bash
+python scripts/generate_visualizations.py
+```
+
+Optional arguments:
+```bash
+python scripts/generate_visualizations.py \
+    --dataset data/v0.5_small/v05_small_dataset \
+    --outdir outputs/visualizations \
+    --formats png,svg,pdf \
+    --dpi 300
+```
+
+### 31.2 Output Directory Structure
+```
+outputs/visualizations/
+├── presentation/               # 15 Curated publication-grade presentation figures (PNG, SVG, PDF)
+│   ├── 01_simulation_pipeline.png
+│   ├── 02_event_timeline.png
+│   ├── 03_channel_transmission_and_loss.png
+│   ├── 04_detector_physics_and_dead_time.png
+│   ├── 05_basis_selection_and_sifting_funnel.png
+│   ├── 06_normal_telemetry_distributions.png
+│   ├── 07_qber_temporal_evolution.png
+│   ├── 08_attack_lifecycle_and_timeline.png
+│   ├── 09_multi_attack_signatures_comparison.png
+│   ├── 10_normal_vs_attack_feature_comparison.png
+│   ├── 11_telemetry_cross_correlation.png
+│   ├── 12_dataset_partition_composition.png
+│   ├── 13_population_parameter_distributions.png
+│   ├── 14_generalization_distribution_shift.png
+│   └── 15_stochastic_consistency_and_reproducibility.png
+├── exploratory/                # Detailed diagnostic figures (timing jitter, inter-arrival decay)
+├── metadata/
+│   └── figure_metadata.json    # Provenance tracking (seeds, parameters, formulas, datasets)
+└── report/
+    └── visualization_report.md # Technical presentation markdown report
+```
+
+### 31.3 Curated Presentation Figures Index
+
+| Figure ID | File Name | What It Shows | Key Analytical Formula | Slide Purpose |
+| :--- | :--- | :--- | :--- | :--- |
+| **Fig 01** | `01_simulation_pipeline.png` | End-to-end vector simulation dataflow from Alice through channel, Bob SPAD receiver, sifting, and telemetry. | $\text{Intervention} \to \text{Channel} \to \text{SPAD} \to \text{Events} \to \text{Telemetry}$ | Establishes causal bottom-up propagation invariant. |
+| **Fig 02** | `02_event_timeline.png` | Microscopic pulse-by-pulse timeline showing Alice states, channel loss, detector clicks, and sifting. | $N \sim \mathrm{Pois}(\mu)$ | Demonstrates discrete pulse-level simulation realism. |
+| **Fig 03** | `03_channel_transmission_and_loss.png` | Beer-Lambert exponential loss law $T(L)$ and detection rate decaying into thermal dark-count floor. | $T(L) = 10^{-(\alpha L + L_{\mathrm{sys}})/10}, \quad R_{\mathrm{det}}(L) = f_{\mathrm{rep}}\mu T(L)\eta_{\mathrm{det}} + 2R_{\mathrm{dark}}$ | Demonstrates physical cause of distance-induced QBER rise. |
+| **Fig 04** | `04_detector_physics_and_dead_time.png` | SPAD nonparalyzable dead time saturation, rate-dependent $\tau_{\mathrm{eff}}$, and afterpulse decay queue. | $r_{\mathrm{obs}} = \frac{\lambda}{1 + \lambda\tau_{\mathrm{dead}}}, \quad \tau_{\mathrm{eff}} = \tau_0 + \Delta\tau\frac{\lambda}{\lambda + \lambda_c}$ | Validates receiver non-idealities and collision dynamics. |
+| **Fig 05** | `05_basis_selection_and_sifting_funnel.png` | BB84 basis match matrix (~50%) and log-scale sifting funnel reduction ($10\text{k} \to 75$ key bits). | $\mathrm{QBER} = \frac{N_{\mathrm{error}}}{N_{\mathrm{sifted}}}$ | Explains classical post-processing data reduction. |
+| **Fig 06** | `06_normal_telemetry_distributions.png` | Multi-panel distributions of baseline observables (QBER, total counts, gains, imbalance, temp). | $X \sim \mathcal{D}_{\mathrm{normal}}(\mu, \sigma^2)$ | Establishes healthy operating baseline before attacks. |
+| **Fig 07** | `07_qber_temporal_evolution.png` | Continuous windowed QBER over time: stable low-error floor vs sudden attack excursion. | $\mathrm{QBER}(t) = \frac{N_{\mathrm{error}}(t)}{N_{\mathrm{sifted}}(t)}$ | Illustrates temporal anomaly monitoring. |
+| **Fig 08** | `08_attack_lifecycle_and_timeline.png` | Continuous 5-phase attack lifecycle (Onset $\to$ Active $\to$ Recovery) with synchronized telemetry. | $g(u) = 3u^2 - 2u^3$ | Proves attacks have realistic continuous transition dynamics. |
+| **Fig 09** | `09_multi_attack_signatures_comparison.png` | Multi-dimensional physical footprints of all 6 attacks across QBER, counts, gains, and timing. | $\vec{X}_{\mathrm{attack}} - \vec{X}_{\mathrm{baseline}}$ | Proves multi-dimensional telemetry is required. |
+| **Fig 10** | `10_normal_vs_attack_feature_comparison.png` | Boxplot distributions of normal vs attack telemetry across observable features. | $X_{\mathrm{normal}} \quad \text{vs} \quad X_{\mathrm{attack}}$ | Quantifies empirical separation between baseline and attacks. |
+| **Fig 11** | `11_telemetry_cross_correlation.png` | Pearson correlation heatmap demonstrating physical covariance between telemetry variables. | $r = \frac{\sum (x - \bar{x})(y - \bar{y})}{\sqrt{\sum (x-\bar{x})^2 \sum (y-\bar{y})^2}}$ | Demonstrates physical coupling across sensor channels. |
+| **Fig 12** | `12_dataset_partition_composition.png` | Sharded scenario allocation across Calibration, Normal, Attack, and Generalization splits. | $N_{\mathrm{scenarios}} = 20, \quad N_{\mathrm{pulses}} = 200{,}000$ | Explains dataset partitioning and workload distribution. |
+| **Fig 13** | `13_population_parameter_distributions.png` | Latin Hypercube Sampling (LHS) parameter coverage across fiber lengths, efficiencies, and temperatures. | $\theta_i \sim \mathrm{LHS}(\Omega_{\mathrm{param}})$ | Shows diverse infrastructure population sampling. |
+| **Fig 14** | `14_generalization_distribution_shift.png` | 2D parameter space comparing in-distribution baseline vs extreme held-out generalization regime. | $\mathrm{dist}(x_{\mathrm{gen}}, \Omega_{\mathrm{train}}) > \delta$ | Demonstrates out-of-distribution robustness benchmarking. |
+| **Fig 15** | `15_stochastic_consistency_and_reproducibility.png` | Bit-exact reproducibility under identical seeds ($|\Delta| = 0.0$) vs consistent stochastic ensemble spread. | $\mathcal{S}(\text{seed}) = \text{Deterministic Output}$ | Guarantees scientific reproducibility. |
+
+### 31.4 Presentation Delivery Cheat Sheet
+A presenter guide containing slide-by-slide scripts, talking points, and technical justifications is available in:
+[`docs/visualization_guide.md`](docs/visualization_guide.md)
+
+---
+
+## 32. Version 0.8: Concept Drift, Distribution Shift & Safe Adaptation
+
+### 32.1 The Central Security Dilemma
+Operational QKD networks experience continuous and abrupt environmental distribution shifts:
+- Optical channel attenuation drift ($\Delta L_{\text{loss}} \in [0, 4.5]\,\text{dB}$)
+- SPAD thermal fluctuations modulating dark counts ($\Delta T \in [0, 12]^\circ\text{C}$)
+- Source pump current variation and polarization misalignment
+
+A fixed-threshold detector trained on initial baseline data will eventually suffer elevated false alarm rates under benign operational shifts. However, **naive online adaptation is catastrophic**: when an attack occurs during adaptation, naive learning incorporates attack telemetry into the reference, destroying future attack recall.
+
+### 32.2 Safe Adaptation Architecture (`src/qism/drift/`)
+Version 0.8 provides a modular, safe adaptation subsystem:
+- **`StatisticalDriftDetector` (`detectors.py`):** Multi-metric multivariate distribution comparison (normalized 1-Wasserstein, Kolmogorov-Smirnov, PSI) with bootstrap null-distribution threshold calibration.
+- **`ReferenceManager` (`reference.py`):** Configurable baseline reference strategies (`FIXED`, `SLIDING`, `ANCHORED`) with strict contamination prevention gating.
+- **`AdaptationStateMachine` (`adaptation.py`):** Explicit finite state machine:
+  $$\text{STABLE} \longrightarrow \text{DRIFT\_SUSPECTED} \longrightarrow \text{ADAPTATION\_PENDING} \longrightarrow \text{VALIDATING (Shadow)} \longrightarrow \text{STABLE\_UPDATED}$$
+  Security alerts or elevated anomaly scores during drift immediately abort candidate updates.
+- **`ModelRegistry` (`registry.py`):** Atomic version tracking (`model_v001`, `model_v002`), candidate promotion, and automatic rollback on post-promotion alarms.
+- **`AdaptiveStreamingEngine` (`streaming.py`):** Causal real-time ingestion with sub-millisecond per-sample processing latency.
+
+### 32.3 Empirical Verification: Fixed vs Naive vs Safe Adaptation (Exp 08)
+Under adversarial contamination stress (where a physical attack begins during a drift transition):
+- **Fixed Baseline:** Preserves **96.2%** attack recall, but false alarm rate increases during drift.
+- **Naive Adaptive:** Suffers catastrophic security collapse — **attack recall plunges to 26.9%** (a 69.2% loss), AUROC collapses to **0.3592**, and 1 contamination event is confirmed.
+- **Safe Adaptive:** **Fully preserves 96.2% attack recall**, AUROC is maintained at **0.8711**, and **0 contamination events** occur.
+
+### 32.4 CLI Usage
+```bash
+# Execute the complete 12-experiment benchmark matrix
+python -m qism v08-benchmark --steps 120 --outdir outputs/v08/experiments
+
+# Run interactive adaptive streaming on a drift scenario
+python -m qism v08-stream --scenario drift_then_attack --policy safe --max-steps 50
+```
+
+Detailed research findings, figures, and full mathematical formulations are documented in [`docs/V0_8_REPORT.md`](docs/V0_8_REPORT.md).
+
+---
+
+## 33. Version 0.9: Integrated QKD Security Monitor & Incident Analysis
+
+### 33.1 The Operationalization Milestone
+Version 0.9 unifies the physics, telemetry, anomaly detection, temporal windowing, and safe drift adaptation modules into an integrated, operational security monitoring pipeline:
+- **Telemetry $\to$ Signal $\to$ Alarm $\to$ Incident $\to$ Alert:** Strictly distinguishes physical measurements from detector signals, threshold alarms, correlated incidents, and operational alerts.
+- **Multivariate Signal Fusion (`src/qism/monitor/fusion.py`):** Combines disparate telemetry signals (QBER, optical gains, SPAD dark counts, timing deviations, statistical drift, ML anomaly scores) into a unified evidence score $F_t \in [0.0, 1.0]$.
+- **Incident Lifecycle Management (`src/qism/monitor/incident.py`):** Correlates alarms across a temporal window into discrete episodes (`OPENING -> ACTIVE -> ESCALATED -> RESOLVED`) with state-dependent deduplication.
+- **Explainable Severity Engine (`src/qism/monitor/severity.py`):** Deterministic priority ranking (`INFO, LOW, MEDIUM, HIGH, CRITICAL`) with structured machine rationales and non-executing advisory guidance.
+- **Auditability & Reporting (`src/qism/monitor/alerts.py`, `plots.py`):** Append-only JSONL audit trail, multi-panel timeline plots, and standalone HTML monitoring dashboards.
+- **Strict Ground-Truth Isolation:** Operates strictly on observable physical telemetry with zero leakage of simulation ground-truth sidecars (`attack_type`, `attack_active`).
+
+### 33.2 Empirical Verification: Alert Compression & Recall (12 Benchmarks)
+- **Elimination of Alert Fatigue:** Achieves **4.7x to 93.0x alert compression** (up to **97.7% alert reduction**), converting repetitive alarm spam into singular, correlated incidents.
+- **100% Incident Recall:** High sensitivity across attacks under stable operation, benign drift, drift transitions, multi-signal attacks, and intermittent bursts.
+- **High Throughput & Sub-10ms Latency:** Causal per-step processing latency of **5.4 ms to 7.0 ms** (140 to 180 steps/second) on commodity hardware.
+
+### 33.3 CLI Usage
+```bash
+# Execute the complete 12-scenario V0.9 master benchmark suite
+python -m qism v09-benchmark --outdir outputs/v09/experiments
+
+# Run interactive operational monitoring replay on a scenario
+python -m qism v09-monitor --scenario drift_then_attack --policy safe --steps 60 --max-steps 40 --verbose
+```
+
+Complete research findings, mathematical formulations, and comparative ablations are documented in [`docs/V0_9_REPORT.md`](docs/V0_9_REPORT.md) and [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
+
+---
+
+## 34. Version 1.0: Hardened, Validated, Reproducible Research Prototype Release
+
+### 34.1 Release Overview & Scope
+Milestone **V1.0** formalizes QISM as a hardened, end-to-end, reproducible research prototype. It establishes:
+- **Scientific Validation**: Multi-seed statistical benchmarking across 12 canonical operational scenarios (evaluating mean and standard deviation across seeds 42, 101, and 2024).
+- **System Hardening**: Strict fail-safe ingestion rejecting non-finite values (NaN/Inf), physical range violations, out-of-order timestamps, and duplicate sequence IDs without silent nominal escapes.
+- **State Recovery**: Bit-for-bit streaming checkpoint serialization and resumption across monitoring sessions.
+- **Information-Flow Integrity**: Formal verification of zero ground-truth leakage, causal temporal windowing, and anomaly-gated reference protection against adversarial poisoning.
+- **Scientific Honesty Boundary**: QISM is a simulation-based security research prototype. Simulation-based detection does **not** prove attack prevention in physical hardware. Response guidance is strictly advisory (`is_automated_execution = False`).
+
+### 34.2 Canonical CLI Commands
+```bash
+# 1. Run canonical single-command end-to-end demonstration
+python -m qism.cli v10-demo --scenario drift_then_attack --outdir outputs/v1_0/demo
+
+# 2. Run master benchmark suite across multiple seeds
+python -m qism.cli v10-benchmark --outdir outputs/v1_0 --seeds 42,101,2024
+
+# 3. Run full regression & hardening test suite (245 tests)
+python -m pytest
+```
+
+### 34.3 Measured Benchmark Performance Matrix (Mean ± Std Across Seeds)
+
+| Scenario | Description | Raw Alarms | Incidents | Compression | Reduction % | Recall | F1 | Step Latency |
+|---|---|---|---|---|---|---|---|---|
+| **Scenario 01** | Stable Normal Operation | $14.7 \pm 0.9$ | $2.0 \pm 0.8$ | $9.2 \pm 4.9\text{x}$ | $72.0 \pm 12.4\%$ | $0.0 \pm 0.0$ | $0.0 \pm 0.0$ | $6.04 \pm 0.74\text{ ms}$ |
+| **Scenario 02** | Stochastic Variation | $16.0 \pm 1.4$ | $2.3 \pm 1.3$ | $9.0 \pm 4.4\text{x}$ | $71.9 \pm 12.7\%$ | $0.0 \pm 0.0$ | $0.0 \pm 0.0$ | $6.39 \pm 0.38\text{ ms}$ |
+| **Scenario 03** | Benign Distribution Shift | $85.3 \pm 1.3$ | $1.3 \pm 0.5$ | $71.2 \pm 20.3\text{x}$ | $96.1 \pm 2.2\%$ | $0.0 \pm 0.0$ | $0.0 \pm 0.0$ | $6.01 \pm 0.51\text{ ms}$ |
+| **Scenario 04** | Attack Under Stable | $46.0 \pm 1.4$ | $3.3 \pm 0.5$ | $14.0 \pm 1.7\text{x}$ | $81.2 \pm 3.5\%$ | **$1.0 \pm 0.0$** | $0.57 \pm 0.17$ | $6.53 \pm 0.31\text{ ms}$ |
+| **Scenario 05** | Attack After Drift | $92.7 \pm 0.5$ | **$1.0 \pm 0.0$** | **$92.7 \pm 0.5\text{x}$** | **$95.7 \pm 0.0\%$** | **$1.0 \pm 0.0$** | **$1.0 \pm 0.0$** | $6.51 \pm 0.07\text{ ms}$ |
+| **Scenario 06** | Attack During Drift | $85.3 \pm 1.3$ | $1.3 \pm 0.5$ | $71.2 \pm 20.3\text{x}$ | $94.9 \pm 2.2\%$ | **$1.0 \pm 0.0$** | **$1.0 \pm 0.0$** | $6.74 \pm 0.11\text{ ms}$ |
+| **Scenario 07** | Multi-Signal Fusion Attack | $41.0 \pm 1.4$ | $3.7 \pm 0.9$ | $11.9 \pm 2.8\text{x}$ | $74.7 \pm 3.7\%$ | **$1.0 \pm 0.0$** | $0.54 \pm 0.19$ | $6.87 \pm 0.28\text{ ms}$ |
+| **Scenario 08** | Persistent Attack Event | $66.7 \pm 1.7$ | $2.0 \pm 0.8$ | $40.5 \pm 18.1\text{x}$ | $91.6 \pm 2.7\%$ | **$1.0 \pm 0.0$** | $0.72 \pm 0.21$ | $6.06 \pm 0.19\text{ ms}$ |
+| **Scenario 09** | Intermittent Attack | $50.0 \pm 2.2$ | $3.3 \pm 0.9$ | $16.4 \pm 5.0\text{x}$ | $80.2 \pm 5.0\%$ | **$1.0 \pm 0.0$** | **$1.0 \pm 0.0$** | $6.10 \pm 0.55\text{ ms}$ |
+| **Scenario 10** | Extreme OOD Generalization | $88.7 \pm 0.5$ | $1.0 \pm 0.0$ | $88.7 \pm 0.5\text{x}$ | $96.6 \pm 0.0\%$ | $0.0 \pm 0.0$ | $0.0 \pm 0.0$ | $6.59 \pm 0.22\text{ ms}$ |
+| **Scenario 11** | Malformed Telemetry Stress | $13.0 \pm 0.0$ | $2.0 \pm 0.8$ | $7.9 \pm 3.7\text{x}$ | $69.2 \pm 12.6\%$ | $0.0 \pm 0.0$ | $0.0 \pm 0.0$ | $5.21 \pm 0.15\text{ ms}$ |
+| **Scenario 12** | Checkpoint Recovery | $92.7 \pm 0.5$ | $1.0 \pm 0.0$ | $92.7 \pm 0.5\text{x}$ | $95.7 \pm 0.0\%$ | **$1.0 \pm 0.0$** | **$1.0 \pm 0.0$** | $6.11 \pm 0.34\text{ ms}$ |
+
+### 34.4 Required Ablation Findings
+1. **Architecture Progression (A):** Moving from point detectors (V0.6) to temporal monitoring (V0.7), adaptive monitoring (V0.8), and integrated fusion (V1.0) reduced false alarms during benign loss drift from **45** down to **0**, while maintaining 100% attack detection.
+2. **Fixed vs Adaptive (B):** Fixed monitoring maintained elevated alarms during channel loss changes (+2.5 dB), whereas safe adaptation eliminated false alarms without allowing adversary contamination.
+3. **Raw Alarms vs Incidents (C):** Correlating point alarms achieved **93.0x compression** (84.9% alert reduction), resolving alarm fatigue.
+4. **Single Signal vs Multivariate Fusion (D):** Fused evidence achieved **Incident F1 = 1.00** and 93.0x compression compared to **Incident F1 = 0.50** and 31.0x compression for single-signal anomaly scoring.
+5. **Operational Throughput (E):** Mean step latency of **6.60 ms** (147.4 steps/second) with strictly bounded $O(L \cdot d)$ memory usage.
+
+### 34.5 Documentation Deliverables
+- [`docs/V1_0_VALIDATION_REPORT.md`](docs/V1_0_VALIDATION_REPORT.md) — Comprehensive validation report.
+- [`docs/V1_0_SECURITY_AUDIT.md`](docs/V1_0_SECURITY_AUDIT.md) — Leakage, causality, and adaptation security audit.
+- [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md) — Reproduction guide, seed management, and artifact schema.
+- [`docs/V1_0_RECOVERY_AUDIT.md`](docs/V1_0_RECOVERY_AUDIT.md) — Starting state and recovery audit.
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — Full system architecture specification.
+
+---
+
+## 35. PI-TQSVDD & Quantum Machine Learning (QML) Benchmark
+
+### 35.1 Architecture Overview & Theoretical Formulation
+QISM integrates a flagship Quantum Anomaly Detection architecture: **PI-TQSVDD (Physics-Informed Temporal Quantum Support Vector Data Description)** alongside classical and quantum baselines:
+- **Physics-Informed Loss Function**: Enforces quantum Hilbert space hypersphere enclosure penalized by physical boundary constraints:
+  $$\mathcal{L} = R^2 + \frac{1}{\nu N} \sum_{i=1}^N \max(0, \|\Phi(x_i) - c\|^2 - R^2) + \lambda_{\text{phys}} \mathcal{L}_{\text{physics}}$$
+- **Quantum Feature Encodings**: Evaluated Angle Encoding, Amplitude Encoding, IQP / $ZZ$-Feature Maps, and Data-Reuploading across 2, 4, 6, and 8-qubit variational circuits implemented with PennyLane and `lightning.qubit`.
+- **Temporal Causal Fusion**: Exponentially decaying causal history windows and rolling statistics eliminate point-in-time noise without lookahead leakage.
+- **Model Portfolio Evaluated**:
+  1. **Flagship Quantum**: PI-TQSVDD (2Q, 4Q, 6Q, 8Q variations with ablation across encodings).
+  2. **Quantum Baselines**: Variational Quantum Classifier (VQC), Quantum Autoencoder (QAE), Quantum Kernel SVM (QSVM).
+  3. **Classical Deep Baselines**: Temporal Autoencoder (LSTM/GRU), Dense Autoencoder, Deep SVDD.
+  4. **Classical Statistical Baselines**: Isolation Forest, Local Outlier Factor (LOF), Mahalanobis Distance, Robust Covariance (Elliptic Envelope), One-Class SVM.
+
+### 35.2 Benchmark Execution & Reproduction
+```bash
+# Run the complete classical, baseline, and quantum benchmark suite
+python scripts/run_complete_benchmark.py
+
+# Generate publication-grade comparison figures and tables
+python scripts/generate_publication_figures.py
+```
+Benchmark summary tables, ROC/PR curves, and trained model weights are archived in `results/qism_model_benchmark/`.
+
+---
+
+## 36. Interactive Live Demonstration Web Application (`qism-live-demo`)
+
+QISM includes an interactive, production-grade web application built to demonstrate live telemetry generation, streaming anomaly detection, dynamic attack injection, and explainable incident management during operational review.
+
+### 36.1 Full-Stack Architecture
+- **Backend (`qism-live-demo/backend`)**:
+  - FastAPI asynchronous server with WebSocket streaming (`/ws/telemetry`).
+  - Simulator runner integrating physics engine, stochastic drift, and dynamic attack injection.
+  - Pluggable inference service executing verified checkpoints (`PITQSVDD_6Q_Angle.pt`, `temporal_autoencoder.pt`, `isolation_forest_pca6.joblib`, `vqc_4q.pt`, etc.).
+  - Operational Incident Lifecycle engine with rule-based severity rating (`INFO, LOW, MEDIUM, HIGH, CRITICAL`) and advisory playbooks.
+  - Incident dossier export (JSON / CSV) and SQLite persistent session audit.
+- **Frontend (`qism-live-demo/frontend`)**:
+  - React 19 + TypeScript + Vite + Tailwind CSS.
+  - Real-time QKD telemetry dashboards (QBER, sifted rate, visibility, dark counts).
+  - Anomaly scoring gauges and threshold alarms.
+  - Dynamic attack injector (PNS, Blinding, Afterpulsing, Intercept-Resend, Channel Attenuation, Timing Shift).
+  - Evidence Dossier & Benchmark Comparison matrix explorer.
+
+### 36.2 Running the Live Demonstration
+```bash
+# Terminal 1: Start Backend API & WebSocket Server
+cd qism-live-demo/backend
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+
+# Terminal 2: Start Frontend Development Server
+cd qism-live-demo/frontend
+npm install
+npm run dev
+```
+Access the dashboard at `http://localhost:5173`. Complete API documentation is available at `http://localhost:8000/docs`.
+
+---
+
+*QISM V1.0 — Research Prototype Release (version 1.0.0). Copyright (c) 2026 QISM contributors. MIT License.*

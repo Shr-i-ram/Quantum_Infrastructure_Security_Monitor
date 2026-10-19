@@ -1,0 +1,51 @@
+{
+  "experiment_id": "qml_review2_benchmark",
+  "timestamp": "2026-10-12T07:44:26Z",
+  "total_duration_s": 11.678920984268188,
+  "dataset_root": "data/v0.5_small/v05_small_dataset",
+  "representation": "physical",
+  "n_qubits": 4,
+  "seed": 42,
+  "models_evaluated": [
+    "Variational Quantum Classifier",
+    "Quantum Kernel SVM",
+    "Quantum Autoencoder",
+    "Classical Logistic Regression",
+    "Classical RBF-SVM",
+    "Small Classical MLP"
+  ],
+  "runtime_records": {
+    "Variational Quantum Classifier": {
+      "train_time_s": 1.0136158466339111
+    },
+    "Quantum Kernel SVM": {
+      "train_time_s": 2.377490997314453,
+      "kernel_build_time_s": 0.7235503196716309
+    },
+    "Quantum Autoencoder": {
+      "train_time_s": 0.3448784351348877
+    },
+    "Classical Logistic Regression": {
+      "train_time_s": 0.003008127212524414
+    },
+    "Classical RBF-SVM": {
+      "train_time_s": 0.0005478858947753906
+    },
+    "Small Classical MLP": {
+      "train_time_s": 0.013346195220947266
+    }
+  },
+  "figures_generated": [
+    "fig01_qml_architectures.png",
+    "fig02_model_performance_comparison.png",
+    "fig03_confusion_matrices.png",
+    "fig04_roc_curves.png",
+    "fig05_precision_recall_curves.png",
+    "fig06_vqc_training_history.png",
+    "fig07_quantum_kernel_matrix.png",
+    "fig08_score_distributions.png",
+    "fig09_runtime_comparison.png",
+    "fig10_per_attack_recall.png",
+    "fig11_feature_space.png"
+  ]
+}

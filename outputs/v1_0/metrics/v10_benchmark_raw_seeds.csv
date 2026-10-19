@@ -1,0 +1,37 @@
+scenario_code,scenario_name,seed,raw_alarms,total_incidents,total_alerts,compression_ratio,alert_reduction_pct,incident_precision,incident_recall,incident_f1,detection_latency_s,mean_step_latency_ms,p95_step_latency_ms,throughput_steps_per_s,runtime_s,sample_precision,sample_recall,sample_f1,sample_fpr
+Scenario 01,Stable Normal Operation,42,14,2,4,7.0,71.4,0.0,0.0,0.0,-1.0,4.98,8.99,196.1,1.42,0.0,0.0,0.0,0.0
+Scenario 01,Stable Normal Operation,101,14,3,6,4.67,57.1,0.0,0.0,0.0,-1.0,5.26,9.25,185.6,0.65,0.0,0.0,0.0,0.0
+Scenario 01,Stable Normal Operation,2024,16,1,2,16.0,87.5,0.0,0.0,0.0,-1.0,5.57,10.03,175.2,0.69,0.0,0.0,0.0,0.0
+Scenario 02,Stochastic Variation,42,15,2,4,7.5,73.3,0.0,0.0,0.0,-1.0,5.51,9.95,177.5,1.32,0.0,0.0,0.0,0.0
+Scenario 02,Stochastic Variation,101,18,4,8,4.5,55.6,0.0,0.0,0.0,-1.0,5.7,9.85,171.8,0.71,0.0,0.0,0.0,0.0
+Scenario 02,Stochastic Variation,2024,15,1,2,15.0,86.7,0.0,0.0,0.0,-1.0,5.39,9.24,181.4,0.67,0.0,0.0,0.0,0.0
+Scenario 03,Benign Distribution Shift,42,87,1,2,87.0,97.7,0.0,0.0,0.0,-1.0,5.7,10.28,171.6,1.39,0.0,0.0,0.0,0.0
+Scenario 03,Benign Distribution Shift,101,85,2,6,42.5,92.9,0.0,0.0,0.0,-1.0,5.37,10.09,182.2,0.66,0.0,0.0,0.0,0.0
+Scenario 03,Benign Distribution Shift,2024,84,1,2,84.0,97.6,0.0,0.0,0.0,-1.0,5.2,10.0,188.1,0.64,0.0,0.0,0.0,0.0
+Scenario 04,Attack Under Stable,42,47,3,7,15.67,85.1,0.6667,1.0,0.8,0.0,4.68,6.45,209.0,1.39,0.0,0.0,0.0,0.0
+Scenario 04,Attack Under Stable,101,44,3,8,14.67,81.8,0.3333,1.0,0.5,0.0,5.73,10.74,170.0,0.71,0.0,0.0,0.0,0.0
+Scenario 04,Attack Under Stable,2024,47,4,11,11.75,76.6,0.25,1.0,0.4,0.0,6.09,11.1,160.8,0.75,0.0,0.0,0.0,0.0
+Scenario 05,Attack After Drift,42,93,1,4,93.0,95.7,1.0,1.0,1.0,0.0,5.31,10.16,183.8,1.3,0.0,0.0,0.0,0.0
+Scenario 05,Attack After Drift,101,92,1,4,92.0,95.7,1.0,1.0,1.0,0.0,6.12,10.54,159.9,0.76,0.0,0.0,0.0,0.0
+Scenario 05,Attack After Drift,2024,93,1,4,93.0,95.7,1.0,1.0,1.0,0.0,5.53,10.21,176.4,0.68,0.0,0.0,0.0,0.0
+Scenario 06,Attack During Drift,42,87,1,3,87.0,96.6,1.0,1.0,1.0,0.0,5.92,10.83,165.3,1.44,0.0,0.0,0.0,0.0
+Scenario 06,Attack During Drift,101,85,2,7,42.5,91.8,1.0,1.0,1.0,0.0,5.37,10.12,182.0,0.67,0.0,0.0,0.0,0.0
+Scenario 06,Attack During Drift,2024,84,1,3,84.0,96.4,1.0,1.0,1.0,0.0,6.23,11.13,156.7,0.77,0.0,0.0,0.0,0.0
+Scenario 07,Multi-Signal Fusion Attack,42,43,3,9,14.33,79.1,0.6667,1.0,0.8,0.0,6.26,10.92,156.3,1.53,0.0,0.0,0.0,0.0
+Scenario 07,Multi-Signal Fusion Attack,101,40,3,10,13.33,75.0,0.3333,1.0,0.5,0.0,5.99,10.81,163.1,0.74,0.0,0.0,0.0,0.0
+Scenario 07,Multi-Signal Fusion Attack,2024,40,5,12,8.0,70.0,0.2,1.0,0.3333,0.0,5.28,8.72,185.2,0.65,0.0,0.0,0.0,0.0
+Scenario 08,Persistent Attack Event,42,65,1,3,65.0,95.4,1.0,1.0,1.0,0.0,6.12,10.85,159.6,1.47,0.0,0.0,0.0,0.0
+Scenario 08,Persistent Attack Event,101,69,2,7,34.5,89.9,0.5,1.0,0.6667,0.0,5.97,10.32,163.7,0.74,0.0,0.0,0.0,0.0
+Scenario 08,Persistent Attack Event,2024,66,3,7,22.0,89.4,0.3333,1.0,0.5,0.0,5.76,10.21,169.5,0.71,0.0,0.0,0.0,0.0
+Scenario 09,Intermittent / Recurring Attack,42,47,2,6,23.5,87.2,1.0,1.0,1.0,0.11,5.73,10.46,170.4,1.43,0.0,0.0,0.0,0.0
+Scenario 09,Intermittent / Recurring Attack,101,52,4,12,13.0,76.9,1.0,1.0,1.0,0.1495,5.48,9.29,178.5,0.68,0.0,0.0,0.0,0.0
+Scenario 09,Intermittent / Recurring Attack,2024,51,4,12,12.75,76.5,1.0,1.0,1.0,0.144,7.22,12.45,135.5,0.9,0.0,0.0,0.0,0.0
+Scenario 10,Extreme OOD Generalization,42,89,1,3,89.0,96.6,0.0,0.0,0.0,-1.0,6.01,10.51,162.7,1.49,0.0,0.0,0.0,0.0
+Scenario 10,Extreme OOD Generalization,101,89,1,3,89.0,96.6,0.0,0.0,0.0,-1.0,5.72,10.28,170.8,0.71,0.0,0.0,0.0,0.0
+Scenario 10,Extreme OOD Generalization,2024,88,1,3,88.0,96.6,0.0,0.0,0.0,-1.0,5.62,10.13,173.7,0.69,0.0,0.0,0.0,0.0
+Scenario 11,Malformed Telemetry Stress,42,13,2,4,6.5,69.2,0.0,0.0,0.0,-1.0,5.08,10.13,192.2,0.63,0.0,0.0,0.0,0.0
+Scenario 11,Malformed Telemetry Stress,101,13,3,6,4.33,53.8,0.0,0.0,0.0,-1.0,4.55,8.02,214.6,0.57,0.0,0.0,0.0,0.0
+Scenario 11,Malformed Telemetry Stress,2024,13,1,2,13.0,84.6,0.0,0.0,0.0,-1.0,5.05,10.45,166.0,0.73,0.0,0.0,0.0,0.0
+Scenario 12,Streaming Checkpoint Recovery,42,93,1,4,93.0,95.7,1.0,1.0,1.0,0.0,5.42,9.29,179.9,1.37,0.0,0.0,0.0,0.0
+Scenario 12,Streaming Checkpoint Recovery,101,92,1,4,92.0,95.7,1.0,1.0,1.0,0.0,5.85,10.63,167.3,1.36,0.0,0.0,0.0,0.0
+Scenario 12,Streaming Checkpoint Recovery,2024,93,1,4,93.0,95.7,1.0,1.0,1.0,0.0,5.6,10.38,174.5,1.29,0.0,0.0,0.0,0.0

@@ -1,32 +1,101 @@
-# Python
+# Python bytecode and build artifacts
 __pycache__/
 *.py[cod]
-*.egg-info/
-.eggs/
+*$py.class
+*.so
 build/
+develop-eggs/
 dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
 # Virtual environment
 .venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
-# Tooling caches
+# Testing & tooling caches
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
 .ipynb_checkpoints/
 .coverage
+.coverage.*
 htmlcov/
+.hypothesis/
 
-# Generated simulation data and artifacts
-data/
-checkpoints/
-logs/
-reports/figures/
-reports/validation/
+# Node.js & Frontend build artifacts (qism-live-demo)
+node_modules/
+**/node_modules/
+**/dist/
+dist-ssr/
+.vite/
+**/.vite/
+**/.vite-temp/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Keep empty directories tracked via .gitkeep
-!**/.gitkeep
+# Databases and local runtime storage
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+qism_demo.db
+**/qism_demo.db
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Large raw simulation data
+# (Raw event shards are multi-gigabyte and reproduced on-demand via CLI)
+/data/
+
+# Temporary batch checkpoints and logs (keep release checkpoints in results/)
+/checkpoints/
+/logs/
+/reports/figures/
+/reports/validation/
+artifacts/**/checkpoints/
+outputs/**/checkpoints/
+*.log
+
+# Personal / local scratch scripts
+shriram.py
+scratch/
 
 # OS noise
 .DS_Store
 Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+
+# IDE & editor noise
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Keep empty directories tracked via .gitkeep
+!**/.gitkeep

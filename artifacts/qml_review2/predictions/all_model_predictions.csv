@@ -1,0 +1,241 @@
+window_end_pulse,window_id,scenario_id,window_start_pulse,run_id,attack_active,attack_type,attack_severity,attack_phase,model_name,split_name,y_true,y_prob,y_pred
+1999,0,normal_0004,0,run_0004,False,none,0.0,normal,Variational Quantum Classifier,test,0,0.3971666693687439,0
+3999,1,normal_0004,2000,run_0004,False,none,0.0,normal,Variational Quantum Classifier,test,0,0.46625250577926636,1
+5999,2,normal_0004,4000,run_0004,False,none,0.0,normal,Variational Quantum Classifier,test,0,0.5082640647888184,1
+7999,3,normal_0004,6000,run_0004,False,none,0.0,normal,Variational Quantum Classifier,test,0,0.45837628841400146,0
+9999,4,normal_0004,8000,run_0004,False,none,0.0,normal,Variational Quantum Classifier,test,0,0.448655366897583,0
+1999,0,normal_0005,0,run_0005,False,none,0.0,normal,Variational Quantum Classifier,test,0,0.4032500684261322,0
+3999,1,normal_0005,2000,run_0005,False,none,0.0,normal,Variational Quantum Classifier,test,0,0.4534561038017273,0
+5999,2,normal_0005,4000,run_0005,False,none,0.0,normal,Variational Quantum Classifier,test,0,0.4229421317577362,0
+7999,3,normal_0005,6000,run_0005,False,none,0.0,normal,Variational Quantum Classifier,test,0,0.37929588556289673,0
+9999,4,normal_0005,8000,run_0005,False,none,0.0,normal,Variational Quantum Classifier,test,0,0.4569603204727173,0
+1999,0,attack_0004,0,run_0004,False,none,0.0,normal,Variational Quantum Classifier,test,0,0.40957608819007874,0
+3999,1,attack_0004,2000,run_0004,True,pns,0.08840837820122455,onset,Variational Quantum Classifier,test,1,0.4995032846927643,1
+5999,2,attack_0004,4000,run_0004,True,pns,0.1385136119633263,active,Variational Quantum Classifier,test,1,0.4995032846927643,1
+7999,3,attack_0004,6000,run_0004,True,pns,0.12923504371543384,active,Variational Quantum Classifier,test,1,0.4995032846927643,1
+9999,4,attack_0004,8000,run_0004,True,pns,0.026169210112655012,termination,Variational Quantum Classifier,test,1,0.4995032846927643,1
+1999,0,attack_0005,0,run_0005,True,source_manipulation,0.011395864840811095,onset,Variational Quantum Classifier,test,1,0.37194740772247314,0
+3999,1,attack_0005,2000,run_0005,True,source_manipulation,0.4730888316890374,onset,Variational Quantum Classifier,test,1,0.4150499701499939,0
+5999,2,attack_0005,4000,run_0005,True,source_manipulation,0.6183578159628969,active,Variational Quantum Classifier,test,1,0.5410770773887634,1
+7999,3,attack_0005,6000,run_0005,True,source_manipulation,0.36835042243481186,termination,Variational Quantum Classifier,test,1,0.4082714021205902,0
+9999,4,attack_0005,8000,run_0005,False,none,0.0,normal,Variational Quantum Classifier,test,0,0.328219473361969,0
+1999,0,normal_0004,0,run_0004,False,none,0.0,normal,Quantum Kernel SVM,test,0,0.1425741534596604,1
+3999,1,normal_0004,2000,run_0004,False,none,0.0,normal,Quantum Kernel SVM,test,0,0.15567414276951105,1
+5999,2,normal_0004,4000,run_0004,False,none,0.0,normal,Quantum Kernel SVM,test,0,0.3938140814397824,1
+7999,3,normal_0004,6000,run_0004,False,none,0.0,normal,Quantum Kernel SVM,test,0,0.23332230877558996,1
+9999,4,normal_0004,8000,run_0004,False,none,0.0,normal,Quantum Kernel SVM,test,0,0.6451291046263642,1
+1999,0,normal_0005,0,run_0005,False,none,0.0,normal,Quantum Kernel SVM,test,0,0.17124171325830545,1
+3999,1,normal_0005,2000,run_0005,False,none,0.0,normal,Quantum Kernel SVM,test,0,0.4337469196634454,1
+5999,2,normal_0005,4000,run_0005,False,none,0.0,normal,Quantum Kernel SVM,test,0,0.22853131865474927,1
+7999,3,normal_0005,6000,run_0005,False,none,0.0,normal,Quantum Kernel SVM,test,0,0.19371266381522328,1
+9999,4,normal_0005,8000,run_0005,False,none,0.0,normal,Quantum Kernel SVM,test,0,0.3872306173901506,1
+1999,0,attack_0004,0,run_0004,False,none,0.0,normal,Quantum Kernel SVM,test,0,0.09817455477269547,0
+3999,1,attack_0004,2000,run_0004,True,pns,0.08840837820122455,onset,Quantum Kernel SVM,test,1,0.14989563455642707,1
+5999,2,attack_0004,4000,run_0004,True,pns,0.1385136119633263,active,Quantum Kernel SVM,test,1,0.14989563455642707,1
+7999,3,attack_0004,6000,run_0004,True,pns,0.12923504371543384,active,Quantum Kernel SVM,test,1,0.14989563455642707,1
+9999,4,attack_0004,8000,run_0004,True,pns,0.026169210112655012,termination,Quantum Kernel SVM,test,1,0.14989563455642707,1
+1999,0,attack_0005,0,run_0005,True,source_manipulation,0.011395864840811095,onset,Quantum Kernel SVM,test,1,0.12970650815907542,1
+3999,1,attack_0005,2000,run_0005,True,source_manipulation,0.4730888316890374,onset,Quantum Kernel SVM,test,1,0.16444461968105348,1
+5999,2,attack_0005,4000,run_0005,True,source_manipulation,0.6183578159628969,active,Quantum Kernel SVM,test,1,0.6587881599568344,1
+7999,3,attack_0005,6000,run_0005,True,source_manipulation,0.36835042243481186,termination,Quantum Kernel SVM,test,1,0.19121683788013633,1
+9999,4,attack_0005,8000,run_0005,False,none,0.0,normal,Quantum Kernel SVM,test,0,0.1758376431078191,1
+1999,0,normal_0004,0,run_0004,False,none,0.0,normal,Quantum Autoencoder,test,0,0.3073020921691465,0
+3999,1,normal_0004,2000,run_0004,False,none,0.0,normal,Quantum Autoencoder,test,0,0.2961873422553788,0
+5999,2,normal_0004,4000,run_0004,False,none,0.0,normal,Quantum Autoencoder,test,0,0.3394668140392514,1
+7999,3,normal_0004,6000,run_0004,False,none,0.0,normal,Quantum Autoencoder,test,0,0.21616671971747703,0
+9999,4,normal_0004,8000,run_0004,False,none,0.0,normal,Quantum Autoencoder,test,0,0.5296920894645853,1
+1999,0,normal_0005,0,run_0005,False,none,0.0,normal,Quantum Autoencoder,test,0,0.16714620080096254,0
+3999,1,normal_0005,2000,run_0005,False,none,0.0,normal,Quantum Autoencoder,test,0,0.258224331653482,0
+5999,2,normal_0005,4000,run_0005,False,none,0.0,normal,Quantum Autoencoder,test,0,0.14544664413486708,0
+7999,3,normal_0005,6000,run_0005,False,none,0.0,normal,Quantum Autoencoder,test,0,0.15754047212352518,0
+9999,4,normal_0005,8000,run_0005,False,none,0.0,normal,Quantum Autoencoder,test,0,0.23693252739460668,0
+1999,0,attack_0004,0,run_0004,False,none,0.0,normal,Quantum Autoencoder,test,0,0.28467770939494463,0
+3999,1,attack_0004,2000,run_0004,True,pns,0.08840837820122455,onset,Quantum Autoencoder,test,1,0.7521033686081509,1
+5999,2,attack_0004,4000,run_0004,True,pns,0.1385136119633263,active,Quantum Autoencoder,test,1,0.7521033686081509,1
+7999,3,attack_0004,6000,run_0004,True,pns,0.12923504371543384,active,Quantum Autoencoder,test,1,0.7521033686081509,1
+9999,4,attack_0004,8000,run_0004,True,pns,0.026169210112655012,termination,Quantum Autoencoder,test,1,0.7521033686081509,1
+1999,0,attack_0005,0,run_0005,True,source_manipulation,0.011395864840811095,onset,Quantum Autoencoder,test,1,0.14237017140857522,0
+3999,1,attack_0005,2000,run_0005,True,source_manipulation,0.4730888316890374,onset,Quantum Autoencoder,test,1,0.15192180568673064,0
+5999,2,attack_0005,4000,run_0005,True,source_manipulation,0.6183578159628969,active,Quantum Autoencoder,test,1,0.39826429889379944,1
+7999,3,attack_0005,6000,run_0005,True,source_manipulation,0.36835042243481186,termination,Quantum Autoencoder,test,1,0.116480010475,0
+9999,4,attack_0005,8000,run_0005,False,none,0.0,normal,Quantum Autoencoder,test,0,0.2567092343095416,0
+1999,0,normal_0004,0,run_0004,False,none,0.0,normal,Classical Logistic Regression,test,0,0.32648793794616127,1
+3999,1,normal_0004,2000,run_0004,False,none,0.0,normal,Classical Logistic Regression,test,0,0.2045551188631788,1
+5999,2,normal_0004,4000,run_0004,False,none,0.0,normal,Classical Logistic Regression,test,0,0.3137929941334348,1
+7999,3,normal_0004,6000,run_0004,False,none,0.0,normal,Classical Logistic Regression,test,0,0.2712850673264691,1
+9999,4,normal_0004,8000,run_0004,False,none,0.0,normal,Classical Logistic Regression,test,0,0.563978869168651,1
+1999,0,normal_0005,0,run_0005,False,none,0.0,normal,Classical Logistic Regression,test,0,0.28084557370642615,1
+3999,1,normal_0005,2000,run_0005,False,none,0.0,normal,Classical Logistic Regression,test,0,0.37838339799698284,1
+5999,2,normal_0005,4000,run_0005,False,none,0.0,normal,Classical Logistic Regression,test,0,0.24981918739040765,1
+7999,3,normal_0005,6000,run_0005,False,none,0.0,normal,Classical Logistic Regression,test,0,0.23660185197184633,1
+9999,4,normal_0005,8000,run_0005,False,none,0.0,normal,Classical Logistic Regression,test,0,0.33094687082870505,1
+1999,0,attack_0004,0,run_0004,False,none,0.0,normal,Classical Logistic Regression,test,0,0.15777975596441415,1
+3999,1,attack_0004,2000,run_0004,True,pns,0.08840837820122455,onset,Classical Logistic Regression,test,1,0.13975394037640607,0
+5999,2,attack_0004,4000,run_0004,True,pns,0.1385136119633263,active,Classical Logistic Regression,test,1,0.13975394037640607,0
+7999,3,attack_0004,6000,run_0004,True,pns,0.12923504371543384,active,Classical Logistic Regression,test,1,0.13975394037640607,0
+9999,4,attack_0004,8000,run_0004,True,pns,0.026169210112655012,termination,Classical Logistic Regression,test,1,0.13975394037640607,0
+1999,0,attack_0005,0,run_0005,True,source_manipulation,0.011395864840811095,onset,Classical Logistic Regression,test,1,0.16037802285025995,1
+3999,1,attack_0005,2000,run_0005,True,source_manipulation,0.4730888316890374,onset,Classical Logistic Regression,test,1,0.17859634707054994,1
+5999,2,attack_0005,4000,run_0005,True,source_manipulation,0.6183578159628969,active,Classical Logistic Regression,test,1,0.39643096208129813,1
+7999,3,attack_0005,6000,run_0005,True,source_manipulation,0.36835042243481186,termination,Classical Logistic Regression,test,1,0.29122254078705573,1
+9999,4,attack_0005,8000,run_0005,False,none,0.0,normal,Classical Logistic Regression,test,0,0.1381374241995085,0
+1999,0,normal_0004,0,run_0004,False,none,0.0,normal,Classical RBF-SVM,test,0,0.13005077320362582,0
+3999,1,normal_0004,2000,run_0004,False,none,0.0,normal,Classical RBF-SVM,test,0,0.1745358994148509,0
+5999,2,normal_0004,4000,run_0004,False,none,0.0,normal,Classical RBF-SVM,test,0,0.4567171307308567,0
+7999,3,normal_0004,6000,run_0004,False,none,0.0,normal,Classical RBF-SVM,test,0,0.2521614784605917,0
+9999,4,normal_0004,8000,run_0004,False,none,0.0,normal,Classical RBF-SVM,test,0,0.6703704536895235,1
+1999,0,normal_0005,0,run_0005,False,none,0.0,normal,Classical RBF-SVM,test,0,0.13980008957501833,0
+3999,1,normal_0005,2000,run_0005,False,none,0.0,normal,Classical RBF-SVM,test,0,0.4217448475138148,0
+5999,2,normal_0005,4000,run_0005,False,none,0.0,normal,Classical RBF-SVM,test,0,0.22174031496054586,0
+7999,3,normal_0005,6000,run_0005,False,none,0.0,normal,Classical RBF-SVM,test,0,0.1568834347292608,0
+9999,4,normal_0005,8000,run_0005,False,none,0.0,normal,Classical RBF-SVM,test,0,0.3947228857277816,0
+1999,0,attack_0004,0,run_0004,False,none,0.0,normal,Classical RBF-SVM,test,0,0.10073662533140178,0
+3999,1,attack_0004,2000,run_0004,True,pns,0.08840837820122455,onset,Classical RBF-SVM,test,1,0.13930735711766531,0
+5999,2,attack_0004,4000,run_0004,True,pns,0.1385136119633263,active,Classical RBF-SVM,test,1,0.13930735711766531,0
+7999,3,attack_0004,6000,run_0004,True,pns,0.12923504371543384,active,Classical RBF-SVM,test,1,0.13930735711766531,0
+9999,4,attack_0004,8000,run_0004,True,pns,0.026169210112655012,termination,Classical RBF-SVM,test,1,0.13930735711766531,0
+1999,0,attack_0005,0,run_0005,True,source_manipulation,0.011395864840811095,onset,Classical RBF-SVM,test,1,0.10933236161459071,0
+3999,1,attack_0005,2000,run_0005,True,source_manipulation,0.4730888316890374,onset,Classical RBF-SVM,test,1,0.16381210416338274,0
+5999,2,attack_0005,4000,run_0005,True,source_manipulation,0.6183578159628969,active,Classical RBF-SVM,test,1,0.7296685748591756,1
+7999,3,attack_0005,6000,run_0005,True,source_manipulation,0.36835042243481186,termination,Classical RBF-SVM,test,1,0.15970136842612315,0
+9999,4,attack_0005,8000,run_0005,False,none,0.0,normal,Classical RBF-SVM,test,0,0.15102687086878613,0
+1999,0,normal_0004,0,run_0004,False,none,0.0,normal,Small Classical MLP,test,0,0.378869891166687,0
+3999,1,normal_0004,2000,run_0004,False,none,0.0,normal,Small Classical MLP,test,0,0.1718631088733673,0
+5999,2,normal_0004,4000,run_0004,False,none,0.0,normal,Small Classical MLP,test,0,0.2700826823711395,0
+7999,3,normal_0004,6000,run_0004,False,none,0.0,normal,Small Classical MLP,test,0,0.25078168511390686,0
+9999,4,normal_0004,8000,run_0004,False,none,0.0,normal,Small Classical MLP,test,0,0.47144395112991333,0
+1999,0,normal_0005,0,run_0005,False,none,0.0,normal,Small Classical MLP,test,0,0.3599686920642853,0
+3999,1,normal_0005,2000,run_0005,False,none,0.0,normal,Small Classical MLP,test,0,0.3181247413158417,0
+5999,2,normal_0005,4000,run_0005,False,none,0.0,normal,Small Classical MLP,test,0,0.24110208451747894,0
+7999,3,normal_0005,6000,run_0005,False,none,0.0,normal,Small Classical MLP,test,0,0.21442648768424988,0
+9999,4,normal_0005,8000,run_0005,False,none,0.0,normal,Small Classical MLP,test,0,0.2928845286369324,0
+1999,0,attack_0004,0,run_0004,False,none,0.0,normal,Small Classical MLP,test,0,0.2381049245595932,0
+3999,1,attack_0004,2000,run_0004,True,pns,0.08840837820122455,onset,Small Classical MLP,test,1,0.028787804767489433,0
+5999,2,attack_0004,4000,run_0004,True,pns,0.1385136119633263,active,Small Classical MLP,test,1,0.028787804767489433,0
+7999,3,attack_0004,6000,run_0004,True,pns,0.12923504371543384,active,Small Classical MLP,test,1,0.028787804767489433,0
+9999,4,attack_0004,8000,run_0004,True,pns,0.026169210112655012,termination,Small Classical MLP,test,1,0.028787804767489433,0
+1999,0,attack_0005,0,run_0005,True,source_manipulation,0.011395864840811095,onset,Small Classical MLP,test,1,0.17504413425922394,0
+3999,1,attack_0005,2000,run_0005,True,source_manipulation,0.4730888316890374,onset,Small Classical MLP,test,1,0.1800612509250641,0
+5999,2,attack_0005,4000,run_0005,True,source_manipulation,0.6183578159628969,active,Small Classical MLP,test,1,0.33036190271377563,0
+7999,3,attack_0005,6000,run_0005,True,source_manipulation,0.36835042243481186,termination,Small Classical MLP,test,1,0.324463814496994,0
+9999,4,attack_0005,8000,run_0005,False,none,0.0,normal,Small Classical MLP,test,0,0.1247648149728775,0
+1999,0,generalization_0000,0,run_0000,False,none,0.0,normal,Variational Quantum Classifier,gen,0,0.25302013754844666,0
+3999,1,generalization_0000,2000,run_0000,True,timing,0.24197966716178418,onset,Variational Quantum Classifier,gen,1,0.250747948884964,0
+5999,2,generalization_0000,4000,run_0000,True,timing,0.3765747832337002,active,Variational Quantum Classifier,gen,1,0.25398269295692444,0
+7999,3,generalization_0000,6000,run_0000,True,timing,0.3502353529421713,active,Variational Quantum Classifier,gen,1,0.24151627719402313,0
+9999,4,generalization_0000,8000,run_0000,True,timing,0.06122015973559303,termination,Variational Quantum Classifier,gen,1,0.26852551102638245,0
+1999,0,generalization_0001,0,run_0001,False,none,0.0,normal,Variational Quantum Classifier,gen,0,0.39247602224349976,0
+3999,1,generalization_0001,2000,run_0001,True,timing,9.011001599389404e-05,onset,Variational Quantum Classifier,gen,1,0.3121563792228699,0
+5999,2,generalization_0001,4000,run_0001,True,timing,0.367479700213087,active,Variational Quantum Classifier,gen,1,0.34091806411743164,0
+7999,3,generalization_0001,6000,run_0001,True,timing,0.41746394440128615,termination,Variational Quantum Classifier,gen,1,0.3515790104866028,0
+9999,4,generalization_0001,8000,run_0001,True,timing,0.060580132550483126,termination,Variational Quantum Classifier,gen,1,0.32520443201065063,0
+1999,0,generalization_0002,0,run_0002,False,none,0.0,normal,Variational Quantum Classifier,gen,0,0.28152740001678467,0
+3999,1,generalization_0002,2000,run_0002,True,pns,0.38307897726706597,onset,Variational Quantum Classifier,gen,1,0.4995032846927643,1
+5999,2,generalization_0002,4000,run_0002,True,pns,0.9326010686639844,active,Variational Quantum Classifier,gen,1,0.4995032846927643,1
+7999,3,generalization_0002,6000,run_0002,True,pns,0.9314259123754303,active,Variational Quantum Classifier,gen,1,0.4995032846927643,1
+9999,4,generalization_0002,8000,run_0002,True,pns,0.3405518958381378,termination,Variational Quantum Classifier,gen,1,0.4995032846927643,1
+1999,0,generalization_0003,0,run_0003,False,none,0.0,normal,Variational Quantum Classifier,gen,0,0.34012243151664734,0
+3999,1,generalization_0003,2000,run_0003,False,none,0.0,normal,Variational Quantum Classifier,gen,0,0.4376760721206665,0
+5999,2,generalization_0003,4000,run_0003,False,none,0.0,normal,Variational Quantum Classifier,gen,0,0.41363152861595154,0
+7999,3,generalization_0003,6000,run_0003,False,none,0.0,normal,Variational Quantum Classifier,gen,0,0.4667094647884369,1
+9999,4,generalization_0003,8000,run_0003,False,none,0.0,normal,Variational Quantum Classifier,gen,0,0.3144032955169678,0
+1999,0,generalization_0000,0,run_0000,False,none,0.0,normal,Quantum Kernel SVM,gen,0,0.10853309092015186,0
+3999,1,generalization_0000,2000,run_0000,True,timing,0.24197966716178418,onset,Quantum Kernel SVM,gen,1,0.11599253752325092,0
+5999,2,generalization_0000,4000,run_0000,True,timing,0.3765747832337002,active,Quantum Kernel SVM,gen,1,0.12144846604100078,1
+7999,3,generalization_0000,6000,run_0000,True,timing,0.3502353529421713,active,Quantum Kernel SVM,gen,1,0.12411722438739932,1
+9999,4,generalization_0000,8000,run_0000,True,timing,0.06122015973559303,termination,Quantum Kernel SVM,gen,1,0.13555528636574937,1
+1999,0,generalization_0001,0,run_0001,False,none,0.0,normal,Quantum Kernel SVM,gen,0,0.13001766128438688,1
+3999,1,generalization_0001,2000,run_0001,True,timing,9.011001599389404e-05,onset,Quantum Kernel SVM,gen,1,0.15732463994902793,1
+5999,2,generalization_0001,4000,run_0001,True,timing,0.367479700213087,active,Quantum Kernel SVM,gen,1,0.17194803910551842,1
+7999,3,generalization_0001,6000,run_0001,True,timing,0.41746394440128615,termination,Quantum Kernel SVM,gen,1,0.21800628228418353,1
+9999,4,generalization_0001,8000,run_0001,True,timing,0.060580132550483126,termination,Quantum Kernel SVM,gen,1,0.19687828745673333,1
+1999,0,generalization_0002,0,run_0002,False,none,0.0,normal,Quantum Kernel SVM,gen,0,0.1339647141583868,1
+3999,1,generalization_0002,2000,run_0002,True,pns,0.38307897726706597,onset,Quantum Kernel SVM,gen,1,0.14989563455642707,1
+5999,2,generalization_0002,4000,run_0002,True,pns,0.9326010686639844,active,Quantum Kernel SVM,gen,1,0.14989563455642707,1
+7999,3,generalization_0002,6000,run_0002,True,pns,0.9314259123754303,active,Quantum Kernel SVM,gen,1,0.14989563455642707,1
+9999,4,generalization_0002,8000,run_0002,True,pns,0.3405518958381378,termination,Quantum Kernel SVM,gen,1,0.14989563455642707,1
+1999,0,generalization_0003,0,run_0003,False,none,0.0,normal,Quantum Kernel SVM,gen,0,0.5115426324408778,1
+3999,1,generalization_0003,2000,run_0003,False,none,0.0,normal,Quantum Kernel SVM,gen,0,0.5432163597611716,1
+5999,2,generalization_0003,4000,run_0003,False,none,0.0,normal,Quantum Kernel SVM,gen,0,0.4061227837578373,1
+7999,3,generalization_0003,6000,run_0003,False,none,0.0,normal,Quantum Kernel SVM,gen,0,0.5658052520865401,1
+9999,4,generalization_0003,8000,run_0003,False,none,0.0,normal,Quantum Kernel SVM,gen,0,0.5490821897257065,1
+1999,0,generalization_0000,0,run_0000,False,none,0.0,normal,Quantum Autoencoder,gen,0,0.57754624514172,1
+3999,1,generalization_0000,2000,run_0000,True,timing,0.24197966716178418,onset,Quantum Autoencoder,gen,1,0.6869248262612084,1
+5999,2,generalization_0000,4000,run_0000,True,timing,0.3765747832337002,active,Quantum Autoencoder,gen,1,0.6733487780486551,1
+7999,3,generalization_0000,6000,run_0000,True,timing,0.3502353529421713,active,Quantum Autoencoder,gen,1,0.581022817126831,1
+9999,4,generalization_0000,8000,run_0000,True,timing,0.06122015973559303,termination,Quantum Autoencoder,gen,1,0.5175997148617238,1
+1999,0,generalization_0001,0,run_0001,False,none,0.0,normal,Quantum Autoencoder,gen,0,0.18800572451396003,0
+3999,1,generalization_0001,2000,run_0001,True,timing,9.011001599389404e-05,onset,Quantum Autoencoder,gen,1,0.24693917642237573,0
+5999,2,generalization_0001,4000,run_0001,True,timing,0.367479700213087,active,Quantum Autoencoder,gen,1,0.21330285003749938,0
+7999,3,generalization_0001,6000,run_0001,True,timing,0.41746394440128615,termination,Quantum Autoencoder,gen,1,0.18362590756870723,0
+9999,4,generalization_0001,8000,run_0001,True,timing,0.060580132550483126,termination,Quantum Autoencoder,gen,1,0.2329677385871236,0
+1999,0,generalization_0002,0,run_0002,False,none,0.0,normal,Quantum Autoencoder,gen,0,0.3508948346470736,1
+3999,1,generalization_0002,2000,run_0002,True,pns,0.38307897726706597,onset,Quantum Autoencoder,gen,1,0.7521033686081509,1
+5999,2,generalization_0002,4000,run_0002,True,pns,0.9326010686639844,active,Quantum Autoencoder,gen,1,0.7521033686081509,1
+7999,3,generalization_0002,6000,run_0002,True,pns,0.9314259123754303,active,Quantum Autoencoder,gen,1,0.7521033686081509,1
+9999,4,generalization_0002,8000,run_0002,True,pns,0.3405518958381378,termination,Quantum Autoencoder,gen,1,0.7521033686081509,1
+1999,0,generalization_0003,0,run_0003,False,none,0.0,normal,Quantum Autoencoder,gen,0,0.7433316272490804,1
+3999,1,generalization_0003,2000,run_0003,False,none,0.0,normal,Quantum Autoencoder,gen,0,0.5609818867216302,1
+5999,2,generalization_0003,4000,run_0003,False,none,0.0,normal,Quantum Autoencoder,gen,0,0.31703965240917986,1
+7999,3,generalization_0003,6000,run_0003,False,none,0.0,normal,Quantum Autoencoder,gen,0,0.6853143542727466,1
+9999,4,generalization_0003,8000,run_0003,False,none,0.0,normal,Quantum Autoencoder,gen,0,0.7539099848957811,1
+1999,0,generalization_0000,0,run_0000,False,none,0.0,normal,Classical Logistic Regression,gen,0,0.14404029500929702,1
+3999,1,generalization_0000,2000,run_0000,True,timing,0.24197966716178418,onset,Classical Logistic Regression,gen,1,0.16295973254315238,1
+5999,2,generalization_0000,4000,run_0000,True,timing,0.3765747832337002,active,Classical Logistic Regression,gen,1,0.16470362569095506,1
+7999,3,generalization_0000,6000,run_0000,True,timing,0.3502353529421713,active,Classical Logistic Regression,gen,1,0.16765060038604523,1
+9999,4,generalization_0000,8000,run_0000,True,timing,0.06122015973559303,termination,Classical Logistic Regression,gen,1,0.17075660099916667,1
+1999,0,generalization_0001,0,run_0001,False,none,0.0,normal,Classical Logistic Regression,gen,0,0.19426517254029482,1
+3999,1,generalization_0001,2000,run_0001,True,timing,9.011001599389404e-05,onset,Classical Logistic Regression,gen,1,0.14873068064059214,1
+5999,2,generalization_0001,4000,run_0001,True,timing,0.367479700213087,active,Classical Logistic Regression,gen,1,0.17882983232031008,1
+7999,3,generalization_0001,6000,run_0001,True,timing,0.41746394440128615,termination,Classical Logistic Regression,gen,1,0.23811786468604812,1
+9999,4,generalization_0001,8000,run_0001,True,timing,0.060580132550483126,termination,Classical Logistic Regression,gen,1,0.20249592326454807,1
+1999,0,generalization_0002,0,run_0002,False,none,0.0,normal,Classical Logistic Regression,gen,0,0.11957206291311664,0
+3999,1,generalization_0002,2000,run_0002,True,pns,0.38307897726706597,onset,Classical Logistic Regression,gen,1,0.13975394037640607,0
+5999,2,generalization_0002,4000,run_0002,True,pns,0.9326010686639844,active,Classical Logistic Regression,gen,1,0.13975394037640607,0
+7999,3,generalization_0002,6000,run_0002,True,pns,0.9314259123754303,active,Classical Logistic Regression,gen,1,0.13975394037640607,0
+9999,4,generalization_0002,8000,run_0002,True,pns,0.3405518958381378,termination,Classical Logistic Regression,gen,1,0.13975394037640607,0
+1999,0,generalization_0003,0,run_0003,False,none,0.0,normal,Classical Logistic Regression,gen,0,0.09130414766300265,0
+3999,1,generalization_0003,2000,run_0003,False,none,0.0,normal,Classical Logistic Regression,gen,0,0.17682785140298804,1
+5999,2,generalization_0003,4000,run_0003,False,none,0.0,normal,Classical Logistic Regression,gen,0,0.3019781384252142,1
+7999,3,generalization_0003,6000,run_0003,False,none,0.0,normal,Classical Logistic Regression,gen,0,0.13135297796293438,0
+9999,4,generalization_0003,8000,run_0003,False,none,0.0,normal,Classical Logistic Regression,gen,0,0.10212037611164734,0
+1999,0,generalization_0000,0,run_0000,False,none,0.0,normal,Classical RBF-SVM,gen,0,0.11607010718550019,0
+3999,1,generalization_0000,2000,run_0000,True,timing,0.24197966716178418,onset,Classical RBF-SVM,gen,1,0.11935941202707685,0
+5999,2,generalization_0000,4000,run_0000,True,timing,0.3765747832337002,active,Classical RBF-SVM,gen,1,0.11745843462129985,0
+7999,3,generalization_0000,6000,run_0000,True,timing,0.3502353529421713,active,Classical RBF-SVM,gen,1,0.12217234669020477,0
+9999,4,generalization_0000,8000,run_0000,True,timing,0.06122015973559303,termination,Classical RBF-SVM,gen,1,0.1461015429360664,0
+1999,0,generalization_0001,0,run_0001,False,none,0.0,normal,Classical RBF-SVM,gen,0,0.10837364154647555,0
+3999,1,generalization_0001,2000,run_0001,True,timing,9.011001599389404e-05,onset,Classical RBF-SVM,gen,1,0.12640928499923257,0
+5999,2,generalization_0001,4000,run_0001,True,timing,0.367479700213087,active,Classical RBF-SVM,gen,1,0.13661404248960812,0
+7999,3,generalization_0001,6000,run_0001,True,timing,0.41746394440128615,termination,Classical RBF-SVM,gen,1,0.17457378658251357,0
+9999,4,generalization_0001,8000,run_0001,True,timing,0.060580132550483126,termination,Classical RBF-SVM,gen,1,0.15516448645640066,0
+1999,0,generalization_0002,0,run_0002,False,none,0.0,normal,Classical RBF-SVM,gen,0,0.11889133384537322,0
+3999,1,generalization_0002,2000,run_0002,True,pns,0.38307897726706597,onset,Classical RBF-SVM,gen,1,0.13930735711766531,0
+5999,2,generalization_0002,4000,run_0002,True,pns,0.9326010686639844,active,Classical RBF-SVM,gen,1,0.13930735711766531,0
+7999,3,generalization_0002,6000,run_0002,True,pns,0.9314259123754303,active,Classical RBF-SVM,gen,1,0.13930735711766531,0
+9999,4,generalization_0002,8000,run_0002,True,pns,0.3405518958381378,termination,Classical RBF-SVM,gen,1,0.13930735711766531,0
+1999,0,generalization_0003,0,run_0003,False,none,0.0,normal,Classical RBF-SVM,gen,0,0.4484759772576504,0
+3999,1,generalization_0003,2000,run_0003,False,none,0.0,normal,Classical RBF-SVM,gen,0,0.5280088365325455,1
+5999,2,generalization_0003,4000,run_0003,False,none,0.0,normal,Classical RBF-SVM,gen,0,0.37871200635806995,0
+7999,3,generalization_0003,6000,run_0003,False,none,0.0,normal,Classical RBF-SVM,gen,0,0.5218516742975373,1
+9999,4,generalization_0003,8000,run_0003,False,none,0.0,normal,Classical RBF-SVM,gen,0,0.4923051181079234,0
+1999,0,generalization_0000,0,run_0000,False,none,0.0,normal,Small Classical MLP,gen,0,0.11053245514631271,0
+3999,1,generalization_0000,2000,run_0000,True,timing,0.24197966716178418,onset,Small Classical MLP,gen,1,0.09358517080545425,0
+5999,2,generalization_0000,4000,run_0000,True,timing,0.3765747832337002,active,Small Classical MLP,gen,1,0.08938942849636078,0
+7999,3,generalization_0000,6000,run_0000,True,timing,0.3502353529421713,active,Small Classical MLP,gen,1,0.12428630888462067,0
+9999,4,generalization_0000,8000,run_0000,True,timing,0.06122015973559303,termination,Small Classical MLP,gen,1,0.16772255301475525,0
+1999,0,generalization_0001,0,run_0001,False,none,0.0,normal,Small Classical MLP,gen,0,0.27000692486763,0
+3999,1,generalization_0001,2000,run_0001,True,timing,9.011001599389404e-05,onset,Small Classical MLP,gen,1,0.14008919894695282,0
+5999,2,generalization_0001,4000,run_0001,True,timing,0.367479700213087,active,Small Classical MLP,gen,1,0.13875770568847656,0
+7999,3,generalization_0001,6000,run_0001,True,timing,0.41746394440128615,termination,Small Classical MLP,gen,1,0.23788094520568848,0
+9999,4,generalization_0001,8000,run_0001,True,timing,0.060580132550483126,termination,Small Classical MLP,gen,1,0.15396437048912048,0
+1999,0,generalization_0002,0,run_0002,False,none,0.0,normal,Small Classical MLP,gen,0,0.1263740509748459,0
+3999,1,generalization_0002,2000,run_0002,True,pns,0.38307897726706597,onset,Small Classical MLP,gen,1,0.028787804767489433,0
+5999,2,generalization_0002,4000,run_0002,True,pns,0.9326010686639844,active,Small Classical MLP,gen,1,0.028787804767489433,0
+7999,3,generalization_0002,6000,run_0002,True,pns,0.9314259123754303,active,Small Classical MLP,gen,1,0.028787804767489433,0
+9999,4,generalization_0002,8000,run_0002,True,pns,0.3405518958381378,termination,Small Classical MLP,gen,1,0.028787804767489433,0
+1999,0,generalization_0003,0,run_0003,False,none,0.0,normal,Small Classical MLP,gen,0,0.10808376222848892,0
+3999,1,generalization_0003,2000,run_0003,False,none,0.0,normal,Small Classical MLP,gen,0,0.22786051034927368,0
+5999,2,generalization_0003,4000,run_0003,False,none,0.0,normal,Small Classical MLP,gen,0,0.3501841425895691,0
+7999,3,generalization_0003,6000,run_0003,False,none,0.0,normal,Small Classical MLP,gen,0,0.19605757296085358,0
+9999,4,generalization_0003,8000,run_0003,False,none,0.0,normal,Small Classical MLP,gen,0,0.10324610024690628,0

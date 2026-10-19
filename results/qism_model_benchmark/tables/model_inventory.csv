@@ -1,0 +1,29 @@
+model_name,family,task,features,status
+IsolationForest_Full,classical_unsupervised,anomaly_detection,76 Full,COMPLETED
+IsolationForest_PCA6,classical_unsupervised,anomaly_detection,PCA-6,COMPLETED
+OneClassSVM_PCA6,classical_unsupervised,anomaly_detection,PCA-6,COMPLETED
+LocalOutlierFactor_PCA6,classical_unsupervised,novelty_detection,PCA-6,COMPLETED
+Mahalanobis_Full,classical_statistical,anomaly_detection,76 Full,COMPLETED
+RobustCovariance_PCA6,classical_statistical,anomaly_detection,PCA-6,COMPLETED
+ClassicalAutoencoder,classical_neural,reconstruction,76 Full,COMPLETED
+ClassicalTemporalAutoencoder,classical_temporal,sequence_reconstruction,76 Full (L=3),COMPLETED
+ClassicalDeepSVDD,classical_neural,one_class_hypersphere,76 Full,COMPLETED
+ClassicalLogisticRegression,classical_supervised,binary_classification,76 Full,COMPLETED
+RandomForestClassifier,classical_supervised,binary_classification,76 Full,COMPLETED
+SmallClassicalMLP,classical_supervised,binary_classification,PCA-4,COMPLETED
+ClassicalRBFSVM,classical_supervised,binary_classification,PCA-4,COMPLETED
+VQC_4Q,quantum_supervised,quantum_classification,PCA-4 Angle (4Q),COMPLETED
+QuantumKernelSVM_4Q,quantum_kernel,fidelity_kernel_svm,PCA-4 Angle (4Q),COMPLETED
+QuantumAutoencoder_4Q,quantum_unsupervised,trash_compression,PCA-4 Angle (4Q),COMPLETED
+StaticQuantumSVDD_4Q,quantum_one_class,quantum_hypersphere,PCA-4 Angle (4Q),COMPLETED
+PITQSVDD_2Q_Angle,flagship_pitqsvdd,temporal_quantum_svdd,PCA-2 Angle (2Q),COMPLETED
+PITQSVDD_4Q_Angle_Ref,flagship_pitqsvdd,temporal_quantum_svdd,PCA-4 Angle (4Q),COMPLETED
+PITQSVDD_6Q_Angle,flagship_pitqsvdd,temporal_quantum_svdd,PCA-6 Angle (6Q),COMPLETED
+PITQSVDD_8Q_Angle,flagship_pitqsvdd,temporal_quantum_svdd,PCA-8 Angle (8Q),COMPLETED
+PITQSVDD_4Q_DataReuploading,flagship_pitqsvdd,temporal_quantum_svdd,PCA-16 Reupload (4Q),COMPLETED
+PITQSVDD_8Q_DataReuploading,flagship_pitqsvdd,temporal_quantum_svdd,PCA-16 Reupload (8Q),COMPLETED
+PITQSVDD_4Q_Amplitude,flagship_pitqsvdd,temporal_quantum_svdd,Amplitude (4Q),COMPLETED
+PITQSVDD_4Q_IQPZZ,flagship_pitqsvdd,temporal_quantum_svdd,IQP/ZZ (4Q),COMPLETED
+PITQSVDD_4Q_FeatureGroup,flagship_pitqsvdd,temporal_quantum_svdd,Feature Groups (4Q),COMPLETED
+PITQSVDD_4Q_NoTemporal,flagship_pitqsvdd,ablation_no_temporal,PCA-4 Angle (4Q),COMPLETED
+PITQSVDD_4Q_ContextAware,flagship_pitqsvdd,context_aware_normality,PCA-4 Angle (4Q),COMPLETED

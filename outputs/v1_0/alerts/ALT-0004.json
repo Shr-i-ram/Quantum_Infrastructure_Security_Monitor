@@ -1,0 +1,46 @@
+{
+  "alert_id": "ALT-0004",
+  "incident_id": "INC-0001",
+  "timestamp_s": 0.212,
+  "sequence_id": 106,
+  "severity": "medium",
+  "incident_state": "active",
+  "evidence_score": 0.7299086055095987,
+  "anomaly_score": 10.919545219864506,
+  "drift_score": 0.712730148300854,
+  "affected_features": [
+    "temporal_anomaly_model",
+    "statistical_drift",
+    "optical_gain_deviation",
+    "qber_deviation"
+  ],
+  "subsystems_involved": [
+    "drift_engine",
+    "ml_engine",
+    "quantum_channel"
+  ],
+  "duration_s": 0.152,
+  "model_version": "model_v001",
+  "reference_version": "ref_v001",
+  "explanation_summary": "[MEDIUM] Incident INC-0001 (active): Evidence=0.73, Subsystems=drift_engine,ml_engine,quantum_channel",
+  "explanation_details": {
+    "evidence_score": 0.7299086055095987,
+    "assigned_severity": "medium",
+    "persistence_steps": 77,
+    "subsystems_affected": [
+      "drift_engine",
+      "ml_engine"
+    ],
+    "anomalous_signals_count": 2,
+    "reasons": [
+      "Moderate security evidence score (0.730) exceeding medium threshold",
+      "Signal 'temporal_anomaly_model' in subsystem 'ml_engine' exceeded threshold (raw: 10.9340, norm: 1.000, thresh: 2.5000)",
+      "Signal 'statistical_drift' in subsystem 'drift_engine' exceeded threshold (raw: 23.3957, norm: 1.000, thresh: 0.4000)",
+      "Environmental/channel drift actively detected; verified baseline distribution shift"
+    ],
+    "pattern_characterization": "Telemetry pattern characterized primarily by smooth distribution shift in optical or environmental baseline.",
+    "drift_context": "benign_drift_active",
+    "incident_state": "active"
+  },
+  "recommendation_summary": "ADVISORY: Monitor telemetry trends for potential sustained security degradation."
+}

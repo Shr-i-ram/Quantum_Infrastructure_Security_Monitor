@@ -1,0 +1,102 @@
+{
+  "experiment_id": "smoke_test_cli",
+  "timestamp": "2026-10-17T14:00:04.943179",
+  "config": {
+    "data": {
+      "dataset_root": "data/v0.5_small/v05_small_dataset",
+      "representation": "pca",
+      "n_qubits": 2,
+      "sequence_length": 2,
+      "temporal_stride": 1,
+      "master_seed": 42,
+      "normal_only_training": true,
+      "train_val_ratio": 0.7
+    },
+    "circuit": {
+      "n_qubits": 2,
+      "n_layers": 1,
+      "encoding_type": "angle",
+      "entanglement": "ring",
+      "rotation": "Y",
+      "backend": "lightning.qubit",
+      "diff_method": "adjoint",
+      "reupload_blocks": 1
+    },
+    "model": {
+      "model_type": "temporal_pitqsvdd",
+      "lambda_temporal": 0.5,
+      "lambda_reg": 0.0001,
+      "temporal_hidden_dim": 8,
+      "num_regimes": 2,
+      "centre_init": "train_mean",
+      "fix_centre": true,
+      "bottleneck_hidden_dim": 16
+    },
+    "training": {
+      "lr": 0.01,
+      "weight_decay": 0.0001,
+      "batch_size": 4,
+      "max_epochs": 2,
+      "early_stopping_patience": 5,
+      "grad_clip": 1.0,
+      "checkpoint_freq": 1,
+      "save_dir": "artifacts/pi_tqsvdd/checkpoints",
+      "run_id": "smoke_test_cli",
+      "resume_mode": "auto",
+      "resume_path": null,
+      "overwrite": true
+    },
+    "evaluation": {
+      "threshold_percentile": 95.0,
+      "alpha_svdd": 0.5,
+      "beta_temporal": 0.5,
+      "persistence_window": 1,
+      "output_dir": "artifacts/pi_tqsvdd"
+    }
+  },
+  "circuit_metrics": {
+    "backend": "lightning.qubit",
+    "diff_method": "adjoint",
+    "n_qubits": 2,
+    "n_layers": 1,
+    "entanglement": "ring",
+    "trainable_quantum_params": 6,
+    "cnot_count": 2,
+    "rotation_gate_count": 6,
+    "estimated_depth": 5
+  },
+  "train_summary": {
+    "total_time_s": 0.2623870372772217,
+    "final_epoch": 1,
+    "global_step": 6,
+    "best_val_loss": 0.30364712327718735
+  },
+  "summary_metrics": {
+    "experiment_id": "smoke_test_cli",
+    "status": "completed",
+    "timestamp": "2026-10-17T14:00:04.943179",
+    "encoding_type": "angle",
+    "n_qubits": 2,
+    "n_layers": 1,
+    "representation": "pca",
+    "model_type": "temporal_pitqsvdd",
+    "backend": "lightning.qubit",
+    "diff_method": "adjoint",
+    "wall_time_s": 2.64,
+    "trainable_quantum_params": 6,
+    "cnot_count": 2,
+    "rotation_gate_count": 6,
+    "estimated_depth": 5,
+    "best_val_loss": 0.3036,
+    "calibrated_threshold": 0.5444,
+    "test_precision": 0.8,
+    "test_recall": 0.4706,
+    "test_f1": 0.5926,
+    "test_auroc": 0.6925,
+    "test_auprc": 0.7675,
+    "test_specificity": 0.8182,
+    "gen_f1": 0.5,
+    "gen_recall": 0.3333,
+    "error_msg": null
+  }
+}

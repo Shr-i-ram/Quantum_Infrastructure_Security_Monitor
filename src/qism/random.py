@@ -147,3 +147,18 @@ def deserialize_rng_state(state: Mapping[str, Any]) -> Generator:
     bg.state = dict(state["state"])
     return Generator(bg)
 
+
+def seed_all(seed: int) -> None:
+    """Seed Python random, NumPy, and PyTorch for deterministic reproducibility."""
+    import random
+    random.seed(seed)
+    np.random.seed(seed)
+    try:
+        import torch
+        torch.manual_seed(seed)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(seed)
+    except ImportError:
+        pass
+
+

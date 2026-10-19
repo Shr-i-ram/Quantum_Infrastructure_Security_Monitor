@@ -1,0 +1,77 @@
+{
+  "comparison_a_progression": {
+    "V0.6 Point Baseline": {
+      "raw_alarms": 93,
+      "incidents": 1,
+      "compression_ratio": 93.0,
+      "incident_f1": 1.0,
+      "false_alarms_during_drift": 45
+    },
+    "V0.7 Temporal Monitor": {
+      "raw_alarms": 93,
+      "incidents": 1,
+      "compression_ratio": 93.0,
+      "incident_f1": 1.0,
+      "false_alarms_during_drift": 38
+    },
+    "V0.8 Adaptive Monitor": {
+      "raw_alarms": 93,
+      "incidents": 1,
+      "compression_ratio": 93.0,
+      "incident_f1": 1.0,
+      "false_alarms_during_drift": 4
+    },
+    "V1.0 Integrated Prototype": {
+      "raw_alarms": 93,
+      "incidents": 1,
+      "compression_ratio": 93.0,
+      "incident_f1": 1.0,
+      "false_alarms_during_drift": 0
+    }
+  },
+  "comparison_b_fixed_vs_adaptive": {
+    "fixed_monitoring": {
+      "raw_alarms": 93,
+      "total_incidents": 1,
+      "alert_compression_ratio": 93.0,
+      "incident_precision": 1.0,
+      "incident_recall": 1.0,
+      "incident_f1": 1.0
+    },
+    "adaptive_monitoring": {
+      "raw_alarms": 93,
+      "total_incidents": 1,
+      "alert_compression_ratio": 93.0,
+      "incident_precision": 1.0,
+      "incident_recall": 1.0,
+      "incident_f1": 1.0
+    }
+  },
+  "comparison_c_raw_vs_incidents": {
+    "raw_point_alarms": 93,
+    "correlated_incidents": 1,
+    "emitted_alerts": 14,
+    "compression_ratio": 93.0,
+    "alert_reduction_pct": 84.94623655913979
+  },
+  "comparison_d_single_vs_fusion": {
+    "single_signal_anomaly_only": {
+      "incident_recall": 1.0,
+      "incident_f1": 0.5,
+      "detection_latency_s": 0.0,
+      "compression_ratio": 31.0
+    },
+    "multivariate_fused_evidence": {
+      "incident_recall": 1.0,
+      "incident_f1": 1.0,
+      "detection_latency_s": 0.0,
+      "compression_ratio": 93.0
+    }
+  },
+  "comparison_e_performance": {
+    "mean_step_latency_ms": 6.164969164334859,
+    "p95_step_latency_ms": 10.512580093927681,
+    "throughput_steps_per_s": 158.61233244605634,
+    "streaming_memory_bound": "O(L * d) strictly bounded buffer"
+  }
+}

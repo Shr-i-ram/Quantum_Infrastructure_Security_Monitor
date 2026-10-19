@@ -1,0 +1,44 @@
+{
+  "alert_id": "ALT-0009",
+  "incident_id": "INC-0003",
+  "timestamp_s": 0.194,
+  "sequence_id": 97,
+  "severity": "info",
+  "incident_state": "resolved",
+  "evidence_score": 0.21595916362895318,
+  "anomaly_score": 3.201378976375639,
+  "drift_score": 8.801090715131192,
+  "affected_features": [
+    "statistical_drift",
+    "temporal_anomaly_model"
+  ],
+  "subsystems_involved": [
+    "drift_engine",
+    "ml_engine"
+  ],
+  "duration_s": 0.016000000000000014,
+  "model_version": "model_v001",
+  "reference_version": "ref_v001",
+  "explanation_summary": "[INFO] Incident INC-0003 (resolved): Evidence=0.22, Subsystems=drift_engine,ml_engine",
+  "explanation_details": {
+    "evidence_score": 0.21595916362895318,
+    "assigned_severity": "info",
+    "persistence_steps": 22,
+    "subsystems_affected": [
+      "drift_engine"
+    ],
+    "anomalous_signals_count": 1,
+    "reasons": [
+      "Nominal telemetry: evidence score (0.216) remains within benign operating limits",
+      "Signal 'statistical_drift' in subsystem 'drift_engine' exceeded threshold (raw: 4.6683, norm: 1.000, thresh: 0.4000)",
+      "Environmental/channel drift actively detected; verified baseline distribution shift",
+      "Incident resolved after 5 consecutive benign monitoring windows."
+    ],
+    "pattern_characterization": "Telemetry pattern characterized primarily by smooth distribution shift in optical or environmental baseline.",
+    "drift_context": "benign_drift_active",
+    "incident_state": "active",
+    "resolution_timestamp_s": 0.194,
+    "resolution_duration_s": 0.016000000000000014
+  },
+  "recommendation_summary": "STATUS NORMAL: Telemetry within established operational baselines."
+}

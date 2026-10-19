@@ -1,0 +1,458 @@
+{
+  "Variational Quantum Classifier_test": {
+    "accuracy": 0.75,
+    "balanced_accuracy": 0.7291666666666667,
+    "precision": 0.7142857142857143,
+    "recall": 0.625,
+    "f1_score": 0.6666666666666666,
+    "specificity": 0.8333333333333334,
+    "false_positive_rate": 0.16666666666666666,
+    "false_negative_rate": 0.375,
+    "auroc": 0.6875,
+    "auprc": 0.7103238866396762,
+    "confusion_matrix": {
+      "tn": 10,
+      "fp": 2,
+      "fn": 3,
+      "tp": 5
+    },
+    "sample_count": 20,
+    "positive_count": 8,
+    "negative_count": 12,
+    "per_attack_recall": {
+      "pns": {
+        "count": 4,
+        "detected": 4,
+        "recall": 1.0
+      },
+      "source_manipulation": {
+        "count": 4,
+        "detected": 1,
+        "recall": 0.25
+      }
+    },
+    "model_name": "Variational Quantum Classifier",
+    "split_name": "test",
+    "inference_duration_s": 0.009530067443847656,
+    "latency_per_sample_ms": 0.4765033721923828,
+    "threshold": 0.45999999999999996
+  },
+  "Quantum Kernel SVM_test": {
+    "accuracy": 0.45,
+    "balanced_accuracy": 0.5416666666666666,
+    "precision": 0.42105263157894735,
+    "recall": 1.0,
+    "f1_score": 0.5925925925925926,
+    "specificity": 0.08333333333333333,
+    "false_positive_rate": 0.9166666666666666,
+    "false_negative_rate": 0.0,
+    "auroc": 0.3020833333333333,
+    "auprc": 0.44254170966632267,
+    "confusion_matrix": {
+      "tn": 1,
+      "fp": 11,
+      "fn": 0,
+      "tp": 8
+    },
+    "sample_count": 20,
+    "positive_count": 8,
+    "negative_count": 12,
+    "per_attack_recall": {
+      "pns": {
+        "count": 4,
+        "detected": 4,
+        "recall": 1.0
+      },
+      "source_manipulation": {
+        "count": 4,
+        "detected": 4,
+        "recall": 1.0
+      }
+    },
+    "model_name": "Quantum Kernel SVM",
+    "split_name": "test",
+    "inference_duration_s": 0.0,
+    "latency_per_sample_ms": 0.0,
+    "threshold": 0.12000000000000001
+  },
+  "Quantum Autoencoder_test": {
+    "accuracy": 0.75,
+    "balanced_accuracy": 0.7291666666666667,
+    "precision": 0.7142857142857143,
+    "recall": 0.625,
+    "f1_score": 0.6666666666666666,
+    "specificity": 0.8333333333333334,
+    "false_positive_rate": 0.16666666666666666,
+    "false_negative_rate": 0.375,
+    "auroc": 0.6249999999999999,
+    "auprc": 0.7443369453044375,
+    "confusion_matrix": {
+      "tn": 10,
+      "fp": 2,
+      "fn": 3,
+      "tp": 5
+    },
+    "sample_count": 20,
+    "positive_count": 8,
+    "negative_count": 12,
+    "per_attack_recall": {
+      "pns": {
+        "count": 4,
+        "detected": 4,
+        "recall": 1.0
+      },
+      "source_manipulation": {
+        "count": 4,
+        "detected": 1,
+        "recall": 0.25
+      }
+    },
+    "model_name": "Quantum Autoencoder",
+    "split_name": "test",
+    "inference_duration_s": 0.008706092834472656,
+    "latency_per_sample_ms": 0.4353046417236328,
+    "threshold": 0.3164019348647589
+  },
+  "Classical Logistic Regression_test": {
+    "accuracy": 0.25,
+    "balanced_accuracy": 0.2916666666666667,
+    "precision": 0.26666666666666666,
+    "recall": 0.5,
+    "f1_score": 0.34782608695652173,
+    "specificity": 0.08333333333333333,
+    "false_positive_rate": 0.9166666666666666,
+    "false_negative_rate": 0.5,
+    "auroc": 0.27083333333333337,
+    "auprc": 0.3733010410641989,
+    "confusion_matrix": {
+      "tn": 1,
+      "fp": 11,
+      "fn": 4,
+      "tp": 4
+    },
+    "sample_count": 20,
+    "positive_count": 8,
+    "negative_count": 12,
+    "per_attack_recall": {
+      "pns": {
+        "count": 4,
+        "detected": 0,
+        "recall": 0.0
+      },
+      "source_manipulation": {
+        "count": 4,
+        "detected": 4,
+        "recall": 1.0
+      }
+    },
+    "model_name": "Classical Logistic Regression",
+    "split_name": "test",
+    "inference_duration_s": 0.0,
+    "latency_per_sample_ms": 0.0,
+    "threshold": 0.14
+  },
+  "Classical RBF-SVM_test": {
+    "accuracy": 0.6,
+    "balanced_accuracy": 0.5208333333333333,
+    "precision": 0.5,
+    "recall": 0.125,
+    "f1_score": 0.2,
+    "specificity": 0.9166666666666666,
+    "false_positive_rate": 0.08333333333333333,
+    "false_negative_rate": 0.875,
+    "auroc": 0.32291666666666663,
+    "auprc": 0.44879170966632265,
+    "confusion_matrix": {
+      "tn": 11,
+      "fp": 1,
+      "fn": 7,
+      "tp": 1
+    },
+    "sample_count": 20,
+    "positive_count": 8,
+    "negative_count": 12,
+    "per_attack_recall": {
+      "pns": {
+        "count": 4,
+        "detected": 0,
+        "recall": 0.0
+      },
+      "source_manipulation": {
+        "count": 4,
+        "detected": 1,
+        "recall": 0.25
+      }
+    },
+    "model_name": "Classical RBF-SVM",
+    "split_name": "test",
+    "inference_duration_s": 0.001001119613647461,
+    "latency_per_sample_ms": 0.05005598068237305,
+    "threshold": 0.5
+  },
+  "Small Classical MLP_test": {
+    "accuracy": 0.6,
+    "balanced_accuracy": 0.5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1_score": 0.0,
+    "specificity": 1.0,
+    "false_positive_rate": 0.0,
+    "false_negative_rate": 1.0,
+    "auroc": 0.22916666666666666,
+    "auprc": 0.34581043956043955,
+    "confusion_matrix": {
+      "tn": 12,
+      "fp": 0,
+      "fn": 8,
+      "tp": 0
+    },
+    "sample_count": 20,
+    "positive_count": 8,
+    "negative_count": 12,
+    "per_attack_recall": {
+      "pns": {
+        "count": 4,
+        "detected": 0,
+        "recall": 0.0
+      },
+      "source_manipulation": {
+        "count": 4,
+        "detected": 0,
+        "recall": 0.0
+      }
+    },
+    "model_name": "Small Classical MLP",
+    "split_name": "test",
+    "inference_duration_s": 0.0,
+    "latency_per_sample_ms": 0.0,
+    "threshold": 0.5
+  },
+  "Variational Quantum Classifier_gen": {
+    "accuracy": 0.55,
+    "balanced_accuracy": 0.6041666666666666,
+    "precision": 0.8,
+    "recall": 0.3333333333333333,
+    "f1_score": 0.47058823529411764,
+    "specificity": 0.875,
+    "false_positive_rate": 0.125,
+    "false_negative_rate": 0.6666666666666666,
+    "auroc": 0.4895833333333333,
+    "auprc": 0.7200000102380133,
+    "confusion_matrix": {
+      "tn": 7,
+      "fp": 1,
+      "fn": 8,
+      "tp": 4
+    },
+    "sample_count": 20,
+    "positive_count": 12,
+    "negative_count": 8,
+    "per_attack_recall": {
+      "pns": {
+        "count": 4,
+        "detected": 4,
+        "recall": 1.0
+      },
+      "timing": {
+        "count": 8,
+        "detected": 0,
+        "recall": 0.0
+      }
+    },
+    "model_name": "Variational Quantum Classifier",
+    "split_name": "gen",
+    "inference_duration_s": 0.011262655258178711,
+    "latency_per_sample_ms": 0.5631327629089355,
+    "threshold": 0.45999999999999996
+  },
+  "Quantum Kernel SVM_gen": {
+    "accuracy": 0.6,
+    "balanced_accuracy": 0.5208333333333333,
+    "precision": 0.6111111111111112,
+    "recall": 0.9166666666666666,
+    "f1_score": 0.7333333333333333,
+    "specificity": 0.125,
+    "false_positive_rate": 0.875,
+    "false_negative_rate": 0.08333333333333333,
+    "auroc": 0.3125,
+    "auprc": 0.5172621961515151,
+    "confusion_matrix": {
+      "tn": 1,
+      "fp": 7,
+      "fn": 1,
+      "tp": 11
+    },
+    "sample_count": 20,
+    "positive_count": 12,
+    "negative_count": 8,
+    "per_attack_recall": {
+      "pns": {
+        "count": 4,
+        "detected": 4,
+        "recall": 1.0
+      },
+      "timing": {
+        "count": 8,
+        "detected": 7,
+        "recall": 0.875
+      }
+    },
+    "model_name": "Quantum Kernel SVM",
+    "split_name": "gen",
+    "inference_duration_s": 0.0,
+    "latency_per_sample_ms": 0.0,
+    "threshold": 0.12000000000000001
+  },
+  "Quantum Autoencoder_gen": {
+    "accuracy": 0.45,
+    "balanced_accuracy": 0.3958333333333333,
+    "precision": 0.5333333333333333,
+    "recall": 0.6666666666666666,
+    "f1_score": 0.5925925925925926,
+    "specificity": 0.125,
+    "false_positive_rate": 0.875,
+    "false_negative_rate": 0.3333333333333333,
+    "auroc": 0.5208333333333334,
+    "auprc": 0.6881819501304796,
+    "confusion_matrix": {
+      "tn": 1,
+      "fp": 7,
+      "fn": 4,
+      "tp": 8
+    },
+    "sample_count": 20,
+    "positive_count": 12,
+    "negative_count": 8,
+    "per_attack_recall": {
+      "pns": {
+        "count": 4,
+        "detected": 4,
+        "recall": 1.0
+      },
+      "timing": {
+        "count": 8,
+        "detected": 4,
+        "recall": 0.5
+      }
+    },
+    "model_name": "Quantum Autoencoder",
+    "split_name": "gen",
+    "inference_duration_s": 0.009001016616821289,
+    "latency_per_sample_ms": 0.45005083084106445,
+    "threshold": 0.3164019348647589
+  },
+  "Classical Logistic Regression_gen": {
+    "accuracy": 0.6,
+    "balanced_accuracy": 0.5833333333333333,
+    "precision": 0.6666666666666666,
+    "recall": 0.6666666666666666,
+    "f1_score": 0.6666666666666666,
+    "specificity": 0.5,
+    "false_positive_rate": 0.5,
+    "false_negative_rate": 0.3333333333333333,
+    "auroc": 0.6354166666666666,
+    "auprc": 0.6714195526695526,
+    "confusion_matrix": {
+      "tn": 4,
+      "fp": 4,
+      "fn": 4,
+      "tp": 8
+    },
+    "sample_count": 20,
+    "positive_count": 12,
+    "negative_count": 8,
+    "per_attack_recall": {
+      "pns": {
+        "count": 4,
+        "detected": 0,
+        "recall": 0.0
+      },
+      "timing": {
+        "count": 8,
+        "detected": 8,
+        "recall": 1.0
+      }
+    },
+    "model_name": "Classical Logistic Regression",
+    "split_name": "gen",
+    "inference_duration_s": 0.0,
+    "latency_per_sample_ms": 0.0,
+    "threshold": 0.14
+  },
+  "Classical RBF-SVM_gen": {
+    "accuracy": 0.3,
+    "balanced_accuracy": 0.375,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1_score": 0.0,
+    "specificity": 0.75,
+    "false_positive_rate": 0.25,
+    "false_negative_rate": 1.0,
+    "auroc": 0.3645833333333333,
+    "auprc": 0.5366491147741148,
+    "confusion_matrix": {
+      "tn": 6,
+      "fp": 2,
+      "fn": 12,
+      "tp": 0
+    },
+    "sample_count": 20,
+    "positive_count": 12,
+    "negative_count": 8,
+    "per_attack_recall": {
+      "pns": {
+        "count": 4,
+        "detected": 0,
+        "recall": 0.0
+      },
+      "timing": {
+        "count": 8,
+        "detected": 0,
+        "recall": 0.0
+      }
+    },
+    "model_name": "Classical RBF-SVM",
+    "split_name": "gen",
+    "inference_duration_s": 0.0,
+    "latency_per_sample_ms": 0.0,
+    "threshold": 0.5
+  },
+  "Small Classical MLP_gen": {
+    "accuracy": 0.4,
+    "balanced_accuracy": 0.5,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1_score": 0.0,
+    "specificity": 1.0,
+    "false_positive_rate": 0.0,
+    "false_negative_rate": 1.0,
+    "auroc": 0.2604166666666667,
+    "auprc": 0.5052429052429053,
+    "confusion_matrix": {
+      "tn": 8,
+      "fp": 0,
+      "fn": 12,
+      "tp": 0
+    },
+    "sample_count": 20,
+    "positive_count": 12,
+    "negative_count": 8,
+    "per_attack_recall": {
+      "pns": {
+        "count": 4,
+        "detected": 0,
+        "recall": 0.0
+      },
+      "timing": {
+        "count": 8,
+        "detected": 0,
+        "recall": 0.0
+      }
+    },
+    "model_name": "Small Classical MLP",
+    "split_name": "gen",
+    "inference_duration_s": 0.0009984970092773438,
+    "latency_per_sample_ms": 0.04992485046386719,
+    "threshold": 0.5
+  }
+}

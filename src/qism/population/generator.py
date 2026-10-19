@@ -112,7 +112,7 @@ class ScenarioGenerator:
             cfg_dict["protocol.n_pulses"] = split_cfg.pulses_per_run
             cfg_dict["simulation.scenario_id"] = scen_id
 
-            if split_name == "generalization" and split_cfg.held_out_dimensions:
+            if ("generalization" in split_name or split_cfg.held_out_dimensions) and split_cfg.held_out_dimensions:
                 # Apply held-out ranges
                 for param_path, bounds in split_cfg.held_out_dimensions.items():
                     min_b = bounds.get("min", 0.0)

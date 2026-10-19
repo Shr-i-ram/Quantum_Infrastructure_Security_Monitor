@@ -1,0 +1,13 @@
+scenario_code,scenario_name,seeds_tested,raw_alarms_mean,raw_alarms_std,incidents_mean,incidents_std,compression_ratio_mean,compression_ratio_std,alert_reduction_pct_mean,alert_reduction_pct_std,incident_recall_mean,incident_recall_std,incident_precision_mean,incident_precision_std,incident_f1_mean,incident_f1_std,step_latency_ms_mean,step_latency_ms_std,throughput_mean
+Scenario 01,Stable Normal Operation,3,14.67,0.94,2.0,0.82,9.22,4.89,72.0,12.4,0.0,0.0,0.0,0.0,0.0,0.0,5.27,0.24,185.6
+Scenario 02,Stochastic Variation,3,16.0,1.41,2.33,1.25,9.0,4.42,71.9,12.7,0.0,0.0,0.0,0.0,0.0,0.0,5.53,0.13,176.9
+Scenario 03,Benign Distribution Shift,3,85.33,1.25,1.33,0.47,71.17,20.31,96.1,2.2,0.0,0.0,0.0,0.0,0.0,0.0,5.42,0.21,180.6
+Scenario 04,Attack Under Stable,3,46.0,1.41,3.33,0.47,14.03,1.66,81.2,3.5,1.0,0.0,0.4167,0.18,0.5667,0.17,5.5,0.6,179.9
+Scenario 05,Attack After Drift,3,92.67,0.47,1.0,0.0,92.67,0.47,95.7,0.0,1.0,0.0,1.0,0.0,1.0,0.0,5.65,0.34,173.4
+Scenario 06,Attack During Drift,3,85.33,1.25,1.33,0.47,71.17,20.31,94.9,2.2,1.0,0.0,1.0,0.0,1.0,0.0,5.84,0.36,168.0
+Scenario 07,Multi-Signal Fusion Attack,3,41.0,1.41,3.67,0.94,11.89,2.78,74.7,3.7,1.0,0.0,0.4,0.1963,0.5444,0.1931,5.84,0.41,168.2
+Scenario 08,Persistent Attack Event,3,66.67,1.7,2.0,0.82,40.5,18.06,91.6,2.7,1.0,0.0,0.6111,0.2833,0.7222,0.2079,5.95,0.15,164.3
+Scenario 09,Intermittent / Recurring Attack,3,50.0,2.16,3.33,0.94,16.42,5.01,80.2,5.0,1.0,0.0,1.0,0.0,1.0,0.0,6.14,0.77,161.5
+Scenario 10,Extreme OOD Generalization,3,88.67,0.47,1.0,0.0,88.67,0.47,96.6,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5.78,0.17,169.1
+Scenario 11,Malformed Telemetry Stress,3,13.0,0.0,2.0,0.82,7.94,3.68,69.2,12.6,0.0,0.0,0.0,0.0,0.0,0.0,4.89,0.24,190.9
+Scenario 12,Streaming Checkpoint Recovery,3,92.67,0.47,1.0,0.0,92.67,0.47,95.7,0.0,1.0,0.0,1.0,0.0,1.0,0.0,5.62,0.18,173.9

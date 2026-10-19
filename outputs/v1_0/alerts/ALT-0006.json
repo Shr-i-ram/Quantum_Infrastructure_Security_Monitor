@@ -1,0 +1,51 @@
+{
+  "alert_id": "ALT-0006",
+  "incident_id": "INC-0002",
+  "timestamp_s": 0.20800000000000002,
+  "sequence_id": 104,
+  "severity": "critical",
+  "incident_state": "resolved",
+  "evidence_score": 1.0,
+  "anomaly_score": 28.65564923040405,
+  "drift_score": 0.8259783992473291,
+  "affected_features": [
+    "temporal_anomaly_model",
+    "statistical_drift",
+    "qber_deviation"
+  ],
+  "subsystems_involved": [
+    "drift_engine",
+    "ml_engine",
+    "quantum_channel"
+  ],
+  "duration_s": 0.048000000000000015,
+  "model_version": "model_v001",
+  "reference_version": "ref_v001",
+  "explanation_summary": "[CRITICAL] Incident INC-0002 (resolved): Evidence=1.00, Subsystems=drift_engine,ml_engine,quantum_channel",
+  "explanation_details": {
+    "evidence_score": 1.0,
+    "assigned_severity": "critical",
+    "persistence_steps": 20,
+    "subsystems_affected": [
+      "drift_engine",
+      "ml_engine",
+      "quantum_channel"
+    ],
+    "anomalous_signals_count": 3,
+    "reasons": [
+      "Unified evidence score (1.000) exceeds critical threshold (0.90)",
+      "Multi-subsystem compromise: 3 independent subsystems affected (drift_engine, ml_engine, quantum_channel)",
+      "Signal 'temporal_anomaly_model' in subsystem 'ml_engine' exceeded threshold (raw: 28.7571, norm: 1.000, thresh: 2.5000)",
+      "Signal 'statistical_drift' in subsystem 'drift_engine' exceeded threshold (raw: 6.6025, norm: 1.000, thresh: 0.4000)",
+      "Signal 'qber_deviation' in subsystem 'quantum_channel' exceeded threshold (raw: 0.2348, norm: 1.000, thresh: 0.0350)",
+      "Environmental/channel drift actively detected; verified baseline distribution shift",
+      "Incident resolved after 5 consecutive benign monitoring windows."
+    ],
+    "pattern_characterization": "Telemetry pattern dominated by quantum bit error rate (QBER) deviation on decoy/signal pulses.",
+    "drift_context": "benign_drift_active",
+    "incident_state": "escalated",
+    "resolution_timestamp_s": 0.20800000000000002,
+    "resolution_duration_s": 0.048000000000000015
+  },
+  "recommendation_summary": "URGENT: Review quantum transmission integrity and multi-subsystem telemetry."
+}

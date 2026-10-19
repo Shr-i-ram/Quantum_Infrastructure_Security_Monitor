@@ -1,0 +1,204 @@
+{
+  "generated_at": "2026-09-08T19:05:45Z",
+  "simulator_version": "0.5.0",
+  "dataset_id": "v05_small_dataset",
+  "master_seed": 20260502,
+  "total_presentation_figures": 15,
+  "figures": [
+    {
+      "id": "Fig 01",
+      "filename": "01_simulation_pipeline.png",
+      "title": "QISM Simulation Pipeline & Physical Architecture",
+      "what_it_shows": "End-to-end simulation flow from Alice through quantum channel, Bob SPAD receiver, sifting, and telemetry.",
+      "why_it_matters": "Establishes causal bottom-up propagation invariant: physics drives events, which drive windowed telemetry.",
+      "formula": "\\text{Intervention} \\to \\text{Channel} \\to \\text{SPAD} \\to \\text{Events} \\to \\text{Telemetry}",
+      "paths": {
+        "png": "outputs\\visualizations\\presentation\\01_simulation_pipeline.png",
+        "svg": "outputs\\visualizations\\presentation\\01_simulation_pipeline.svg",
+        "pdf": "outputs\\visualizations\\presentation\\01_simulation_pipeline.pdf"
+      }
+    },
+    {
+      "id": "Fig 02",
+      "filename": "02_event_timeline.png",
+      "title": "Event-Level Microscopic Pulse Timeline",
+      "what_it_shows": "Individual pulse-by-pulse state preparation (bits, bases, intensity), channel loss, detector clicks, and sifting.",
+      "why_it_matters": "Visualizes the microscopic realism of simulated individual optical events rather than macroscopic averages.",
+      "formula": "N \\sim \\mathrm{Pois}(\\mu)",
+      "paths": {
+        "png": "outputs\\visualizations\\presentation\\02_event_timeline.png",
+        "svg": "outputs\\visualizations\\presentation\\02_event_timeline.svg",
+        "pdf": "outputs\\visualizations\\presentation\\02_event_timeline.pdf"
+      }
+    },
+    {
+      "id": "Fig 03",
+      "filename": "03_channel_transmission_and_loss.png",
+      "title": "Quantum Channel Loss & Detection Rate Floor",
+      "what_it_shows": "Beer-Lambert exponential attenuation law T(L) and expected detection rate decaying into thermal dark count floor.",
+      "why_it_matters": "Demonstrates why QBER intrinsically rises over long distances without an eavesdropper.",
+      "formula": "T(L) = 10^{-(\\alpha L + L_{\\mathrm{sys}})/10}, \\quad R_{\\mathrm{det}}(L) = f_{\\mathrm{rep}}\\mu T(L)\\eta_{\\mathrm{det}} + 2R_{\\mathrm{dark}}",
+      "paths": {
+        "png": "outputs\\visualizations\\presentation\\03_channel_transmission_and_loss.png",
+        "svg": "outputs\\visualizations\\presentation\\03_channel_transmission_and_loss.svg",
+        "pdf": "outputs\\visualizations\\presentation\\03_channel_transmission_and_loss.pdf"
+      }
+    },
+    {
+      "id": "Fig 04",
+      "filename": "04_detector_physics_and_dead_time.png",
+      "title": "SPAD Detector Dynamics: Saturation, Dead Time & Afterpulsing",
+      "what_it_shows": "Nonparalyzable dead time saturation, rate-dependent effective dead time model, afterpulse decay queue, and thermal dark drift.",
+      "why_it_matters": "Proves physical fidelity of Bob's receiver model: collisions reject photons nonparalyzably and generate secondary avalanches.",
+      "formula": "r_{\\mathrm{obs}} = \\frac{\\lambda}{1 + \\lambda\\tau_{\\mathrm{dead}}}, \\quad \\tau_{\\mathrm{eff}} = \\tau_0 + \\Delta\\tau\\frac{\\lambda}{\\lambda + \\lambda_c}",
+      "paths": {
+        "png": "outputs\\visualizations\\presentation\\04_detector_physics_and_dead_time.png",
+        "svg": "outputs\\visualizations\\presentation\\04_detector_physics_and_dead_time.svg",
+        "pdf": "outputs\\visualizations\\presentation\\04_detector_physics_and_dead_time.pdf"
+      }
+    },
+    {
+      "id": "Fig 05",
+      "filename": "05_basis_selection_and_sifting_funnel.png",
+      "title": "BB84 Basis Matching Matrix & Sifting Funnel",
+      "what_it_shows": "Basis correlation matrix (Z/X matching ~50%) and funnel reduction from 10k pulses to detected clicks, sifted key bits, and errors.",
+      "why_it_matters": "Explains how raw physical photon pulses convert to cryptographic sifted key material and error metrics.",
+      "formula": "\\mathrm{QBER} = \\frac{N_{\\mathrm{error}}}{N_{\\mathrm{sifted}}}",
+      "paths": {
+        "png": "outputs\\visualizations\\presentation\\05_basis_selection_and_sifting_funnel.png",
+        "svg": "outputs\\visualizations\\presentation\\05_basis_selection_and_sifting_funnel.svg",
+        "pdf": "outputs\\visualizations\\presentation\\05_basis_selection_and_sifting_funnel.pdf"
+      }
+    },
+    {
+      "id": "Fig 06",
+      "filename": "06_normal_telemetry_distributions.png",
+      "title": "Normal Operation Multi-Dimensional Baseline Distributions",
+      "what_it_shows": "Empirical distributions of QBER, total counts, signal/decoy gains, detector imbalance, and sensor temperature.",
+      "why_it_matters": "Demonstrates the statistical bounds of benign operation prior to any attack or anomaly.",
+      "formula": "X \\sim \\mathcal{D}_{\\mathrm{normal}}(\\mu, \\sigma^2)",
+      "paths": {
+        "png": "outputs\\visualizations\\presentation\\06_normal_telemetry_distributions.png",
+        "svg": "outputs\\visualizations\\presentation\\06_normal_telemetry_distributions.svg",
+        "pdf": "outputs\\visualizations\\presentation\\06_normal_telemetry_distributions.pdf"
+      }
+    },
+    {
+      "id": "Fig 07",
+      "filename": "07_qber_temporal_evolution.png",
+      "title": "Temporal QBER Dynamics: Benign Regime vs Attack Anomaly",
+      "what_it_shows": "Continuous windowed QBER over time showing stable low error floor under benign drift versus sudden elevated deviation under attack.",
+      "why_it_matters": "Illustrates that QISM monitors temporal time series rather than a single static scalar number.",
+      "formula": "\\mathrm{QBER}(t) = \\frac{N_{\\mathrm{error}}(t)}{N_{\\mathrm{sifted}}(t)}",
+      "paths": {
+        "png": "outputs\\visualizations\\presentation\\07_qber_temporal_evolution.png",
+        "svg": "outputs\\visualizations\\presentation\\07_qber_temporal_evolution.svg",
+        "pdf": "outputs\\visualizations\\presentation\\07_qber_temporal_evolution.pdf"
+      }
+    },
+    {
+      "id": "Fig 08",
+      "filename": "08_attack_lifecycle_and_timeline.png",
+      "title": "Causal Attack Lifecycle: Smoothstep Onset, Active & Recovery",
+      "what_it_shows": "Three-tiered aligned timeline showing ground truth attack phase, QBER excursion, and sifted key rate response.",
+      "why_it_matters": "Proves that attacks are realistic physical processes with continuous ramp-up and recovery phases.",
+      "formula": "g(u) = 3u^2 - 2u^3",
+      "paths": {
+        "png": "outputs\\visualizations\\presentation\\08_attack_lifecycle_and_timeline.png",
+        "svg": "outputs\\visualizations\\presentation\\08_attack_lifecycle_and_timeline.svg",
+        "pdf": "outputs\\visualizations\\presentation\\08_attack_lifecycle_and_timeline.pdf"
+      }
+    },
+    {
+      "id": "Fig 09",
+      "filename": "09_multi_attack_signatures_comparison.png",
+      "title": "Multi-Attack Signatures Across Telemetry Dimensions",
+      "what_it_shows": "Multi-dimensional physical footprints of all 6 implemented attacks across QBER, counts, gains, timing, and imbalance.",
+      "why_it_matters": "Demonstrates why multi-dimensional telemetry is vital: different attacks perturb entirely different subsets of observables.",
+      "formula": "\\vec{X}_{\\mathrm{attack}} - \\vec{X}_{\\mathrm{baseline}}",
+      "paths": {
+        "png": "outputs\\visualizations\\presentation\\09_multi_attack_signatures_comparison.png",
+        "svg": "outputs\\visualizations\\presentation\\09_multi_attack_signatures_comparison.svg",
+        "pdf": "outputs\\visualizations\\presentation\\09_multi_attack_signatures_comparison.pdf"
+      }
+    },
+    {
+      "id": "Fig 10",
+      "filename": "10_normal_vs_attack_feature_comparison.png",
+      "title": "Feature Distribution Shift: Normal vs Attack Telemetry",
+      "what_it_shows": "Side-by-side boxplots of normal vs attack telemetry for QBER, counts, gains, detector imbalance, and Fano factor.",
+      "why_it_matters": "Quantifies empirical separation between normal baseline and attack footprints across observable metrics.",
+      "formula": "X_{\\mathrm{normal}} \\quad \\text{vs} \\quad X_{\\mathrm{attack}}",
+      "paths": {
+        "png": "outputs\\visualizations\\presentation\\10_normal_vs_attack_feature_comparison.png",
+        "svg": "outputs\\visualizations\\presentation\\10_normal_vs_attack_feature_comparison.svg",
+        "pdf": "outputs\\visualizations\\presentation\\10_normal_vs_attack_feature_comparison.pdf"
+      }
+    },
+    {
+      "id": "Fig 11",
+      "filename": "11_telemetry_cross_correlation.png",
+      "title": "Telemetry Cross-Correlation Matrix & Physical Covariance",
+      "what_it_shows": "Heatmap of Pearson correlations across 10 observable telemetry variables.",
+      "why_it_matters": "Demonstrates realistic physical coupling between temperature, dark counts, dead time loss, and optical gains.",
+      "formula": "r = \\frac{\\sum (x - \\bar{x})(y - \\bar{y})}{\\sqrt{\\sum (x-\\bar{x})^2 \\sum (y-\\bar{y})^2}}",
+      "paths": {
+        "png": "outputs\\visualizations\\presentation\\11_telemetry_cross_correlation.png",
+        "svg": "outputs\\visualizations\\presentation\\11_telemetry_cross_correlation.svg",
+        "pdf": "outputs\\visualizations\\presentation\\11_telemetry_cross_correlation.pdf"
+      }
+    },
+    {
+      "id": "Fig 12",
+      "filename": "12_dataset_partition_composition.png",
+      "title": "Dataset Architecture & Functional Partition Breakdown",
+      "what_it_shows": "Bar and donut charts of scenario runs and pulses across Calibration, Normal, Attack, and Generalization partitions.",
+      "why_it_matters": "Explains how the simulation data is organized into standardized splits for rigorous evaluation.",
+      "formula": "N_{\\mathrm{scenarios}} = 20, \\quad N_{\\mathrm{pulses}} = 200{,}000",
+      "paths": {
+        "png": "outputs\\visualizations\\presentation\\12_dataset_partition_composition.png",
+        "svg": "outputs\\visualizations\\presentation\\12_dataset_partition_composition.svg",
+        "pdf": "outputs\\visualizations\\presentation\\12_dataset_partition_composition.pdf"
+      }
+    },
+    {
+      "id": "Fig 13",
+      "filename": "13_population_parameter_distributions.png",
+      "title": "Population Diversity: Latin Hypercube Parameter Coverage",
+      "what_it_shows": "Distributions of fiber distance, detector efficiency, dark count rate, and ambient temperature across scenarios.",
+      "why_it_matters": "Shows that scenarios are systematically sampled across physical operational ranges via Latin Hypercube Sampling.",
+      "formula": "\\theta_i \\sim \\mathrm{LHS}(\\Omega_{\\mathrm{param}})",
+      "paths": {
+        "png": "outputs\\visualizations\\presentation\\13_population_parameter_distributions.png",
+        "svg": "outputs\\visualizations\\presentation\\13_population_parameter_distributions.svg",
+        "pdf": "outputs\\visualizations\\presentation\\13_population_parameter_distributions.pdf"
+      }
+    },
+    {
+      "id": "Fig 14",
+      "filename": "14_generalization_distribution_shift.png",
+      "title": "Generalization Regimes: Held-Out Infrastructure Parameters",
+      "what_it_shows": "2D parameter space comparing in-distribution scenarios vs extreme held-out distance and degraded efficiency regimes.",
+      "why_it_matters": "Demonstrates the simulator's capability to generate out-of-distribution environments for robustness evaluation.",
+      "formula": "\\mathrm{dist}(x_{\\mathrm{gen}}, \\Omega_{\\mathrm{train}}) > \\delta",
+      "paths": {
+        "png": "outputs\\visualizations\\presentation\\14_generalization_distribution_shift.png",
+        "svg": "outputs\\visualizations\\presentation\\14_generalization_distribution_shift.svg",
+        "pdf": "outputs\\visualizations\\presentation\\14_generalization_distribution_shift.pdf"
+      }
+    },
+    {
+      "id": "Fig 15",
+      "filename": "15_stochastic_consistency_and_reproducibility.png",
+      "title": "RNG Architecture: Bit-Exact Reproducibility & Stochastic Variance",
+      "what_it_shows": "Exact bit-level match between identical seeds (MAE = 0.0) alongside independent seeds fluctuating consistently around physical mean.",
+      "why_it_matters": "Proves scientific reproducibility and validates that Monte Carlo variance respects statistical consistency.",
+      "formula": "\\mathcal{S}(\\text{seed}) = \\text{Deterministic Output}",
+      "paths": {
+        "png": "outputs\\visualizations\\presentation\\15_stochastic_consistency_and_reproducibility.png",
+        "svg": "outputs\\visualizations\\presentation\\15_stochastic_consistency_and_reproducibility.svg",
+        "pdf": "outputs\\visualizations\\presentation\\15_stochastic_consistency_and_reproducibility.pdf"
+      }
+    }
+  ]
+}

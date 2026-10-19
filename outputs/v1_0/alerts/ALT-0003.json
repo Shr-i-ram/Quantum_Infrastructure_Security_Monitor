@@ -1,0 +1,49 @@
+{
+  "alert_id": "ALT-0003",
+  "incident_id": "INC-0001",
+  "timestamp_s": 0.15,
+  "sequence_id": 75,
+  "severity": "critical",
+  "incident_state": "escalated",
+  "evidence_score": 1.0,
+  "anomaly_score": 10.919545219864506,
+  "drift_score": 0.712730148300854,
+  "affected_features": [
+    "temporal_anomaly_model",
+    "statistical_drift",
+    "optical_gain_deviation",
+    "qber_deviation"
+  ],
+  "subsystems_involved": [
+    "drift_engine",
+    "ml_engine",
+    "quantum_channel"
+  ],
+  "duration_s": 0.09,
+  "model_version": "model_v001",
+  "reference_version": "ref_v001",
+  "explanation_summary": "[CRITICAL] Incident INC-0001 (escalated): Evidence=1.00, Subsystems=drift_engine,ml_engine,quantum_channel",
+  "explanation_details": {
+    "evidence_score": 1.0,
+    "assigned_severity": "critical",
+    "persistence_steps": 46,
+    "subsystems_affected": [
+      "drift_engine",
+      "ml_engine",
+      "quantum_channel"
+    ],
+    "anomalous_signals_count": 3,
+    "reasons": [
+      "Unified evidence score (1.000) exceeds critical threshold (0.90)",
+      "Multi-subsystem compromise: 3 independent subsystems affected (drift_engine, ml_engine, quantum_channel)",
+      "Signal 'temporal_anomaly_model' in subsystem 'ml_engine' exceeded threshold (raw: 46.4460, norm: 1.000, thresh: 2.5000)",
+      "Signal 'statistical_drift' in subsystem 'drift_engine' exceeded threshold (raw: 5.9065, norm: 1.000, thresh: 0.4000)",
+      "Signal 'qber_deviation' in subsystem 'quantum_channel' exceeded threshold (raw: 0.1996, norm: 1.000, thresh: 0.0350)",
+      "Environmental/channel drift actively detected; verified baseline distribution shift"
+    ],
+    "pattern_characterization": "Telemetry pattern dominated by quantum bit error rate (QBER) deviation on decoy/signal pulses.",
+    "drift_context": "benign_drift_active",
+    "incident_state": "escalated"
+  },
+  "recommendation_summary": "URGENT: Review quantum transmission integrity and multi-subsystem telemetry."
+}

@@ -1,0 +1,269 @@
+{
+  "version": "0.7.0",
+  "timestamp": "2026-10-05T23:29:25.971325+00:00",
+  "config": {
+    "dataset_root": "data/v0.5_small/v05_small_dataset",
+    "output_dir": "outputs/v07/experiments",
+    "master_seed": 42,
+    "feature_set": "full",
+    "window_length": 5,
+    "stride": 1,
+    "target_fpr": 0.05,
+    "k_persistence": 2,
+    "n_window": 3,
+    "cooldown_steps": 2,
+    "scaler": "robust",
+    "repetition_rate_hz": 1000000.0,
+    "pulses_per_window": 2000,
+    "device": "cpu",
+    "epochs": 10,
+    "batch_size": 16
+  },
+  "total_runtime_s": 2.844211,
+  "streaming_performance": {
+    "mean_latency_us": 454.6099982690066,
+    "p50_latency_us": 401.0000266134739,
+    "p95_latency_us": 699.4999246671792,
+    "max_latency_us": 1557.9999890178442,
+    "total_streamed_steps": 40
+  },
+  "top_contributing_features": [
+    {
+      "feature": "autocorr_lag1",
+      "mean_error": 24.07996731454676
+    },
+    {
+      "feature": "sensor_vibration_mean",
+      "mean_error": 19.990139294754375
+    },
+    {
+      "feature": "clock_drift_rate",
+      "mean_error": 18.9830507399853
+    },
+    {
+      "feature": "sensor_temperature_std",
+      "mean_error": 17.44064508975399
+    },
+    {
+      "feature": "channel_transmittance_drift",
+      "mean_error": 8.113122707063502
+    },
+    {
+      "feature": "sensor_vibration_std",
+      "mean_error": 2.9867641763253645
+    },
+    {
+      "feature": "source_stability",
+      "mean_error": 2.2747535681860014
+    },
+    {
+      "feature": "timing_kurtosis",
+      "mean_error": 2.2605794153430243
+    },
+    {
+      "feature": "detector_1_busy_fraction",
+      "mean_error": 1.4120357871817595
+    },
+    {
+      "feature": "sensor_background_light_std",
+      "mean_error": 1.2456049229949713
+    }
+  ],
+  "summary_table": [
+    {
+      "Method": "Exp 1: Point Baseline (IF)",
+      "Representation": "Point (d)",
+      "Causal": false,
+      "AUROC": 0.4268,
+      "AUPRC": 0.5094,
+      "F1": 0.0,
+      "Recall": 0.0,
+      "Precision": 0.0,
+      "FAR (FPR)": 0.0,
+      "FA / Hour": 0.0,
+      "Median Delay (s)": 0.0,
+      "Episode Recall (EDR)": 0.0,
+      "Score Separation": -0.03
+    },
+    {
+      "Method": "Exp 2: Rolling Z-Score",
+      "Representation": "Window (L=5, d)",
+      "Causal": true,
+      "AUROC": 0.6515,
+      "AUPRC": 0.636,
+      "F1": 0.0,
+      "Recall": 0.0,
+      "Precision": 0.0,
+      "FAR (FPR)": 0.0,
+      "FA / Hour": 0.0,
+      "Median Delay (s)": 0.0,
+      "Episode Recall (EDR)": 0.0,
+      "Score Separation": 0.0
+    },
+    {
+      "Method": "Exp 3: EWMA Baseline",
+      "Representation": "Window (L=5, d)",
+      "Causal": true,
+      "AUROC": 0.6919,
+      "AUPRC": 0.7235,
+      "F1": 0.087,
+      "Recall": 0.0455,
+      "Precision": 1.0,
+      "FAR (FPR)": 0.0,
+      "FA / Hour": 0.0,
+      "Median Delay (s)": 0.0,
+      "Episode Recall (EDR)": 0.1667,
+      "Score Separation": 0.56
+    },
+    {
+      "Method": "Exp 4: Sequence AE (GRU)",
+      "Representation": "Sequence (L=5, d)",
+      "Causal": true,
+      "AUROC": 0.6111,
+      "AUPRC": 0.7285,
+      "F1": 0.5294,
+      "Recall": 0.4091,
+      "Precision": 0.75,
+      "FAR (FPR)": 0.1667,
+      "FA / Hour": 300000.0,
+      "Median Delay (s)": 0.0,
+      "Episode Recall (EDR)": 0.5,
+      "Score Separation": 0.18
+    },
+    {
+      "Method": "Exp 5: Sequence AE (LSTM)",
+      "Representation": "Sequence (L=5, d)",
+      "Causal": true,
+      "AUROC": 0.6111,
+      "AUPRC": 0.7285,
+      "F1": 0.5294,
+      "Recall": 0.4091,
+      "Precision": 0.75,
+      "FAR (FPR)": 0.1667,
+      "FA / Hour": 300000.0,
+      "Median Delay (s)": 0.0,
+      "Episode Recall (EDR)": 0.5,
+      "Score Separation": 0.18
+    },
+    {
+      "Method": "Exp 6: Alarm - Raw Thresholding (K=1/1)",
+      "Representation": "GRU AE (Raw Thresholding (K=1/1))",
+      "Causal": true,
+      "AUROC": 0.6111,
+      "AUPRC": 0.7285,
+      "F1": 0.5294,
+      "Recall": 0.4091,
+      "Precision": 0.75,
+      "FAR (FPR)": 0.1667,
+      "FA / Hour": 300000.0,
+      "Median Delay (s)": 0.0,
+      "Episode Recall (EDR)": 0.6667,
+      "Score Separation": 0.18
+    },
+    {
+      "Method": "Exp 6: Alarm - Persistence K=2 of 3",
+      "Representation": "GRU AE (Persistence K=2 of 3)",
+      "Causal": true,
+      "AUROC": 0.6111,
+      "AUPRC": 0.7285,
+      "F1": 0.5455,
+      "Recall": 0.4091,
+      "Precision": 0.8182,
+      "FAR (FPR)": 0.1111,
+      "FA / Hour": 200000.0,
+      "Median Delay (s)": 0.0,
+      "Episode Recall (EDR)": 0.5,
+      "Score Separation": 0.18
+    },
+    {
+      "Method": "Exp 6: Alarm - Persistence K=3 of 5",
+      "Representation": "GRU AE (Persistence K=3 of 5)",
+      "Causal": true,
+      "AUROC": 0.6111,
+      "AUPRC": 0.7285,
+      "F1": 0.5,
+      "Recall": 0.3636,
+      "Precision": 0.8,
+      "FAR (FPR)": 0.1111,
+      "FA / Hour": 200000.0,
+      "Median Delay (s)": 0.0,
+      "Episode Recall (EDR)": 0.5,
+      "Score Separation": 0.18
+    },
+    {
+      "Method": "Exp 6: Alarm - Hysteresis + Persistence",
+      "Representation": "GRU AE (Hysteresis + Persistence)",
+      "Causal": true,
+      "AUROC": 0.6111,
+      "AUPRC": 0.7285,
+      "F1": 0.5714,
+      "Recall": 0.4545,
+      "Precision": 0.7692,
+      "FAR (FPR)": 0.1667,
+      "FA / Hour": 300000.0,
+      "Median Delay (s)": 0.0,
+      "Episode Recall (EDR)": 0.5,
+      "Score Separation": 0.18
+    },
+    {
+      "Method": "Exp 7: Window Study (L=2)",
+      "Representation": "GRU AE (L=2)",
+      "Causal": true,
+      "AUROC": 0.6793,
+      "AUPRC": 0.7501,
+      "F1": 0.3448,
+      "Recall": 0.2273,
+      "Precision": 0.7143,
+      "FAR (FPR)": 0.1111,
+      "FA / Hour": 200000.0,
+      "Median Delay (s)": 0.0,
+      "Episode Recall (EDR)": 0.5,
+      "Score Separation": 0.53
+    },
+    {
+      "Method": "Exp 7: Window Study (L=3)",
+      "Representation": "GRU AE (L=3)",
+      "Causal": true,
+      "AUROC": 0.6641,
+      "AUPRC": 0.7084,
+      "F1": 0.5,
+      "Recall": 0.3636,
+      "Precision": 0.8,
+      "FAR (FPR)": 0.1111,
+      "FA / Hour": 200000.0,
+      "Median Delay (s)": 0.0,
+      "Episode Recall (EDR)": 0.6667,
+      "Score Separation": 0.17
+    },
+    {
+      "Method": "Exp 7: Window Study (L=5)",
+      "Representation": "GRU AE (L=5)",
+      "Causal": true,
+      "AUROC": 0.6111,
+      "AUPRC": 0.7285,
+      "F1": 0.5294,
+      "Recall": 0.4091,
+      "Precision": 0.75,
+      "FAR (FPR)": 0.1667,
+      "FA / Hour": 300000.0,
+      "Median Delay (s)": 0.0,
+      "Episode Recall (EDR)": 0.5,
+      "Score Separation": 0.18
+    },
+    {
+      "Method": "Exp 9: OOD Generalization",
+      "Representation": "GRU AE (OOD Test)",
+      "Causal": true,
+      "AUROC": 0.3125,
+      "AUPRC": 0.5142,
+      "F1": 0.4545,
+      "Recall": 0.4167,
+      "Precision": 0.5,
+      "FAR (FPR)": 0.625,
+      "FA / Hour": 225000.0,
+      "Median Delay (s)": 0.0,
+      "Episode Recall (EDR)": 0.6667,
+      "Score Separation": -1.01
+    }
+  ]
+}

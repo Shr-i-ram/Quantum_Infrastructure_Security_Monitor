@@ -1,0 +1,1193 @@
+{
+  "incident_id": "INC-0001",
+  "start_time_s": 0.06,
+  "end_time_s": 0.23800000000000002,
+  "duration_s": 0.17800000000000002,
+  "state": "resolved",
+  "severity": "medium",
+  "peak_severity": "critical",
+  "evidence_score": 0.7101913072885494,
+  "peak_evidence_score": 1.0,
+  "constituent_alarms": [
+    {
+      "alarm_id": "ALM-00031",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.06,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 2,
+      "message": "Temporal alarm state: ALARM (score=10.920)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00032",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.062,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 3,
+      "message": "Temporal alarm state: ALARM (score=9.812)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00033",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.064,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.404)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00034",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.066,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=13.554)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00035",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.068,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.150)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00036",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.07,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=12.974)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00037",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.07200000000000001,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=13.299)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00038",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.074,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.365)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00039",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.076,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.702)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00040",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.078,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=12.599)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00041",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.08,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.396)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00042",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.082,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.104)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00043",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.084,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.715)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00044",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.08600000000000001,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.212)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00045",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.088,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.801)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00046",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.09,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.014)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00047",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.092,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.486)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00048",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.094,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.391)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00049",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.096,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.287)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00050",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.098,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=9.826)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00051",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.1,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.275)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00052",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.10200000000000001,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=12.353)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00053",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.10400000000000001,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.114)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00054",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.106,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.308)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00055",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.108,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=12.347)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00056",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.11,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.455)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00057",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.112,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=12.665)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00058",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.114,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.509)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00059",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.116,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.309)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00060",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.11800000000000001,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.119)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00061",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.12,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.270)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00062",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.122,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.898)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00063",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.124,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.670)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00064",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.126,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.114)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00065",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.128,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.201)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00066",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.13,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=9.614)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00067",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.132,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.216)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00068",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.134,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.154)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00069",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.136,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.362)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00070",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.138,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=12.844)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00071",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.14,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=12.398)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00072",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.14200000000000002,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=12.185)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00073",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.14400000000000002,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.199)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00074",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.146,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.597)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00075",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.148,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=12.121)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00076",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.15,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.446)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00077",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.152,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.813)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00078",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.154,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.537)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00079",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.156,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.498)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00080",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.158,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.082)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00081",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.16,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.334)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00082",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.162,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.410)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00083",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.164,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.731)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00084",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.166,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.636)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00085",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.168,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.125)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00086",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.17,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=45.908)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00087",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.17200000000000001,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.098)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00088",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.17400000000000002,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.630)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00089",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.176,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.179)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00090",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.178,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.303)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00091",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.18,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.463)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00092",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.182,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.997)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00093",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.184,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.410)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00094",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.186,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.450)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00095",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.188,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.366)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00096",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.19,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.313)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00097",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.192,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.459)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00098",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.194,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.360)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00099",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.196,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.413)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00100",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.198,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.419)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00101",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.2,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.055)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00102",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.202,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.470)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00103",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.20400000000000001,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.420)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00104",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.20600000000000002,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=45.971)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00105",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.20800000000000002,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.393)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00106",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.21,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=46.256)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00107",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.212,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.934)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00108",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.214,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.937)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00109",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.216,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=12.382)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00110",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.218,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.734)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00111",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.22,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.171)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00112",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.222,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=12.473)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00113",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.224,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=12.801)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00114",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.226,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=11.397)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00115",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.228,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.691)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00116",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.23,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.158)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00117",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.232,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.120)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00118",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.234,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.811)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00119",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.23600000000000002,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.057)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00120",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.23800000000000002,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 4,
+      "message": "Temporal alarm state: ALARM (score=10.770)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    }
+  ],
+  "contributing_signals": [
+    {
+      "signal_name": "temporal_anomaly_model",
+      "subsystem": "ml_engine",
+      "raw_value": 10.919545219864506,
+      "normalized_value": 1.0,
+      "threshold": 2.5,
+      "is_anomalous": true,
+      "timestamp_s": 0.06,
+      "metadata": {
+        "ratio": 4.367818087945802
+      }
+    },
+    {
+      "signal_name": "statistical_drift",
+      "subsystem": "drift_engine",
+      "raw_value": 0.712730148300854,
+      "normalized_value": 0.8909126853760675,
+      "threshold": 0.4,
+      "is_anomalous": true,
+      "timestamp_s": 0.06,
+      "metadata": {
+        "ratio": 1.781825370752135
+      }
+    },
+    {
+      "signal_name": "qber_deviation",
+      "subsystem": "quantum_channel",
+      "raw_value": 0.014548720040827951,
+      "normalized_value": 0.015042665305734932,
+      "threshold": 0.035,
+      "is_anomalous": false,
+      "timestamp_s": 0.06,
+      "metadata": {}
+    },
+    {
+      "signal_name": "optical_gain_deviation",
+      "subsystem": "optical_receiver",
+      "raw_value": 0.029001608359613334,
+      "normalized_value": 0.35551981423081475,
+      "threshold": 0.075,
+      "is_anomalous": false,
+      "timestamp_s": 0.06,
+      "metadata": {}
+    },
+    {
+      "signal_name": "timing_deviation",
+      "subsystem": "synchronization",
+      "raw_value": 0.05276770167321743,
+      "normalized_value": 0.018451344488116205,
+      "threshold": 0.15000000000000002,
+      "is_anomalous": false,
+      "timestamp_s": 0.06,
+      "metadata": {}
+    }
+  ],
+  "affected_features": [
+    "temporal_anomaly_model",
+    "statistical_drift",
+    "optical_gain_deviation",
+    "qber_deviation"
+  ],
+  "subsystems_involved": [
+    "drift_engine",
+    "ml_engine",
+    "quantum_channel"
+  ],
+  "explanation": {
+    "evidence_score": 0.7101913072885494,
+    "assigned_severity": "medium",
+    "persistence_steps": 90,
+    "subsystems_affected": [
+      "drift_engine",
+      "ml_engine"
+    ],
+    "anomalous_signals_count": 2,
+    "reasons": [
+      "Moderate security evidence score (0.710) exceeding medium threshold",
+      "Signal 'temporal_anomaly_model' in subsystem 'ml_engine' exceeded threshold (raw: 10.7695, norm: 1.000, thresh: 2.5000)",
+      "Signal 'statistical_drift' in subsystem 'drift_engine' exceeded threshold (raw: 10.6876, norm: 1.000, thresh: 0.4000)",
+      "Environmental/channel drift actively detected; verified baseline distribution shift"
+    ],
+    "pattern_characterization": "Telemetry pattern characterized primarily by smooth distribution shift in optical or environmental baseline.",
+    "drift_context": "benign_drift_active",
+    "incident_state": "active"
+  },
+  "recommendation": {
+    "advisory_text": "ADVISORY: Monitor telemetry trends for potential sustained security degradation.",
+    "rationale": "Assigned severity MEDIUM based on pattern: Telemetry pattern characterized primarily by smooth distribution shift in optical or environmental baseline.",
+    "severity": "medium",
+    "target_subsystem": "drift_engine",
+    "suggested_actions": [
+      "Operator action: Observe next 20 transmission windows for recovery or escalation.",
+      "Operator action: Check detector environmental sensor logs (temperature, vibration)."
+    ],
+    "is_automated_execution": false
+  },
+  "active_model_version": "model_v001",
+  "active_reference_version": "ref_v001",
+  "alarm_count": 90
+}

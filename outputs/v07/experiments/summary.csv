@@ -1,0 +1,14 @@
+Method,Representation,Causal,AUROC,AUPRC,F1,Recall,Precision,FAR (FPR),FA / Hour,Median Delay (s),Episode Recall (EDR),Score Separation
+Exp 1: Point Baseline (IF),Point (d),False,0.4268,0.5094,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.03
+Exp 2: Rolling Z-Score,"Window (L=5, d)",True,0.6515,0.636,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Exp 3: EWMA Baseline,"Window (L=5, d)",True,0.6919,0.7235,0.087,0.0455,1.0,0.0,0.0,0.0,0.1667,0.56
+Exp 4: Sequence AE (GRU),"Sequence (L=5, d)",True,0.6111,0.7285,0.5294,0.4091,0.75,0.1667,300000.0,0.0,0.5,0.18
+Exp 5: Sequence AE (LSTM),"Sequence (L=5, d)",True,0.6111,0.7285,0.5294,0.4091,0.75,0.1667,300000.0,0.0,0.5,0.18
+Exp 6: Alarm - Raw Thresholding (K=1/1),GRU AE (Raw Thresholding (K=1/1)),True,0.6111,0.7285,0.5294,0.4091,0.75,0.1667,300000.0,0.0,0.6667,0.18
+Exp 6: Alarm - Persistence K=2 of 3,GRU AE (Persistence K=2 of 3),True,0.6111,0.7285,0.5455,0.4091,0.8182,0.1111,200000.0,0.0,0.5,0.18
+Exp 6: Alarm - Persistence K=3 of 5,GRU AE (Persistence K=3 of 5),True,0.6111,0.7285,0.5,0.3636,0.8,0.1111,200000.0,0.0,0.5,0.18
+Exp 6: Alarm - Hysteresis + Persistence,GRU AE (Hysteresis + Persistence),True,0.6111,0.7285,0.5714,0.4545,0.7692,0.1667,300000.0,0.0,0.5,0.18
+Exp 7: Window Study (L=2),GRU AE (L=2),True,0.6793,0.7501,0.3448,0.2273,0.7143,0.1111,200000.0,0.0,0.5,0.53
+Exp 7: Window Study (L=3),GRU AE (L=3),True,0.6641,0.7084,0.5,0.3636,0.8,0.1111,200000.0,0.0,0.6667,0.17
+Exp 7: Window Study (L=5),GRU AE (L=5),True,0.6111,0.7285,0.5294,0.4091,0.75,0.1667,300000.0,0.0,0.5,0.18
+Exp 9: OOD Generalization,GRU AE (OOD Test),True,0.3125,0.5142,0.4545,0.4167,0.5,0.625,225000.0,0.0,0.6667,-1.01

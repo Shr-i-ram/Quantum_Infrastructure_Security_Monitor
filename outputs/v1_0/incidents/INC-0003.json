@@ -1,0 +1,144 @@
+{
+  "incident_id": "INC-0003",
+  "start_time_s": 0.178,
+  "end_time_s": 0.194,
+  "duration_s": 0.016000000000000014,
+  "state": "resolved",
+  "severity": "info",
+  "peak_severity": "low",
+  "evidence_score": 0.21595916362895318,
+  "peak_evidence_score": 0.5446161350641022,
+  "constituent_alarms": [
+    {
+      "alarm_id": "ALM-00090",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.178,
+      "severity": "medium",
+      "is_active": false,
+      "persistence_count": 1,
+      "message": "Temporal alarm state: SUSPECT (score=3.201)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00092",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.182,
+      "severity": "medium",
+      "is_active": false,
+      "persistence_count": 1,
+      "message": "Temporal alarm state: SUSPECT (score=3.802)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    },
+    {
+      "alarm_id": "ALM-00093",
+      "source": "temporal_alarm_machine",
+      "timestamp_s": 0.184,
+      "severity": "high",
+      "is_active": true,
+      "persistence_count": 0,
+      "message": "Temporal alarm state: ALARM (score=0.655)",
+      "signals": [
+        "temporal_anomaly_model"
+      ]
+    }
+  ],
+  "contributing_signals": [
+    {
+      "signal_name": "temporal_anomaly_model",
+      "subsystem": "ml_engine",
+      "raw_value": 3.201378976375639,
+      "normalized_value": 0.6402757952751278,
+      "threshold": 2.5,
+      "is_anomalous": true,
+      "timestamp_s": 0.178,
+      "metadata": {
+        "ratio": 1.2805515905502556
+      }
+    },
+    {
+      "signal_name": "statistical_drift",
+      "subsystem": "drift_engine",
+      "raw_value": 8.801090715131192,
+      "normalized_value": 1.0,
+      "threshold": 0.4,
+      "is_anomalous": true,
+      "timestamp_s": 0.178,
+      "metadata": {
+        "ratio": 22.002726787827978
+      }
+    },
+    {
+      "signal_name": "qber_deviation",
+      "subsystem": "quantum_channel",
+      "raw_value": 0.015384950574835016,
+      "normalized_value": 0.012831685827833887,
+      "threshold": 0.035,
+      "is_anomalous": false,
+      "timestamp_s": 0.178,
+      "metadata": {}
+    },
+    {
+      "signal_name": "optical_gain_deviation",
+      "subsystem": "optical_receiver",
+      "raw_value": 0.044209094660907056,
+      "normalized_value": 0.017575674202065395,
+      "threshold": 0.075,
+      "is_anomalous": false,
+      "timestamp_s": 0.178,
+      "metadata": {}
+    },
+    {
+      "signal_name": "timing_deviation",
+      "subsystem": "synchronization",
+      "raw_value": 0.05137871344010117,
+      "normalized_value": 0.009191422934007784,
+      "threshold": 0.15000000000000002,
+      "is_anomalous": false,
+      "timestamp_s": 0.178,
+      "metadata": {}
+    }
+  ],
+  "affected_features": [
+    "statistical_drift",
+    "temporal_anomaly_model"
+  ],
+  "subsystems_involved": [
+    "drift_engine",
+    "ml_engine"
+  ],
+  "explanation": {
+    "evidence_score": 0.21595916362895318,
+    "assigned_severity": "info",
+    "persistence_steps": 22,
+    "subsystems_affected": [
+      "drift_engine"
+    ],
+    "anomalous_signals_count": 1,
+    "reasons": [
+      "Nominal telemetry: evidence score (0.216) remains within benign operating limits",
+      "Signal 'statistical_drift' in subsystem 'drift_engine' exceeded threshold (raw: 4.6683, norm: 1.000, thresh: 0.4000)",
+      "Environmental/channel drift actively detected; verified baseline distribution shift",
+      "Incident resolved after 5 consecutive benign monitoring windows."
+    ],
+    "pattern_characterization": "Telemetry pattern characterized primarily by smooth distribution shift in optical or environmental baseline.",
+    "drift_context": "benign_drift_active",
+    "incident_state": "active",
+    "resolution_timestamp_s": 0.194,
+    "resolution_duration_s": 0.016000000000000014
+  },
+  "recommendation": {
+    "advisory_text": "STATUS NORMAL: Telemetry within established operational baselines.",
+    "rationale": "Assigned severity INFO based on pattern: Telemetry pattern characterized primarily by smooth distribution shift in optical or environmental baseline.",
+    "severity": "info",
+    "target_subsystem": "drift_engine",
+    "suggested_actions": [],
+    "is_automated_execution": false
+  },
+  "active_model_version": "model_v001",
+  "active_reference_version": "ref_v001",
+  "alarm_count": 3
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QISM V0.9 Operational Security Dashboard</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 20px; background: #0f172a; color: #f8fafc; }
+        h1, h2, h3 { color: #38bdf8; }
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 25px; }
+        .card { background: #1e293b; padding: 18px; border-radius: 8px; border: 1px solid #334155; }
+        .card-title { font-size: 0.85em; color: #94a3b8; text-transform: uppercase; }
+        .card-value { font-size: 1.8em; font-weight: bold; margin-top: 5px; color: #f1f5f9; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #1e293b; border-radius: 8px; overflow: hidden; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #334155; }
+        th { background: #0f172a; color: #38bdf8; font-size: 0.9em; }
+        .badge { padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 0.8em; }
+        .badge-critical { background: #ef4444; color: white; }
+        .badge-high { background: #f97316; color: white; }
+        .badge-medium { background: #eab308; color: black; }
+        .badge-low { background: #22c55e; color: white; }
+        .badge-info { background: #06b6d4; color: white; }
+    </style>
+</head>
+<body>
+    <h1>QISM V0.9 Security Monitoring Dashboard</h1>
+    <p>Operational incident correlation, multi-signal fusion, and safe adaptive telemetry analysis for QKD infrastructure.</p>
+    <div class="cards">
+        <div class="card">
+            <div class="card-title">Scenario</div>
+            <div class="card-value" style="font-size: 1.2em;">QISM V1.0 Demo: drift_then_attack</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Alert Compression</div>
+            <div class="card-value" style="color: #22c55e;">93.0x</div>
+            <small>93.5% reduction</small>
+        </div>
+        <div class="card">
+            <div class="card-title">Correlated Incidents</div>
+            <div class="card-value">1</div>
+            <small>From 93 raw alarms</small>
+        </div>
+        <div class="card">
+            <div class="card-title">Incident Recall / F1</div>
+            <div class="card-value" style="color: #38bdf8;">100% / 1.00</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Mean Step Latency</div>
+            <div class="card-value">5.55 ms</div>
+            <small>180 steps/s</small>
+        </div>
+    </div>
+
+    <h2>Correlated Security Incidents</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Incident ID</th>
+                <th>Peak Severity</th>
+                <th>Start Time</th>
+                <th>Duration</th>
+                <th>Peak Evidence</th>
+                <th>Alarms</th>
+                <th>Subsystems</th>
+                <th>Advisory Guidance</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        <tr>
+            <td><strong>INC-0001</strong></td>
+            <td><span class="badge badge-critical">CRITICAL</span></td>
+            <td>0.060s</td>
+            <td>178.0 ms</td>
+            <td>1.00</td>
+            <td>90</td>
+            <td>drift_engine, ml_engine, optical_receiver, quantum_channel</td>
+            <td><small>ADVISORY: Monitor telemetry trends for potential sustained security degradation.</small></td>
+        </tr>
+        
+        </tbody>
+    </table>
+</body>
+</html>

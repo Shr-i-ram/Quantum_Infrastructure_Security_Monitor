@@ -1,0 +1,43 @@
+{
+  "alert_id": "ALT-0008",
+  "incident_id": "INC-0003",
+  "timestamp_s": 0.178,
+  "sequence_id": 89,
+  "severity": "low",
+  "incident_state": "active",
+  "evidence_score": 0.46384732012312974,
+  "anomaly_score": 3.201378976375639,
+  "drift_score": 8.801090715131192,
+  "affected_features": [
+    "statistical_drift",
+    "temporal_anomaly_model"
+  ],
+  "subsystems_involved": [
+    "drift_engine",
+    "ml_engine"
+  ],
+  "duration_s": 0.0,
+  "model_version": "model_v001",
+  "reference_version": "ref_v001",
+  "explanation_summary": "[LOW] Incident INC-0003 (active): Evidence=0.46, Subsystems=drift_engine,ml_engine",
+  "explanation_details": {
+    "evidence_score": 0.46384732012312974,
+    "assigned_severity": "low",
+    "persistence_steps": 21,
+    "subsystems_affected": [
+      "drift_engine",
+      "ml_engine"
+    ],
+    "anomalous_signals_count": 2,
+    "reasons": [
+      "Low-level anomaly indication (0.464) exceeding operational baseline",
+      "Signal 'temporal_anomaly_model' in subsystem 'ml_engine' exceeded threshold (raw: 3.2014, norm: 0.640, thresh: 2.5000)",
+      "Signal 'statistical_drift' in subsystem 'drift_engine' exceeded threshold (raw: 8.8011, norm: 1.000, thresh: 0.4000)",
+      "Environmental/channel drift actively detected; verified baseline distribution shift"
+    ],
+    "pattern_characterization": "Telemetry pattern characterized primarily by smooth distribution shift in optical or environmental baseline.",
+    "drift_context": "benign_drift_active",
+    "incident_state": "opening"
+  },
+  "recommendation_summary": "NOTE: Minor telemetry fluctuation observed; continue standard monitoring."
+}

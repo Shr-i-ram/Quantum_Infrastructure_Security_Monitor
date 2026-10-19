@@ -1,0 +1,2 @@
+model_id,error,config
+PITQSVDD_4Q_ContextAware,'ContextAwarePITQSVDD' object has no attribute 'init_centre',"{'id': 'PITQSVDD_4Q_ContextAware', 'n_q': 4, 'enc': 'angle', 'model': 'context_aware_pitqsvdd', 'input_type': 'windows_pca4', 'target_key': 'targets_pca4', 'lambda_t': 0.5, 'seed': 42}"
